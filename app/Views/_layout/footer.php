@@ -2,7 +2,7 @@
 	<strong>Copyright &copy; <?= date('Y'); ?> <a href="https://www.instagram.com/aslamaulana/">.</a></strong>
 	Kang Somay.
 	<div class="float-right d-none d-sm-inline-block">
-		<b>Version</b> 1.0.7
+		<b>Version</b> 1.0.8
 	</div>
 	<script>
 		$(".custom-file-input").on("change", function() {
