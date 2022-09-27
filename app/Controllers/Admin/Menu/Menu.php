@@ -26,6 +26,7 @@ class Menu extends BaseController
 				'menu' => $menu,
 				'db' => \Config\Database::connect(),
 			];
+			echo date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i');
 			echo view('admin/Menu/menu', $data);
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -34,11 +35,18 @@ class Menu extends BaseController
 	public function create()
 	{
 		if (has_permission('Admin')) :
+
+			if ($this->request->getVar('timer_a') == 'aktif') {
+				$timer_a = 'aktif';
+			} else {
+				$timer_a = 'tidak';
+			}
+
 			$this->menu->save([
 				'id_menu' => $this->request->getVar('id'),
 				'kunci' => $this->request->getVar('kunci'),
-				'timer' => $this->request->getVar('bulan') . ', ' . $this->request->getVar('hari') . ' ' . $this->request->getVar('tahun') . ' ' . $this->request->getVar('jam') . ':' . $this->request->getVar('menit') . ':00',
-				'timer_a' => $this->request->getVar('timer_a'),
+				'timer' => $this->request->getVar('bulan') . ', ' . $this->request->getVar('hari') . ' ' . $this->request->getVar('tahun') . ' ' . $this->request->getVar('jam') . ':' . $this->request->getVar('menit'),
+				'timer_a' => $timer_a,
 				// 'tahun' => $_SESSION['tahun'],
 			]);
 
@@ -50,12 +58,17 @@ class Menu extends BaseController
 	}
 	public function set($id)
 	{
-		$this->menu->save([
-			'id_menu' => $id,
-			'kunci' => 'ya',
-			'timer' => '',
-			'timer_a' => 'tidak',
-		]);
+		if (
+			menu('renstra')->timer == date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i') ||
+			menu('renja')->timer == date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i')
+		) {
+			$this->menu->save([
+				'id_menu' => $id,
+				'kunci' => 'ya',
+				'timer' => '',
+				'timer_a' => 'tidak',
+			]);
+		}
 
 		session()->setFlashdata('pesan', 'Waktu Habis');
 		return redirect()->to(base_url('/logout'));
