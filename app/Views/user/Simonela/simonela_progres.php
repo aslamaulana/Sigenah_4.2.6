@@ -44,7 +44,7 @@
 				<!-- <th class="text-center" colspan="2">Target Dikurangi Efisiensi</th> -->
 				<th class="text-center" colspan="2">Realisasi</th>
 				<th class="text-center" colspan="2">Konsistensi (%)</th>
-				<th class="text-center" colspan="2">Deviliasi</th>
+				<th class="text-center" colspan="2">Deviasi</th>
 				<th rowspan="2" class="text-center align-middle"></th>
 				<th rowspan="2" class="text-center align-middle">Tanggal Proses</th>
 				<th rowspan="2" class="text-center align-middle">Status</th>

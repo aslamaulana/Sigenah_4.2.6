@@ -28,7 +28,7 @@ class Home extends BaseController
 		if (!isset($_SESSION['tahun']) && !isset($_SESSION['perubahan'])) {
 			try {
 				$this->session->set('tahun', '2022');
-				$this->session->set('perubahan', 'Murni');
+				$this->session->set('perubahan', 'Perubahan');
 			} catch (\Exception $e) {
 			}
 			return redirect()->to(base_url('/'))->with('tahun2', '2022');

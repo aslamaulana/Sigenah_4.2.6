@@ -58,17 +58,17 @@ class Menu extends BaseController
 	}
 	public function set($id)
 	{
-		if (
-			menu('renstra')->timer == date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i') ||
-			menu('renja')->timer == date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i')
-		) {
-			$this->menu->save([
-				'id_menu' => $id,
-				'kunci' => 'ya',
-				'timer' => '',
-				'timer_a' => 'tidak',
-			]);
-		}
+		// if (
+		// 	menu('renstra')->timer == date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i') ||
+		// 	menu('renja')->timer == date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i')
+		// ) {
+		$this->menu->save([
+			'id_menu' => $id,
+			'kunci' => 'ya',
+			'timer' => '',
+			'timer_a' => 'tidak',
+		]);
+		// }
 
 		session()->setFlashdata('pesan', 'Waktu Habis');
 		return redirect()->to(base_url('/logout'));
