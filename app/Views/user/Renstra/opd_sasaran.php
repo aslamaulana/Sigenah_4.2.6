@@ -129,7 +129,11 @@
 			],
 			columnDefs: [{
 				visible: false,
-				targets: [2, 3, 4, 5, 6, 15]
+				<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+					echo "targets: [2, 3, 4, 5, 6, 15]";
+				} else {
+					echo "targets: [2, 3, 4, 5, 6, 8, 15]";
+				} ?>
 			}],
 			order: [
 				[3, 'asc'],
@@ -145,7 +149,9 @@
 							.append('<td class="align-top text-wrap font-weight-bold">' + group + '</td>')
 							.append('<td></td>')
 							.append('<td></td>')
-							.append('<td></td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+						} ?>
 							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')
@@ -157,7 +163,9 @@
 							.append('<td class="align-top">' + rows.data().pluck(4)[0] + '</td>')
 							.append('<td class="align-top text-wrap">' + group + '</td>')
 							.append('<td class="align-top text-wrap">' + rows.data().pluck(6)[0] + '</td>')
-							.append('<td></td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+						} ?>
 							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')

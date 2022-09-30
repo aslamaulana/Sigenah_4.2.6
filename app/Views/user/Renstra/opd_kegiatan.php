@@ -176,7 +176,12 @@
 			],
 			columnDefs: [{
 				visible: false,
-				targets: [2, 3, 4, 5, 6, 10, 13, 16, 19, 22, 25, 27]
+				<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+					echo "targets: [2, 3, 4, 5, 6, 10, 13, 16, 19, 22, 25, 27]";
+				} else {
+					echo "targets: [2, 3, 4, 5, 6, 8, 9, 10, 13, 16, 19, 22, 25, 27]";
+				} ?>
+				// targets: [2, 3, 4, 5, 6, 10, 13, 16, 19, 22, 25, 27]
 			}],
 			order: [
 				[2, 'asc'],
@@ -189,8 +194,10 @@
 						return $('<tr class="font-weight-bold" style="background-color: blanchedalmond;" />')
 							.append('<td class="align-top">' + group + '</td>')
 							.append('<td class="align-top text-wrap">' + rows.data().pluck(3)[0] + ' </td>')
-							.append('<td> </td>')
-							.append('<td style="text-align: right"> </td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+							echo ".append('<td style=\"text-align: right\"> </td>')";
+						} ?>
 							.append('<td> </td>')
 							.append('<td style="text-align: right">  </td>')
 							.append('<td> </td>')
@@ -209,8 +216,10 @@
 							.append('<td class="align-top">' + group + '</td>')
 							.append('<td class="text-wrap align-top">' + rows.data().pluck(5)[0] + '</td>')
 							.append('<td class="text-wrap">' + rows.data().pluck(6)[0] + '</td>')
-							.append('<td></td>')
-							.append('<td class="align-top text-right">' + rows.data().pluck(10)[0] + '</td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+							echo ".append('<td class=\"align-top text-right\">' + rows.data().pluck(10)[0] + '</td>')";
+						} ?>
 							.append('<td> </td>')
 							.append('<td class="align-top text-right">' + rows.data().pluck(13)[0] + '</td>')
 							.append('<td> </td>')

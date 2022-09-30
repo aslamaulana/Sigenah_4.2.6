@@ -2,6 +2,7 @@
 
 <?= $this->section('stylesheet'); ?>
 <link rel="stylesheet" href="<?= base_url('/toping/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
+<link rel="stylesheet" href="<?= base_url('/toping/plugins/datatables-rowgroup/css/rowGroup.bootstrap4.min.js') ?>">
 <?= $this->endSection(); ?>
 
 <?= $this->section('tombol'); ?>
@@ -29,11 +30,15 @@
 
 <?= $this->section('content'); ?>
 <div class="card-body">
-	<table id="example1" class="table table-bordered">
+	<table id="example1" class="table table-bordered display nowrap">
 		<thead>
 			<tr>
 				<th class="text-center" width="40px">Kode</th>
-				<th>Tujuan / Tujuan Indikator</th>
+				<th>
+					<div style="width: 560px;">Tujuan / Tujuan Indikator</div>
+				</th>
+				<th></th>
+				<th></th>
 				<?php foreach ($tahunA as $row) : ?>
 					<th class="text-center">
 						<div style="width: 120px; margin:auto;"><?= $row['tahun']; ?></div>
@@ -44,17 +49,36 @@
 		</thead>
 		<tbody>
 			<?php $nomor = 1;
-			foreach ($opd_tujuan as $ros) : ?>
-				<!-- Tujuan -->
-				<tr style="background: azure;">
-					<td class="align-top text-center"><?= $ros['opd_kode_tujuan']; ?></td>
-					<td class="align-top" style="padding-left: 20px;">[TUJUAN] <?= '<a href="/user/renstra/opd_tujuan/opd_tujuan_indik_add?p=' . $ros['opd_tujuan'] . '&k=' . $ros['opd_kode_tujuan'] . '" title="Add Indikator Tujuan">' . $ros['opd_tujuan'] . '</a>'; ?></td>
-					<?php foreach ($tahunA as $th) : ?>
-						<td></td>
-					<?php endforeach; ?>
+			$querz = $db->table('tb_renstra_tujuan')->getWhere(['opd_id' => user()->opd_id, 'perubahan' => $_SESSION['perubahan']])->getResultArray();
+			foreach ($querz as $rom) : ?>
+				<tr>
+					<td></td>
+					<td class="align-top" style=" padding-left: 40px;"><?= $rom['opd_indikator_tujuan']; ?></td>
+					<td><?= $rom['opd_kode_tujuan']; ?></td>
+					<td>[TUJUAN] <?= '<a href="/user/renstra/opd_tujuan/opd_tujuan_indik_add?p=' . $rom['opd_tujuan'] . '&k=' . $rom['opd_kode_tujuan'] . '" title="Add Indikator Tujuan">' . $rom['opd_tujuan'] . '</a>'; ?></td>
+					<td class="align-top text-center"><?= $rom['t_2021'] . ' ' . $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['t_2022'] . ' ' . $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['t_2023'] . ' ' . $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['t_2024'] . ' ' . $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['t_2025'] . ' ' . $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['t_2026'] . ' ' . $rom['satuan']; ?></td>
 					<td class="text-center align-top">
 						<?php if (menu('renstra')->kunci == 'tidak') { ?>
-							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_tujuan/opd_tujuan_edit?p=' . $ros['opd_tujuan'] . '&k=' . $ros['opd_kode_tujuan']; ?>">
+							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_tujuan/opd_tujuan_indik_edit/' . $rom['id_opd_tujuan']; ?>">
+								<i class="nav-icon fas fa-pen-alt"></i>
+							</a>
+							<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/renstra/opd_tujuan/opd_tujuan_hapus/' . $rom['id_opd_tujuan']; ?>'}" href="#">
+								<i class="nav-icon fas fa-trash-alt"></i>
+							</a>
+						<?php } else { ?>
+							<a class="btn btn-danger btn-circle btn-xs">
+								<i class="nav-icon fas fa-lock"></i>
+							</a>
+						<?php } ?>
+					</td>
+					<td class="text-center align-top">
+						<?php if (menu('renstra')->kunci == 'tidak') { ?>
+							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_tujuan/opd_tujuan_edit?p=' . $rom['opd_tujuan'] . '&k=' . $rom['opd_kode_tujuan']; ?>">
 								<i class="nav-icon fas fa-pen-alt"></i>
 							</a>
 						<?php } else { ?>
@@ -64,35 +88,7 @@
 						<?php } ?>
 					</td>
 				</tr>
-				<?php $querz = $db->table('tb_renstra_tujuan')->getWhere(['opd_tujuan' => $ros['opd_tujuan'], 'opd_kode_tujuan' => $ros['opd_kode_tujuan'], 'opd_id' => user()->opd_id, 'perubahan' => $_SESSION['perubahan']])->getResultArray();
-				foreach ($querz as $rom) : ?>
-					<tr>
-						<td></td>
-						<td class="align-top" style=" padding-left: 40px;"><?= $rom['opd_indikator_tujuan']; ?></td>
-						<td class="align-top text-center"><?= $rom['t_2021'] . ' ' . $rom['satuan']; ?></td>
-						<td class="align-top text-center"><?= $rom['t_2022'] . ' ' . $rom['satuan']; ?></td>
-						<td class="align-top text-center"><?= $rom['t_2023'] . ' ' . $rom['satuan']; ?></td>
-						<td class="align-top text-center"><?= $rom['t_2024'] . ' ' . $rom['satuan']; ?></td>
-						<td class="align-top text-center"><?= $rom['t_2025'] . ' ' . $rom['satuan']; ?></td>
-						<td class="align-top text-center"><?= $rom['t_2026'] . ' ' . $rom['satuan']; ?></td>
-						<td class="text-center align-top">
-							<?php if (menu('renstra')->kunci == 'tidak') { ?>
-								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_tujuan/opd_tujuan_indik_edit/' . $rom['id_opd_tujuan']; ?>">
-									<i class="nav-icon fas fa-pen-alt"></i>
-								</a>
-								<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/renstra/opd_tujuan/opd_tujuan_hapus/' . $rom['id_opd_tujuan']; ?>'}" href="#">
-									<i class="nav-icon fas fa-trash-alt"></i>
-								</a>
-							<?php } else { ?>
-								<a class="btn btn-danger btn-circle btn-xs">
-									<i class="nav-icon fas fa-lock"></i>
-								</a>
-							<?php } ?>
-						</td>
-					</tr>
-				<?php endforeach; ?>
 			<?php endforeach; ?>
-
 		</tbody>
 	</table>
 </div>
@@ -102,6 +98,7 @@
 <!-- DataTables  & Plugins -->
 <script src="<?= base_url('/toping/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('/toping/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
+<script src="<?= base_url('/toping/plugins/datatables-rowgroup/js/dataTables.rowGroup.min.js') ?>"></script>
 
 <script>
 	$(function() {
@@ -109,19 +106,51 @@
 	});
 	$(function() {
 		$("#example1").DataTable({
+			"scrollX": true,
+			"scrollY": '65vh',
+			"scrollCollapse": true,
+			"paging": true,
 			"responsive": true,
 			"autoWidth": false,
 			"ordering": false,
-			"paging": false,
-		});
-		$('#example2').DataTable({
-			"paging": true,
-			"lengthChange": false,
-			"searching": false,
-			"ordering": true,
-			"info": true,
-			"autoWidth": false,
-			"responsive": true,
+			"lengthMenu": [
+				[20, 40, 60, 100, -1],
+				[20, 40, 60, 100, 'All']
+			],
+			columnDefs: [{
+				visible: false,
+				<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+					echo "targets: [2, 3, 11]";
+				} else {
+					echo "targets: [2, 3, 4, 11]";
+				} ?>
+			}],
+			order: [
+				[2, 'asc'],
+				[3, 'asc']
+			],
+			rowGroup: {
+
+				startRender: function(rows, group) {
+
+					if (rows.data().pluck(2)[0] == group) {
+						return $('<tr class="font-weight-bold" style="background-color: blanchedalmond;" />')
+							.append('<td>' + group + '</td>')
+							.append('<td class="align-top text-wrap">' + rows.data().pluck(3)[0] + '</td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+						} ?>
+							.append('<td></td>')
+							.append('<td></td>')
+							.append('<td></td>')
+							.append('<td></td>')
+							.append('<td></td>')
+							.append('<td class="align-top text-center">' + rows.data().pluck(11)[0] + '</td>');
+
+					}
+				},
+				dataSrc: [2, 3]
+			}
 		});
 	});
 </script>

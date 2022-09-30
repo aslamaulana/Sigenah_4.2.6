@@ -198,7 +198,12 @@
 			],
 			columnDefs: [{
 				visible: false,
-				targets: [2, 3, 4, 5, 19]
+				<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+					echo "targets: [2, 3, 4, 5, 19]";
+				} else {
+					echo "targets: [2, 3, 4, 5, 6, 7, 19]";
+				} ?>
+				// targets: [2, 3, 4, 5, 19]
 			}],
 			order: [
 				[2, 'asc'],
@@ -256,8 +261,10 @@
 						return $('<tr class="font-weight-bold" style="background-color: blanchedalmond;" />')
 							.append('<td>' + group + '</td>')
 							.append('<td class="text-wrap">' + rows.data().pluck(3)[0] + ' </td>')
-							.append('<td> </td>')
-							.append('<td style="text-align: right">' + Pagu2021 + ' </td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+							echo ".append('<td style=\"text-align: right\">' + Pagu2021 + ' </td>')";
+						} ?>
 							.append('<td> </td>')
 							.append('<td style="text-align: right">' + Pagu2022 + ' </td>')
 							.append('<td> </td>')
@@ -273,8 +280,10 @@
 						return $('<tr style="background: azure;" />')
 							.append('<td>' + group + '</td>')
 							.append('<td class="text-wrap">' + rows.data().pluck(5)[0] + '</td>')
-							.append('<td></td>')
-							.append('<td></td>')
+						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
+							echo ".append('<td></td>')";
+							echo ".append('<td></td>')";
+						} ?>
 							.append('<td> </td>')
 							.append('<td> </td>')
 							.append('<td> </td>')
