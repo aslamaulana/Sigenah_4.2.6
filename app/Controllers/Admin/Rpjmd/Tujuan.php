@@ -23,13 +23,12 @@ class Tujuan extends BaseController
 	{
 		if (has_permission('Admin')) :
 			$tahunA = $this->tahun->tahunA();
-			$visi = $this->tujuan->visi();
 			$data = [
 				'gr' => 'rpjmd',
 				'mn' => 'tujuan',
 				'title' => 'Admin | TUJUAN',
 				'lok' => '<b>Tujuan</b>',
-				'visi' => $visi,
+				'tujuan' => $this->tujuan->tujuan(),
 				'tahunA' => $tahunA,
 				'db' => \Config\Database::connect(),
 			];

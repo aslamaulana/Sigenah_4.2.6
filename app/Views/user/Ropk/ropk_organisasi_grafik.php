@@ -163,7 +163,7 @@
 		}
 	</script>
 	<div class="card-body text-center">
-		<h5>ROPK Rencana dan Pelaksanaan Keuangan<br> Sub Kegiatan <?= $_GET['s']; ?> Tahun <?= $_SESSION['tahun']; ?><br> <?= opd()->description; ?></h5>
+		<h5>Cantik Rencana dan Pelaksanaan Fisik, Keuangan<br> Sub Kegiatan <?= $_GET['s']; ?> Tahun <?= $_SESSION['tahun']; ?><br> <?= opd()->description; ?></h5>
 
 		<div class="card-body row" id="chart_div"></div>
 	</div>

@@ -6,6 +6,11 @@ use CodeIgniter\Model;
 
 class Model_strategi extends Model
 {
+	// public function __construct()
+	// {
+	// 	$this->db = \Config\Database::connect('group_one');
+	// }
+
 	protected $table = 'tb_rpjmd_strategi';
 	protected $useTimestamps = true;
 	protected $primaryKey = 'id_strategi';
@@ -21,10 +26,9 @@ class Model_strategi extends Model
 	public function Strategi()
 	{
 		return $this->db->table('tb_rpjmd_strategi')
-			->distinct('tb_rpjmd_sasaran.sasaran, tb_rpjmd_sasaran.kode_sasaran')
-			->select('tb_rpjmd_sasaran.sasaran, tb_rpjmd_sasaran.kode_sasaran')
-			->join('tb_rpjmd_sasaran', 'tb_rpjmd_strategi.sasaran_n = tb_rpjmd_sasaran.sasaran', 'left')
-			->get()->getResultArray();
+			->distinct('tb_rpjmd_strategi.*, tb_rpjmd_sasaran.kode_sasaran')
+			->select('tb_rpjmd_strategi.*, tb_rpjmd_sasaran.kode_sasaran')
+			->join('tb_rpjmd_sasaran', 'tb_rpjmd_strategi.sasaran_n = tb_rpjmd_sasaran.sasaran', 'left')->get()->getResultArray();
 	}
 	public function StrategiEdit($id)
 	{

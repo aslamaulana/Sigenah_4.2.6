@@ -2,7 +2,7 @@
 	<strong>Copyright &copy; <?= date('Y'); ?> <a href="https://www.instagram.com/aslamaulana/">.</a></strong>
 	Kang Somay.
 	<div class="float-right d-none d-sm-inline-block">
-		<b>Version</b> 1.1.0
+		<b>Version</b> 1.1.1
 	</div>
 	<script>
 		$(".custom-file-input").on("change", function() {
@@ -14,7 +14,7 @@
 	<script src="<?= base_url('/toping/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 	<script src="<?= base_url('/toping/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
 	<script src="<?= base_url('/toping/dist/js/adminlte.js') ?>"></script>
-	<script src="<?= base_url('/toping/dist/js/demo.js') ?>"></script>
+	<!-- <script src="<?= base_url('/toping/dist/js/demo.js') ?>"></script> -->
 	<?= $this->renderSection('Javascript'); ?>
 </footer>
 

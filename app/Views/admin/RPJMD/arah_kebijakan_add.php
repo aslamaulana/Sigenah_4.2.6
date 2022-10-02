@@ -20,7 +20,7 @@
 					<select name="strategi" class="form-control select2bs4" required>
 						<option value="">Tidak Dipilih...</option>
 						<?php foreach ($strategi as $row) : ?>
-							<option value="<?= $row['id_strategi']; ?>"><?= $row['strategi']; ?></option>
+							<option value="<?= $row['strategi']; ?>"><?= $row['strategi']; ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>

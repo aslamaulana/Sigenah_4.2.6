@@ -16,13 +16,12 @@ class Strategi extends BaseController
 	public function index()
 	{
 		if (has_permission('Admin')) :
-			$sasaran = $this->strategi->Strategi();
 			$data = [
 				'gr' => 'rpjmd',
 				'mn' => 'strategi',
 				'title' => 'Admin | STRATEGI',
 				'lok' => '<b>Strategi</b>',
-				'sasaran' => $sasaran,
+				'strategi' => $this->strategi->Strategi(),
 				'db' => \Config\Database::connect(),
 			];
 			echo view('admin/RPJMD/strategi', $data);

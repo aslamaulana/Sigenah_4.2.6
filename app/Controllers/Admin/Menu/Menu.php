@@ -26,7 +26,7 @@ class Menu extends BaseController
 				'menu' => $menu,
 				'db' => \Config\Database::connect(),
 			];
-			echo date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i');
+			// echo date('M') . ', ' . date('d') . ' ' . date('Y') . ' ' . date('H') . ':' . date('i');
 			echo view('admin/Menu/menu', $data);
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

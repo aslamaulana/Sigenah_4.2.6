@@ -18,13 +18,12 @@ class Arah_kebijakan extends BaseController
 	public function index()
 	{
 		if (has_permission('Admin')) :
-			$strategi = $this->strategi->findAll();
 			$data = [
 				'gr' => 'rpjmd',
 				'mn' => 'arah_kebijakan',
 				'title' => 'Admin | Arah Kebijakan',
 				'lok' => '<b>Arah Kebijakan</b>',
-				'strategi' => $strategi,
+				'arah_kebijakan' => $this->arah_kebijakan->findAll(),
 				'db' => \Config\Database::connect(),
 			];
 			echo view('admin/RPJMD/arah_kebijakan', $data);
@@ -53,7 +52,7 @@ class Arah_kebijakan extends BaseController
 		if (has_permission('Admin')) :
 			$this->arah_kebijakan->save([
 				'arah_kebijakan' => $this->request->getVar('arah_kebijakan'),
-				'strategi_id' => $this->request->getVar('strategi'),
+				'strategi_n' => $this->request->getVar('strategi'),
 				'created_by' => user()->full_name,
 			]);
 
@@ -87,7 +86,7 @@ class Arah_kebijakan extends BaseController
 			$this->arah_kebijakan->save([
 				'id_arah_kebijakan' => $this->request->getVar('id'),
 				'arah_kebijakan' => $this->request->getVar('arah_kebijakan'),
-				'strategi_id' => $this->request->getVar('strategi'),
+				'strategi_n' => $this->request->getVar('strategi'),
 				'updated_by' => user()->full_name,
 			]);
 			session()->setFlashdata('pesan', 'Data berhasil di simpan.');

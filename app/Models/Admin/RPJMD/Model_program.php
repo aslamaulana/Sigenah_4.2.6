@@ -6,6 +6,11 @@ use CodeIgniter\Model;
 
 class Model_program extends Model
 {
+	// public function __construct()
+	// {
+	// 	$this->db = \Config\Database::connect('group_one');
+	// }
+
 	protected $table = 'tb_rpjmd_program';
 	protected $useTimestamps = true;
 	protected $primaryKey = 'id_program';
@@ -51,14 +56,14 @@ class Model_program extends Model
 			->select('tb_rpjmd_sasaran.kode_sasaran, tb_rpjmd_sasaran.sasaran')
 			->get()->getResultArray();
 	}
-	public function sasaran()
+	public function programAll()
 	{
 		return $this->db->table('tb_rpjmd_program')
-			->distinct('tb_rpjmd_sasaran.kode_sasaran, tb_rpjmd_sasaran.sasaran')
-			->select('tb_rpjmd_sasaran.kode_sasaran, tb_rpjmd_sasaran.sasaran')
-
+			->select(' tb_rpjmd_program.*, auth_groups.name, set_program_90.id_program as kode_program, tb_rpjmd_sasaran.kode_sasaran')
+			->distinct(' tb_rpjmd_program.*, auth_groups.name, set_program_90.id_program as kode_program, tb_rpjmd_sasaran.kode_sasaran')
+			->join('auth_groups', 'tb_rpjmd_program.opd_id = auth_groups.id', 'LEFT')
+			->join('set_program_90', 'tb_rpjmd_program.program_90 = set_program_90.program', 'LEFT')
 			->join('tb_rpjmd_sasaran', 'tb_rpjmd_program.sasaran_n = tb_rpjmd_sasaran.sasaran', 'LEFT')
-			->orderBy('tb_rpjmd_sasaran.kode_sasaran', 'ASC')
 			->get()->getResultArray();
 	}
 	public function program($id)

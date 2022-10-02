@@ -34,7 +34,7 @@
 		<thead>
 			<tr>
 				<th class="text-center" width="40px">Kode</th>
-				<th>Sasaran / strategi</th>
+				<th style="width:600px;">Sasaran / strategi</th>
 				<th></th>
 				<th></th>
 				<th class="text-center" width="60px">Aksi</th>
@@ -53,11 +53,11 @@
 			<?php foreach ($opd_strategi as $rol) : ?>
 				<tr>
 					<td></td>
-					<td>
+					<td class="text-wrap">
 						<div style="padding-left: 40px;"><?= $rol['opd_strategi']; ?></div>
 					</td>
-					<td class="align-top font-weight-bold"><?= $rol['opd_kode_sasaran_n']; ?></td>
-					<td class="align-top font-weight-bold">[SASARAN] <?= $rol['opd_sasaran_n']; ?></td>
+					<td class="align-top font-weight-bold text-wrap"><?= $rol['opd_kode_sasaran_n']; ?></td>
+					<td class="align-top font-weight-bold text-wrap">[SASARAN] <?= $rol['opd_sasaran_n']; ?></td>
 					<td class="text-center">
 						<?php if (menu('renstra')->kunci == 'tidak') { ?>
 							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_strategi/opd_strategi_edit/' . $rol['id_opd_strategi']; ?>">

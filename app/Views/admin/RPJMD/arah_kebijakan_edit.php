@@ -19,9 +19,9 @@
 			<div class="col-md-10">
 				<div class="input-group">
 					<select name="strategi" class="form-control select2bs4" required>
-						<option value="<?= $roh['strategi_id']; ?>"><?= $roh['strategi']; ?></option>
+						<!-- <option value="<?= $roh['strategi_n']; ?>"><?= $roh['strategi_n']; ?></option> -->
 						<?php foreach ($strategi as $row) : ?>
-							<option value="<?= $row['id_strategi']; ?>"><?= $row['strategi']; ?></option>
+							<option value="<?= $row['strategi']; ?>" <?= $roh['strategi_n'] == $row['strategi'] ? 'selected' : ''; ?>><?= $row['strategi']; ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>

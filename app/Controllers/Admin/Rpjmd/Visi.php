@@ -24,7 +24,7 @@ class Visi extends BaseController
 				'mn' => 'visi',
 				'title' => 'Admin | VISI / MISI',
 				'lok' => '<b>Visi</b>',
-				'visi' => $this->visi->findAll(),
+				'visi' => $this->visi->visi(),
 				'db' => \Config\Database::connect(),
 			];
 			echo view('admin/RPJMD/visi', $data);

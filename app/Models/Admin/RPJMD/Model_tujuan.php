@@ -33,6 +33,14 @@ class Model_tujuan extends Model
 			->select('tb_rpjmd_tujuan.*')
 			->getWhere(['tb_rpjmd_tujuan.tujuan' => $p, 'tb_rpjmd_tujuan.kode_tujuan' => $k, 'tb_rpjmd_tujuan.misi_n' => $m])->getRowArray();
 	}
+	public function tujuan()
+	{
+		return $this->db->table('tb_rpjmd_tujuan')
+			->select('tb_misi.kode_misi, tb_visi.kode_visi, tb_visi.visi, tb_rpjmd_tujuan.*')
+			->join('tb_misi', 'tb_rpjmd_tujuan.misi_n = tb_misi.misi', 'left')
+			->join('tb_visi', 'tb_misi.visi = tb_visi.visi', 'left')
+			->get()->getResultArray();
+	}
 	public function visi()
 	{
 		return $this->db->table('tb_rpjmd_tujuan')
