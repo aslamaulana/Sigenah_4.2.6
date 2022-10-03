@@ -50,6 +50,26 @@ class Database extends Config
         'failover' => [],
         'port'     => 3306,
     ];
+    public $group_one = [
+        'DSN'      => '',
+        'hostname' => 'mariadb',
+        'username' => 'root',
+        'password' => 'pangandaran1.',
+        'database' => 'sigenah_sep24',
+        // 'database' => 'db_ropk',
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
+        'pConnect' => false,
+        'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'charset'  => 'utf8',
+        'DBCollat' => 'utf8_general_ci',
+        'swapPre'  => '',
+        'encrypt'  => false,
+        'compress' => false,
+        'strictOn' => false,
+        'failover' => [],
+        'port'     => 3306,
+    ];
 
     /**
      * This database connection is used when

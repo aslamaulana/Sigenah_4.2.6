@@ -95,7 +95,7 @@ class Cache extends BaseConfig
      *
      * @var int
      */
-    public $ttl = 60;
+    public $ttl = 2;
 
     /**
      * --------------------------------------------------------------------------

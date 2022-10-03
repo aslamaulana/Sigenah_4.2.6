@@ -202,8 +202,7 @@
 					echo "targets: [2, 3, 4, 5, 19]";
 				} else {
 					echo "targets: [2, 3, 4, 5, 6, 7, 19]";
-				} ?>
-				// targets: [2, 3, 4, 5, 19]
+				} ?>,
 			}],
 			order: [
 				[2, 'asc'],

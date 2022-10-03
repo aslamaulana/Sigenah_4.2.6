@@ -18,7 +18,9 @@
 	<table id="example1" class="table table-bordered display nowrap" cellspacing="0">
 		<thead>
 			<tr>
-				<th class="text-center" width="40px">Kode</th>
+				<th class="text-center">
+					<div style="width: 80px;">Kode</div>
+				</th>
 				<th>Sasaran / strategi</th>
 				<th></th>
 				<th></th>

@@ -14,7 +14,6 @@
 	<script src="<?= base_url('/toping/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 	<script src="<?= base_url('/toping/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
 	<script src="<?= base_url('/toping/dist/js/adminlte.js') ?>"></script>
-	<!-- <script src="<?= base_url('/toping/dist/js/demo.js') ?>"></script> -->
 	<?= $this->renderSection('Javascript'); ?>
 </footer>
 

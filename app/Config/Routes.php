@@ -37,7 +37,17 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('api/program/(:any)', 'Api\Api_opd_program::program/$1');
+// $routes->get('api/program/(:any)', 'Api\Api_opd_program::program/$1');
+
+$routes->group("api", function ($routes) {
+    $routes->post("register", "Api\User\Register::index");
+    $routes->post("login", "Api\User\Login::index");
+    $routes->get("users", "Api\User\User::index", ['filter' => 'Api_filter']);
+
+    // $routes->get("program/(:any)", "Api\Renstra\Api_opd_program::program/$1", ['filter' => 'Api_filter']);
+    $routes->get("renstra/program/(:any)/(:any)", "Api\Renstra\Api_opd_program::program/$1/$2", ['filter' => 'Api_filter']);
+    $routes->get("renstra/tujuan/(:any)/(:any)", "Api\Renstra\Api_opd_tujuan::tujuan/$1/$2", ['filter' => 'Api_filter']);
+});
 
 /*
  * --------------------------------------------------------------------

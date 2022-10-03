@@ -133,7 +133,7 @@
 					echo "targets: [2, 3, 4, 5, 6, 15]";
 				} else {
 					echo "targets: [2, 3, 4, 5, 6, 8, 15]";
-				} ?>
+				} ?>,
 			}],
 			order: [
 				[3, 'asc'],

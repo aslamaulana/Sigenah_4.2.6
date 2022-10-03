@@ -40,15 +40,6 @@
 				<th class="text-center" width="60px">Aksi</th>
 			</tr>
 		</thead>
-		<tfoot>
-			<tr>
-				<th class="text-center">Kode</th>
-				<th>Sasaran / strategi</th>
-				<th></th>
-				<th></th>
-				<th class="text-center">Aksi</th>
-			</tr>
-		</tfoot>
 		<tbody>
 			<?php foreach ($opd_strategi as $rol) : ?>
 				<tr>
@@ -113,7 +104,7 @@
 					if (rows.data().pluck(2)[0] == group) {
 						return $('<tr class="font-weight-bold" style="background-color: blanchedalmond;" />')
 							.append('<td class="align-top text-wrap font-weight-bold">' + group + '</td>')
-							.append('<td>' + rows.data().pluck(3)[0] + '</td>')
+							.append('<td class="align-top font-weight-bold text-wrap">' + rows.data().pluck(3)[0] + '</td>')
 							.append('<td></td>');
 					}
 				},
