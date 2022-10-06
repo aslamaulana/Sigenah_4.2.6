@@ -47,6 +47,12 @@ $routes->group("api", function ($routes) {
     // $routes->get("program/(:any)", "Api\Renstra\Api_opd_program::program/$1", ['filter' => 'Api_filter']);
     $routes->get("renstra/program/(:any)/(:any)", "Api\Renstra\Api_opd_program::program/$1/$2", ['filter' => 'Api_filter']);
     $routes->get("renstra/tujuan/(:any)/(:any)", "Api\Renstra\Api_opd_tujuan::tujuan/$1/$2", ['filter' => 'Api_filter']);
+
+    $routes->get("rpjmd/visi", "Api\Rpjmd\Api_visi::visi", ['filter' => 'Api_filter']);
+    $routes->get("rpjmd/tujuan", "Api\Rpjmd\Api_tujuan::tujuan", ['filter' => 'Api_filter']);
+    $routes->get("rpjmd/sasaran", "Api\Rpjmd\Api_sasaran::sasaran", ['filter' => 'Api_filter']);
+    $routes->get("rpjmd/strategi", "Api\Rpjmd\Api_strategi::strategi", ['filter' => 'Api_filter']);
+    $routes->get("rpjmd/arah-kebijakan", "Api\Rpjmd\Api_arah_kebijakan::arah_kebijakan", ['filter' => 'Api_filter']);
 });
 
 /*

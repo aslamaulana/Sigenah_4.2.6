@@ -92,27 +92,27 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label>Target 2021</label>
-					<input type="text" value="<?= old('t_2021'); ?>" class="form-control" name="t_2021" maxlength="20" required>
+					<input type="text" value="<?= old('t_2021'); ?>" class="form-control" name="t_2021" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label>Target 2022</label>
-					<input type="text" value="<?= old('t_2022'); ?>" class="form-control" name="t_2022" maxlength="20" required>
+					<input type="text" value="<?= old('t_2022'); ?>" class="form-control" name="t_2022" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label>Target 2023</label>
-					<input type="text" value="<?= old('t_2023'); ?>" class="form-control" name="t_2023" maxlength="20" required>
+					<input type="text" value="<?= old('t_2023'); ?>" class="form-control" name="t_2023" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label>Target 2024</label>
-					<input type="text" value="<?= old('t_2024'); ?>" class="form-control" name="t_2024" maxlength="20" required>
+					<input type="text" value="<?= old('t_2024'); ?>" class="form-control" name="t_2024" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label>Target 2025</label>
-					<input type="text" value="<?= old('t_2025'); ?>" class="form-control" name="t_2025" maxlength="20" required>
+					<input type="text" value="<?= old('t_2025'); ?>" class="form-control" name="t_2025" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label>Target 2026</label>
-					<input type="text" value="<?= old('t_2026'); ?>" class="form-control" name="t_2026" maxlength="20" required>
+					<input type="text" value="<?= old('t_2026'); ?>" class="form-control" name="t_2026" maxlength="50" required>
 				</div>
 			</div>
 			<div class="col-md-12">
