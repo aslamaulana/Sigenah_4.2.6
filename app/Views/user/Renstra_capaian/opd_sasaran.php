@@ -7,13 +7,8 @@
 
 <?= $this->section('tombol'); ?>
 <?php if (menu('renstra')->kunci == 'tidak') { ?>
-	<div style="width:90px;">
-		<a href="<?= base_url('/user/renstra/opd_sasaran/opd_sasaran_add'); ?>">
-			<li class="btn btn-block btn-warning btn-sm" active><i class="nav-icon fa fa-plus"></i> Add</li>
-		</a>
-	</div>
 	<div>
-		<a href="<?= base_url('/user/renstra/opd_sasaran/import'); ?>">
+		<a href="<?= base_url('/user/renstra_capaian/opd_capaian_sasaran/import'); ?>">
 			<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
 		</a>
 	</div>
@@ -31,24 +26,45 @@
 	<table id="example1" class="table table-bordered display nowrap table-sm">
 		<thead>
 			<tr>
-				<th class="text-center">
+				<th rowspan="2" class="text-center align-middle">
 					<div style="width: 80px;">Kode</div>
 				</th>
-				<th>
-					<div style="width: 550px;">Sasaran Pemda / Sasaran / Sasaran Indikator</div>
+				<th rowspan="2" class="align-middle">
+					<div style="width: 600px;">Sasaran Pemda / Sasaran / Sasaran Indikator</div>
 				</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th>
-					<div style="width: 350px;">Tujuan OPD</div>
+				<!-- ------------------------------------------------------------------------ -->
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+				<!-- ------------------------------------------------------------------------ -->
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+				<!-- ------------------------------------------------------------------------ -->
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width: 350px; margin:auto;">Tujuan OPD</div>
 				</th>
-				<?php foreach ($tahunA as $row) : ?>
-					<th class="text-center" width="60px"><?= $row['tahun']; ?></th>
-				<?php endforeach; ?>
-				<th class="text-center" width="60px">Aksi</th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width: 110px; margin:auto;">Satuan</div>
+				</th>
+				<th colspan="5" class="text-center align-middle"><?= $_SESSION['tahun']; ?></th>
+				<th rowspan="2" class="text-center align-middle" width="60px">Aksi</th>
+			</tr>
+			<tr>
+				<th class="text-center">
+					<div style="width: 120px; margin:auto;">Target</div>
+				</th>
+				<th class="text-center">
+					<div style="width: 120px; margin:auto;">Triwulan 1</div>
+				</th>
+				<th class="text-center">
+					<div style="width: 120px; margin:auto;">Triwulan 2</div>
+				</th>
+				<th class="text-center">
+					<div style="width: 120px; margin:auto;">Triwulan 3</div>
+				</th>
+				<th class="text-center">
+					<div style="width: 120px; margin:auto;">Triwulan 4</div>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -62,33 +78,19 @@
 					<td>[SASARAN RPJMD] <?= $rom['rpjmd_sasaran_n']; ?></td>
 					<td><?= $rom['opd_kode_sasaran']; ?></td>
 					<td>
-						<div style="padding-left: 20px;">[SASARAN] <?= '<a href="/user/renstra/opd_sasaran/opd_sasaran_indik_add?p=' . $rom['opd_sasaran'] . '&k=' . $rom['opd_kode_sasaran'] . '&m=' . $rom['opd_tujuan_n'] . '&r=' . $rom['rpjmd_sasaran_n'] . '" title="Tambah Indikator Sasaran">' . $rom['opd_sasaran'] . '</a>'; ?></div>
+						<div style="padding-left: 20px;">[SASARAN] <?= $rom['opd_sasaran']; ?></div>
 					</td>
 					<td class="align-top  text-wrap"><?= '[' . $rom['opd_kode_tujuan'] . '] ' . $rom['opd_tujuan_n']; ?> </td>
 					<td></td>
-					<td class="align-top text-center"><?= $rom['t_2021'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-center"><?= $rom['t_2022'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-center"><?= $rom['t_2023'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-center"><?= $rom['t_2024'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-center"><?= $rom['t_2025'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-center"><?= $rom['t_2026'] . ' ' . $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['satuan']; ?></td>
+					<td class="align-top text-center"><?= $rom['t_tahun']; ?></td>
+					<td class="align-top text-center"><?= $rom['triwulan_1']; ?></td>
+					<td class="align-top text-center"><?= $rom['triwulan_2']; ?></td>
+					<td class="align-top text-center"><?= $rom['triwulan_3']; ?></td>
+					<td class="align-top text-center"><?= $rom['triwulan_4']; ?></td>
 					<td class="text-center align-top">
 						<?php if (menu('renstra')->kunci == 'tidak') { ?>
-							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_sasaran/opd_sasaran_indik_edit/' . $rom['id_opd_sasaran']; ?>">
-								<i class="nav-icon fas fa-pen-alt"></i>
-							</a>
-							<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/renstra/opd_sasaran/opd_sasaran_indik_hapus/' . $rom['id_opd_sasaran']; ?>'}" href="#">
-								<i class="nav-icon fas fa-trash-alt"></i>
-							</a>
-						<?php } else { ?>
-							<a class="btn btn-danger btn-circle btn-xs">
-								<i class="nav-icon fas fa-lock"></i>
-							</a>
-						<?php } ?>
-					</td>
-					<td class="text-center align-top">
-						<?php if (menu('renstra')->kunci == 'tidak') { ?>
-							<a class="btn btn-info btn-circle btn-xs" title="Ubah sasaran" href="<?= base_url() . '/user/renstra/opd_sasaran/opd_sasaran_edit?p=' . $rom['opd_sasaran'] . '&k=' . $rom['opd_kode_sasaran'] . '&m=' . $rom['opd_tujuan_n'] . '&o=' . user()->opd_id . '&rs=' . $rom['rpjmd_sasaran_n']; ?>">
+							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra_capaian/opd_capaian_sasaran/opd_sasaran_edit/' . $rom['id_opd_sasaran']; ?>">
 								<i class="nav-icon fas fa-pen-alt"></i>
 							</a>
 						<?php } else { ?>
@@ -129,11 +131,7 @@
 			],
 			columnDefs: [{
 				visible: false,
-				<?php if ($_SESSION['perubahan'] != 'Perubahan') {
-					echo "targets: [2, 3, 4, 5, 6, 15]";
-				} else {
-					echo "targets: [2, 3, 4, 5, 6, 8, 15]";
-				} ?>,
+				targets: [2, 3, 4, 5, 6]
 			}],
 			order: [
 				[3, 'asc'],
@@ -149,9 +147,7 @@
 							.append('<td class="align-top text-wrap font-weight-bold">' + group + '</td>')
 							.append('<td></td>')
 							.append('<td></td>')
-						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
-							echo ".append('<td></td>')";
-						} ?>
+							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')
@@ -163,15 +159,13 @@
 							.append('<td class="align-top">' + rows.data().pluck(4)[0] + '</td>')
 							.append('<td class="align-top text-wrap">' + group + '</td>')
 							.append('<td class="align-top text-wrap">' + rows.data().pluck(6)[0] + '</td>')
-						<?php if ($_SESSION['perubahan'] != 'Perubahan') {
-							echo ".append('<td></td>')";
-						} ?>
 							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')
 							.append('<td></td>')
-							.append('<td class="align-top text-center">' + rows.data().pluck(15)[0] + '</td>');
+							.append('<td></td>')
+							.append('<td></td>');
 					}
 				},
 				dataSrc: [3, 5]

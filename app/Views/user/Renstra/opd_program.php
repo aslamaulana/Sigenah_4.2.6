@@ -31,20 +31,20 @@
 	<table id="example1" class="table table-bordered display nowrap table-sm" cellspacing="0">
 		<thead>
 			<tr>
-				<th rowspan="2">
+				<th rowspan="2" class="align-middle">
 					<div style="width: 700px;">Sasaran / Program / Program Indikator</div>
 				</th>
 				<th rowspan="2"></th>
 				<th rowspan="2"></th>
-				<th rowspan="2">
-					<div style="width: 350px;">Sasaran Kegiatan</div>
+				<th rowspan="2" class="align-middle">
+					<div style="width: 350px;">Sasaran Program</div>
 				</th>
 				<th rowspan="2"></th>
 				<?php foreach ($tahunA as $row) : ?>
 					<th colspan="2" class="text-center align-middle"><?= $row['tahun']; ?></th>
 					<th rowspan="2"></th>
 				<?php endforeach; ?>
-				<th rowspan="2" class="text-center"> Aksi </th>
+				<th rowspan="2" class="text-center align-middle"> Aksi </th>
 			</tr>
 			<tr>
 				<?php foreach ($tahunA as $row) : ?>

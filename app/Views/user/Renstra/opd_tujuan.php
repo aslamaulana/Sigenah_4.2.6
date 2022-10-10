@@ -30,7 +30,7 @@
 
 <?= $this->section('content'); ?>
 <div class="card-body">
-	<table id="example1" class="table table-bordered display nowrap">
+	<table id="example1" class="table table-bordered display nowrap table-sm">
 		<thead>
 			<tr>
 				<th class="text-center" width="40px">Kode</th>
@@ -48,9 +48,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php $nomor = 1;
-			$querz = $db->table('tb_renstra_tujuan')->getWhere(['opd_id' => user()->opd_id, 'perubahan' => $_SESSION['perubahan']])->getResultArray();
-			foreach ($querz as $rom) : ?>
+			<?php foreach ($tujuan as $rom) : ?>
 				<tr>
 					<td></td>
 					<td class="align-top" style=" padding-left: 40px;"><?= $rom['opd_indikator_tujuan']; ?></td>

@@ -29,7 +29,7 @@
 
 <?= $this->section('content'); ?>
 <div class="card-body">
-	<table id="example1" class="table table-bordered">
+	<table id="example1" class="table table-bordered table-sm">
 		<thead>
 			<tr>
 				<th>Strategi / Arah Kebijakan</th>

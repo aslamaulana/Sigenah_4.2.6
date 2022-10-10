@@ -28,7 +28,7 @@ class Opd_tujuan extends BaseController
 				'title' => 'User | OPD TUJUAN',
 				'lok' => '<b>Tujuan</b>',
 				'tahunA' => $this->tahun->tahunA(),
-				'opd_tujuan' => $this->opd_tujuan->tujuan(),
+				'tujuan' => $this->opd_tujuan->tujuan(),
 				'db' => \Config\Database::connect(),
 			];
 			// dd($data);

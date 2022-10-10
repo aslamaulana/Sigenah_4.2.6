@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\User\Renstra;
+namespace App\Models\User\Renstra_capaian;
 
 use CodeIgniter\Model;
 
-class Model_opd_tujuan extends Model
+class Model_opd_capaian_tujuan extends Model
 {
-	protected $table = 'tb_renstra_tujuan';
+	protected $table = 'tb_renstra_capaian_tujuan';
 	protected $useTimestamps = true;
 	protected $primaryKey = 'id_opd_tujuan';
 	protected $allowedFields = [
@@ -14,14 +14,13 @@ class Model_opd_tujuan extends Model
 		'opd_tujuan',
 		'opd_indikator_tujuan',
 		'satuan',
-		't_2021',
-		't_2022',
-		't_2023',
-		't_2024',
-		't_2025',
-		't_2026',
-		'opd_id',
+		't_tahun',
+		'triwulan_1',
+		'triwulan_2',
+		'triwulan_3',
+		'triwulan_4',
 		'tahun',
+		'opd_id',
 		'perubahan',
 		'created_by',
 		'updated_by',
@@ -36,6 +35,6 @@ class Model_opd_tujuan extends Model
 	}
 	public function tujuan()
 	{
-		return $this->db->table('tb_renstra_tujuan')->getWhere(['opd_id' => user()->opd_id, 'perubahan' => $_SESSION['perubahan']])->getResultArray();
+		return $this->db->table('tb_renstra_capaian_tujuan')->getWhere(['opd_id' => user()->opd_id, 'perubahan' => $_SESSION['perubahan']])->getResultArray();
 	}
 }

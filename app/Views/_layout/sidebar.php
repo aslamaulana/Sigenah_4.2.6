@@ -375,8 +375,8 @@
 					<!-- =============================================================== -->
 					<li class="nav-header">=====================</li>
 					<!-- =============================================================== -->
-					<li class="nav-item <?= $gr == 'simonela' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'simonela' ? 'active' : ''; ?>" title="Sistem Minitoring, Evaluasi dan Pelaporan Kinerja">
+					<li class="nav-item <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
+						<a href="#" class="nav-link <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'active' : ''; ?>" title="Sistem Minitoring, Evaluasi dan Pelaporan Kinerja">
 							<i class="nav-icon fas fa-tachometer-alt"></i>
 							<p>
 								Simonela
@@ -399,7 +399,45 @@
 								</a>
 							</li>
 						</ul>
+						<ul class="nav nav-treeview">
+							<li class="nav-item <?= $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
+								<a href="#" class="nav-link <?= $gr == 'Renstra_capaian' ? 'active' : ''; ?>">
+									<i class="nav-icon fab fa-buffer"></i>
+									<p>
+										Renstra Capaian
+										<i class="right fas fa-angle-left"></i>
+									</p>
+								</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_tujuan'); ?>" class="nav-link <?= $mn == 'opd_capaian_tujuan' ? 'active' : ''; ?>">
+											<i class="far nav-icon"></i>
+											<p><small>1. </small> Tujuan</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_sasaran'); ?>" class="nav-link <?= $mn == 'opd_capaian_sasaran' ? 'active' : ''; ?>">
+											<i class="far nav-icon"></i>
+											<p><small>2. </small> Sasaran</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_program'); ?>" class="nav-link <?= $mn == 'opd_capaian_program' ? 'active' : ''; ?>">
+											<i class="far nav-icon"></i>
+											<p><small>5.</small> Program</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_kegiatan'); ?>" class="nav-link <?= $mn == 'opd_capaian_kegiatan' ? 'active' : ''; ?>">
+											<i class="far nav-icon"></i>
+											<p><small>6. </small> Kegiatan</p>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</li>
+
 					<br><br>
 					<br><br>
 
