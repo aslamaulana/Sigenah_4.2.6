@@ -20,7 +20,7 @@
 				'tb_ropk_keuangan.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
 				'tb_ropk_keuangan.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 				'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-				'tb_ropk_keuangan.ropk_tahap' => 'Persiapan',
+				/* 'tb_ropk_keuangan.ropk_tahap' => 'Persiapan', */
 				'tb_ropk_keuangan.opd_id' => user()->opd_id,
 				'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan'],
 				'tb_ropk_keuangan.tahun' => $_SESSION['tahun']
@@ -74,7 +74,7 @@
 			'tb_ropk_organisasi.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
 			'tb_ropk_organisasi.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 			'tb_ropk_organisasi.rkpd_indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-			'tb_ropk_organisasi.ropk_tahap' => 'Persiapan',
+			/* 'tb_ropk_organisasi.ropk_tahap' => 'Persiapan', */
 			'tb_ropk_organisasi.opd_id' => user()->opd_id,
 			'tb_ropk_organisasi.perubahan' => $_SESSION['perubahan'],
 			'tb_ropk_organisasi.tahun' => $_SESSION['tahun']

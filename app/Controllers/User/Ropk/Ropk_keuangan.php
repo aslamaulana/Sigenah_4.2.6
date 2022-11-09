@@ -32,8 +32,8 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
-				'lok' => 'Sub Kegiatan -> <b>Cantik Keuangan</b>',
+				'title' => 'User | Cantiku',
+				'lok' => 'Sub Kegiatan -> <b>Cantiku</b>',
 				'DT' => $this->ropk_kegiatan_sub->find($id),
 				'db' => \Config\Database::connect(),
 			];
@@ -49,8 +49,8 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
-				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantik Keuangan</a> -> <b>Grafik</b>',
+				'title' => 'User | Cantiku',
+				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Grafik</b>',
 				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s']])->findAll(),
 				'db' => \Config\Database::connect(),
 			];
@@ -66,8 +66,8 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
-				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantik Keuangan</a> -> <b>Tambah Tahap Aktivitas</b>',
+				'title' => 'User | Cantiku',
+				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Tambah Tahap Aktivitas</b>',
 				'satuan' => $this->satuan->satuan(),
 				'DT' => $this->ropk_kegiatan_sub->find($id),
 				'db' => \Config\Database::connect(),
@@ -86,6 +86,7 @@ class Ropk_keuangan extends BaseController
 				'rkpd_kegiatan_sub' => $this->request->getVar('kegiatan_sub'),
 				'ropk_tahap' => $this->request->getVar('tahap'),
 				'rkpd_indikator_kegiatan_sub' => $this->request->getVar('indikator_kegiatan_sub'),
+				'ropk_group' => $this->request->getVar('group'),
 				'ropk_tahap_aktivitas' => $this->request->getVar('aktifitas'),
 				'ropk_sasaran' => $this->request->getVar('ropk_sasaran'),
 				'ropk_sasaran_target' => $this->request->getVar('ropk_sasaran_target'),
@@ -121,8 +122,8 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
-				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantik Keuangan</a> -> <b>Tambah Tahap Aktivitas</b>',
+				'title' => 'User | Cantiku',
+				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Tambah Tahap Aktivitas</b>',
 				'satuan' => $this->satuan->satuan(),
 				'DT' => $this->ropk_kegiatan_sub->find($sub),
 				'keuangan' => $this->ropk_keuangan->find($id),
@@ -139,6 +140,7 @@ class Ropk_keuangan extends BaseController
 
 			$this->ropk_keuangan->save([
 				'id_ropk_keuangan' => $this->request->getVar('id'),
+				'ropk_group' => $this->request->getVar('group'),
 				'ropk_tahap_aktivitas' => $this->request->getVar('aktifitas'),
 				'ropk_sasaran' => $this->request->getVar('ropk_sasaran'),
 				'ropk_sasaran_target' => $this->request->getVar('ropk_sasaran_target'),
@@ -192,8 +194,8 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
-				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantik Keuangan</a> -> <b>Ubah Data</b>',
+				'title' => 'User | Cantiku',
+				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Ubah Data</b>',
 				'validation' => \Config\Services::validation(),
 				'indik' => $this->ropk_kegiatan_sub->find($id),
 				'satuan' => $this->satuan->satuan(),
@@ -236,7 +238,7 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
+				'title' => 'User | Cantiku',
 				'lok' => '<a onclick="history.back(-1)" href="#">Sub Kegiatan</a> -> <b>Import Data</b>',
 			];
 			echo view('user/Ropk/ropk_keuangan_kegiatan_sub_import', $data);
@@ -352,8 +354,8 @@ class Ropk_keuangan extends BaseController
 			$data = [
 				'gr' => 'ropk',
 				'mn' => 'ropk_keuangan',
-				'title' => 'User | Cantik Keuangan',
-				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantik Keuangan</a> -> <b>Import Data</b>',
+				'title' => 'User | Cantiku',
+				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Import Data</b>',
 				'DT' => $this->ropk_kegiatan_sub->find($id),
 			];
 			echo view('user/Ropk/ropk_keuangan_import', $data);
@@ -363,9 +365,16 @@ class Ropk_keuangan extends BaseController
 	}
 	public function export()
 	{
-		$data = $this->ropk_organisasi->where([
+		/* $data = $this->ropk_organisasi->where([
 			'rkpd_kegiatan' => $_GET['k'],
 			'rkpd_kegiatan_sub' => $_GET['s'],
+			'opd_id' => user()->opd_id,
+			'tahun' => $_SESSION['tahun'],
+			'perubahan' => $_SESSION['perubahan'],
+		])->findAll(); */
+		$data = $this->ropk_kegiatan_sub->where([
+			'rkpd_kegiatan_n' => $_GET['k'],
+			'rkpd_kegiatan_sub_n' => $_GET['s'],
 			'opd_id' => user()->opd_id,
 			'tahun' => $_SESSION['tahun'],
 			'perubahan' => $_SESSION['perubahan'],
@@ -382,10 +391,11 @@ class Ropk_keuangan extends BaseController
 			->setCellValue('A1', 'Rkpd Kegiatan')
 			->setCellValue('B1', 'Rkpd Sub Kegiatan')
 			->setCellValue('C1', 'Indikator Sub Kegiatan (keluaran)')
-			->setCellValue('D1', 'Tahap Aktivitas')
-			->setCellValue('E1', 'Sasaran Tahap Aktivitas')
-			->setCellValue('F1', 'Target Tahap Aktivitas')
-			->setCellValue('G1', 'Satuan Target')
+			->setCellValue('D1', 'Group')
+			->setCellValue('E1', 'Rekening')
+			// ->setCellValue('F1', 'Sasaran Tahap Aktivitas')
+			->setCellValue('F1', 'Volume')
+			->setCellValue('G1', 'Satuan')
 			->setCellValue('H1', 'Bobot Acuan')
 			->setCellValue('I1', 'B1')
 			->setCellValue('J1', 'B2')
@@ -406,17 +416,13 @@ class Ropk_keuangan extends BaseController
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('A' . $column, $_GET['k'])
 				->setCellValue('B' . $column, $_GET['s'])
-				->setCellValue('C' . $column, $row['rkpd_indikator_kegiatan_sub'])
-				->setCellValue('D' . $column, $row['ropk_tahap_aktivitas'])
-				->setCellValue('E' . $column, $row['ropk_sasaran'])
-				->setCellValue('F' . $column, $row['ropk_sasaran_target'])
-				->setCellValue('G' . $column, $row['ropk_sasaran_satuan']);
+				->setCellValue('C' . $column, $row['rkpd_indikator_kegiatan_sub']);
 
 			$column++;
 		}
 
 		$writer = new Xlsx($spreadsheet);
-		$filename =  'Cantik Keuangan- ' . substr($_GET['s'], 0, 200) . '... (' . $_SESSION['tahun'] . ') - ' . date('Y-m-d-His');
+		$filename =  'Cantiku- ' . substr($_GET['s'], 0, 200) . '... (' . $_SESSION['tahun'] . ') - ' . date('Y-m-d-His');
 		$extension = 'Xlsx';
 		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, $extension);
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -445,23 +451,24 @@ class Ropk_keuangan extends BaseController
 				'rkpd_kegiatan' => $row[0],
 				'rkpd_kegiatan_sub' => $row[1],
 				'rkpd_indikator_kegiatan_sub' => $row[2],
-				'ropk_tahap_aktivitas' => $row[3],
-				'ropk_sasaran' => $row[4],
+				'ropk_group' => $row[3],
+				'ropk_tahap_aktivitas' => $row[4],
+				// 'ropk_sasaran' => $row[5],
 				'ropk_sasaran_target' => $row[5],
 				'ropk_sasaran_satuan' => $row[6],
-				'ropk_bobot_acuan' => $row[7],
-				'b1' => $row[8],
-				'b2' => $row[9],
-				'b3' => $row[10],
-				'b4' => $row[11],
-				'b5' => $row[12],
-				'b6' => $row[13],
-				'b7' => $row[14],
-				'b8' => $row[15],
-				'b9' => $row[16],
-				'b10' => $row[17],
-				'b11' => $row[18],
-				'b12' => $row[19],
+				'ropk_bobot_acuan' => empty($row[7]) ? '0' : $row[7],
+				'b1' => empty($row[8]) ? '0' : $row[8],
+				'b2' => empty($row[9]) ? '0' : $row[9],
+				'b3' => empty($row[10]) ? '0' : $row[10],
+				'b4' => empty($row[11]) ? '0' : $row[11],
+				'b5' => empty($row[12]) ? '0' : $row[12],
+				'b6' => empty($row[13]) ? '0' : $row[13],
+				'b7' => empty($row[14]) ? '0' : $row[14],
+				'b8' => empty($row[15]) ? '0' : $row[15],
+				'b9' => empty($row[16]) ? '0' : $row[16],
+				'b10' => empty($row[17]) ? '0' : $row[17],
+				'b11' => empty($row[18]) ? '0' : $row[18],
+				'b12' => empty($row[19]) ? '0' : $row[19],
 
 				'tahun' => $_SESSION['tahun'],
 				'perubahan' => $_SESSION['perubahan'],
@@ -489,7 +496,7 @@ class Ropk_keuangan extends BaseController
 
 		$spreadsheet = new Spreadsheet();
 
-		$spreadsheet->getActiveSheet()->getStyle('A1:U1')->getFill()
+		$spreadsheet->getActiveSheet()->getStyle('A1:V1')->getFill()
 			->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('FFFF0000');
 		$spreadsheet->setActiveSheetIndex(0)
@@ -497,10 +504,11 @@ class Ropk_keuangan extends BaseController
 			->setCellValue('B1', 'Rkpd Kegiatan')
 			->setCellValue('C1', 'Rkpd Sub Kegiatan')
 			->setCellValue('D1', 'Indikator Sub Kegiatan (keluaran)')
-			->setCellValue('E1', 'RO Tahap Aktivitas')
-			->setCellValue('F1', 'Sasaran Tahap Aktivitas')
-			->setCellValue('G1', 'Target Tahap Aktivitas')
-			->setCellValue('H1', 'Satuan Target')
+			->setCellValue('E1', 'Group')
+			->setCellValue('F1', 'Rekening')
+			// ->setCellValue('G1', 'Sasaran Tahap Aktivitas')
+			->setCellValue('G1', 'Volume')
+			->setCellValue('H1', 'Satuan')
 			->setCellValue('I1', 'Bobot Acuan')
 			->setCellValue('J1', 'B1')
 			->setCellValue('K1', 'B2')
@@ -523,8 +531,9 @@ class Ropk_keuangan extends BaseController
 				->setCellValue('B' . $column, $row['rkpd_kegiatan'])
 				->setCellValue('C' . $column, $row['rkpd_kegiatan_sub'])
 				->setCellValue('D' . $column, $row['rkpd_indikator_kegiatan_sub'])
-				->setCellValue('E' . $column, $row['ropk_tahap_aktivitas'])
-				->setCellValue('F' . $column, $row['ropk_sasaran'])
+				->setCellValue('E' . $column, $row['ropk_group'])
+				->setCellValue('F' . $column, $row['ropk_tahap_aktivitas'])
+				// ->setCellValue('G' . $column, $row['ropk_sasaran'])
 				->setCellValue('G' . $column, $row['ropk_sasaran_target'])
 				->setCellValue('H' . $column, $row['ropk_sasaran_satuan'])
 				->setCellValue('I' . $column, $row['ropk_bobot_acuan'])
@@ -585,23 +594,24 @@ class Ropk_keuangan extends BaseController
 				'rkpd_kegiatan' => $row[1],
 				'rkpd_kegiatan_sub' => $row[2],
 				'rkpd_indikator_kegiatan_sub' => $row[3],
-				'ropk_tahap_aktivitas' => $row[4],
-				'ropk_sasaran' => $row[5],
+				'ropk_group' => $row[4],
+				'ropk_tahap_aktivitas' => $row[5],
+				// 'ropk_sasaran' => $row[6],
 				'ropk_sasaran_target' => $row[6],
 				'ropk_sasaran_satuan' => $row[7],
-				'ropk_bobot_acuan' => $row[8],
-				'b1' => $row[9],
-				'b2' => $row[10],
-				'b3' => $row[11],
-				'b4' => $row[12],
-				'b5' => $row[13],
-				'b6' => $row[14],
-				'b7' => $row[15],
-				'b8' => $row[16],
-				'b9' => $row[17],
-				'b10' => $row[18],
-				'b11' => $row[19],
-				'b12' => $row[20],
+				'ropk_bobot_acuan' => empty($row[8]) ? '0' : $row[8],
+				'b1' => empty($row[9]) ? '0' : $row[9],
+				'b2' => empty($row[10]) ? '0' : $row['10'],
+				'b3' => empty($row[11]) ? '0' : $row['11'],
+				'b4' => empty($row[12]) ? '0' : $row['12'],
+				'b5' => empty($row[13]) ? '0' : $row['13'],
+				'b6' => empty($row[14]) ? '0' : $row['14'],
+				'b7' => empty($row[15]) ? '0' : $row['15'],
+				'b8' => empty($row[16]) ? '0' : $row['16'],
+				'b9' => empty($row[17]) ? '0' : $row['17'],
+				'b10' => empty($row[18]) ? '0' : $row['18'],
+				'b11' => empty($row[19]) ? '0' : $row['19'],
+				'b12' => empty($row[20]) ? '0' : $row['20'],
 
 				'opd_id' => user()->opd_id,
 				'updated_by' => user()->full_name,

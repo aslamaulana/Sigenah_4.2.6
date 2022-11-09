@@ -42,8 +42,14 @@ class Model_opd_kegiatan_sub extends Model
 	}
 	public function getRenstraKegiatan_sub()
 	{
-		return $this->db->table('tb_renstra_kegiatan_sub')
-			->getWhere(['tb_renstra_kegiatan_sub.opd_id' => user()->opd_id])->getResultArray();
+		if ($_SESSION['tahun'] == '2022') {
+			return $this->db->table('tb_renstra_kegiatan_sub')
+				->getWhere(['perubahan' => $_SESSION['perubahan'], 'tb_renstra_kegiatan_sub.opd_id' => user()->opd_id])->getResultArray();
+		} else {
+			/* Export dari renstra perubahan */
+			return $this->db->table('tb_renstra_kegiatan_sub')
+				->getWhere(['perubahan' => 'Perubahan', 'tb_renstra_kegiatan_sub.opd_id' => user()->opd_id])->getResultArray();
+		}
 	}
 	public function getProgram()
 	{

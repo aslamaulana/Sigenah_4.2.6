@@ -45,6 +45,14 @@
 		<input type="hidden" name="indikator_kegiatan_sub" value="<?= $DT['rkpd_indikator_kegiatan_sub']; ?>">
 		<input type="hidden" name="tahap" value="Persiapan">
 		<div class="row">
+			<div class="col-md">
+				<div class="form-group">
+					<label>Group <medium class="text-danger">*</medium></label>
+					<input type="text" name="group" class="form-control" maxlength="400" required>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-3">
 				<div class="form-group">
 					<label>Bobot Acuan <medium class="text-danger">*</medium></label>

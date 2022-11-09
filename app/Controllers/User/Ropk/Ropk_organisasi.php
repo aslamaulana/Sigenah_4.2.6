@@ -81,6 +81,7 @@ class Ropk_organisasi extends BaseController
 				'rkpd_kegiatan_sub' => $this->request->getVar('kegiatan_sub'),
 				'ropk_tahap' => $this->request->getVar('tahap'),
 				'rkpd_indikator_kegiatan_sub' => $this->request->getVar('indikator_kegiatan_sub'),
+				'ropk_group' => $this->request->getVar('group'),
 				'ropk_tahap_aktivitas' => $this->request->getVar('aktifitas'),
 				'ropk_sasaran' => $this->request->getVar('ropk_sasaran'),
 				'ropk_sasaran_target' => $this->request->getVar('ropk_sasaran_target'),
@@ -133,6 +134,7 @@ class Ropk_organisasi extends BaseController
 
 			$this->ropk_organisasi->save([
 				'id_ropk_organisasi' => $this->request->getVar('id'),
+				'ropk_group' => $this->request->getVar('group'),
 				'ropk_tahap_aktivitas' => $this->request->getVar('aktifitas'),
 				'ropk_sasaran' => $this->request->getVar('ropk_sasaran'),
 				'ropk_sasaran_target' => $this->request->getVar('ropk_sasaran_target'),
@@ -249,30 +251,31 @@ class Ropk_organisasi extends BaseController
 
 		$tahun = $_SESSION['tahun'];
 
-		$spreadsheet->getActiveSheet()->getStyle('A1:T1')->getFill()
+		$spreadsheet->getActiveSheet()->getStyle('A1:U1')->getFill()
 			->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('FFFF0000');
 		$spreadsheet->setActiveSheetIndex(0)
 			->setCellValue('A1', 'Rkpd Kegiatan')
 			->setCellValue('B1', 'Rkpd Sub Kegiatan')
 			->setCellValue('C1', 'Indikator Sub Kegiatan (keluaran)')
-			->setCellValue('D1', 'Rk Tahap Aktivitas')
-			->setCellValue('E1', 'Sasaran Tahap Aktivitas')
-			->setCellValue('F1', 'Target Tahap Aktivitas')
-			->setCellValue('G1', 'Satuan Target')
-			->setCellValue('H1', 'Bobot Acuan')
-			->setCellValue('I1', 'B1')
-			->setCellValue('J1', 'B2')
-			->setCellValue('K1', 'B3')
-			->setCellValue('L1', 'B4')
-			->setCellValue('M1', 'B5')
-			->setCellValue('N1', 'B6')
-			->setCellValue('O1', 'B7')
-			->setCellValue('P1', 'B8')
-			->setCellValue('Q1', 'B9')
-			->setCellValue('R1', 'B10')
-			->setCellValue('S1', 'B11')
-			->setCellValue('T1', 'B12');
+			->setCellValue('D1', 'Group')
+			->setCellValue('E1', 'Rk Tahap Aktivitas')
+			->setCellValue('F1', 'Sasaran Tahap Aktivitas')
+			->setCellValue('G1', 'Target Tahap Aktivitas')
+			->setCellValue('H1', 'Satuan Target')
+			->setCellValue('I1', 'Bobot Acuan')
+			->setCellValue('J1', 'B1')
+			->setCellValue('K1', 'B2')
+			->setCellValue('L1', 'B3')
+			->setCellValue('M1', 'B4')
+			->setCellValue('N1', 'B5')
+			->setCellValue('O1', 'B6')
+			->setCellValue('P1', 'B7')
+			->setCellValue('Q1', 'B8')
+			->setCellValue('R1', 'B9')
+			->setCellValue('S1', 'B10')
+			->setCellValue('T1', 'B11')
+			->setCellValue('U1', 'B12');
 
 		$column = 2;
 
@@ -315,23 +318,24 @@ class Ropk_organisasi extends BaseController
 				'rkpd_kegiatan' => $row[0],
 				'rkpd_kegiatan_sub' => $row[1],
 				'rkpd_indikator_kegiatan_sub' => $row[2],
-				'ropk_tahap_aktivitas' => $row[3],
-				'ropk_sasaran' => $row[4],
-				'ropk_sasaran_target' => $row[5],
-				'ropk_sasaran_satuan' => $row[6],
-				'ropk_bobot_acuan' => $row[7],
-				'b1' => $row[8],
-				'b2' => $row[9],
-				'b3' => $row[10],
-				'b4' => $row[11],
-				'b5' => $row[12],
-				'b6' => $row[13],
-				'b7' => $row[14],
-				'b8' => $row[15],
-				'b9' => $row[16],
-				'b10' => $row[17],
-				'b11' => $row[18],
-				'b12' => $row[19],
+				'ropk_group' => $row[3],
+				'ropk_tahap_aktivitas' => $row[4],
+				'ropk_sasaran' => $row[5],
+				'ropk_sasaran_target' => $row[6],
+				'ropk_sasaran_satuan' => $row[7],
+				'ropk_bobot_acuan' => empty($row[8]) ? '0' : $row[8],
+				'b1' => empty($row[9]) ? '0' : $row[9],
+				'b2' => empty($row[10]) ? '0' : $row[10],
+				'b3' => empty($row[11]) ? '0' : $row[11],
+				'b4' => empty($row[12]) ? '0' : $row[12],
+				'b5' => empty($row[13]) ? '0' : $row[13],
+				'b6' => empty($row[14]) ? '0' : $row[14],
+				'b7' => empty($row[15]) ? '0' : $row[15],
+				'b8' => empty($row[16]) ? '0' : $row[16],
+				'b9' => empty($row[17]) ? '0' : $row[17],
+				'b10' => empty($row[18]) ? '0' : $row[18],
+				'b11' => empty($row[19]) ? '0' : $row[19],
+				'b12' => empty($row[20]) ? '0' : $row[20],
 
 				'tahun' => $_SESSION['tahun'],
 				'perubahan' => $_SESSION['perubahan'],
@@ -359,7 +363,7 @@ class Ropk_organisasi extends BaseController
 
 		$spreadsheet = new Spreadsheet();
 
-		$spreadsheet->getActiveSheet()->getStyle('A1:U1')->getFill()
+		$spreadsheet->getActiveSheet()->getStyle('A1:V1')->getFill()
 			->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('FFFF0000');
 		$spreadsheet->setActiveSheetIndex(0)
@@ -367,23 +371,24 @@ class Ropk_organisasi extends BaseController
 			->setCellValue('B1', 'Rkpd Kegiatan')
 			->setCellValue('C1', 'Rkpd Sub Kegiatan')
 			->setCellValue('D1', 'Indikator Sub Kegiatan (keluaran)')
-			->setCellValue('E1', 'Rk Tahap Aktivitas')
-			->setCellValue('F1', 'Sasaran Tahap Aktivitas')
-			->setCellValue('G1', 'Target Tahap Aktivitas')
-			->setCellValue('H1', 'Satuan Target')
-			->setCellValue('I1', 'Bobot Acuan')
-			->setCellValue('J1', 'B1')
-			->setCellValue('K1', 'B2')
-			->setCellValue('L1', 'B3')
-			->setCellValue('M1', 'B4')
-			->setCellValue('N1', 'B5')
-			->setCellValue('O1', 'B6')
-			->setCellValue('P1', 'B7')
-			->setCellValue('Q1', 'B8')
-			->setCellValue('R1', 'B9')
-			->setCellValue('S1', 'B10')
-			->setCellValue('T1', 'B11')
-			->setCellValue('U1', 'B12');
+			->setCellValue('E1', 'Group')
+			->setCellValue('F1', 'Rk Tahap Aktivitas')
+			->setCellValue('G1', 'Sasaran Tahap Aktivitas')
+			->setCellValue('H1', 'Target Tahap Aktivitas')
+			->setCellValue('I1', 'Satuan Target')
+			->setCellValue('J1', 'Bobot Acuan')
+			->setCellValue('K1', 'B1')
+			->setCellValue('L1', 'B2')
+			->setCellValue('M1', 'B3')
+			->setCellValue('N1', 'B4')
+			->setCellValue('O1', 'B5')
+			->setCellValue('P1', 'B6')
+			->setCellValue('Q1', 'B7')
+			->setCellValue('R1', 'B8')
+			->setCellValue('S1', 'B9')
+			->setCellValue('T1', 'B10')
+			->setCellValue('U1', 'B11')
+			->setCellValue('V1', 'B12');
 
 		$column = 2;
 
@@ -393,23 +398,24 @@ class Ropk_organisasi extends BaseController
 				->setCellValue('B' . $column, $row['rkpd_kegiatan'])
 				->setCellValue('C' . $column, $row['rkpd_kegiatan_sub'])
 				->setCellValue('D' . $column, $row['rkpd_indikator_kegiatan_sub'])
-				->setCellValue('E' . $column, $row['ropk_tahap_aktivitas'])
-				->setCellValue('F' . $column, $row['ropk_sasaran'])
-				->setCellValue('G' . $column, $row['ropk_sasaran_target'])
-				->setCellValue('H' . $column, $row['ropk_sasaran_satuan'])
-				->setCellValue('I' . $column, $row['ropk_bobot_acuan'])
-				->setCellValue('J' . $column, $row['b1'])
-				->setCellValue('K' . $column, $row['b2'])
-				->setCellValue('L' . $column, $row['b3'])
-				->setCellValue('M' . $column, $row['b4'])
-				->setCellValue('N' . $column, $row['b5'])
-				->setCellValue('O' . $column, $row['b6'])
-				->setCellValue('P' . $column, $row['b7'])
-				->setCellValue('Q' . $column, $row['b8'])
-				->setCellValue('R' . $column, $row['b9'])
-				->setCellValue('S' . $column, $row['b10'])
-				->setCellValue('T' . $column, $row['b11'])
-				->setCellValue('U' . $column, $row['b12']);
+				->setCellValue('E' . $column, $row['ropk_group'])
+				->setCellValue('F' . $column, $row['ropk_tahap_aktivitas'])
+				->setCellValue('G' . $column, $row['ropk_sasaran'])
+				->setCellValue('H' . $column, $row['ropk_sasaran_target'])
+				->setCellValue('I' . $column, $row['ropk_sasaran_satuan'])
+				->setCellValue('J' . $column, $row['ropk_bobot_acuan'])
+				->setCellValue('K' . $column, $row['b1'])
+				->setCellValue('L' . $column, $row['b2'])
+				->setCellValue('M' . $column, $row['b3'])
+				->setCellValue('N' . $column, $row['b4'])
+				->setCellValue('O' . $column, $row['b5'])
+				->setCellValue('P' . $column, $row['b6'])
+				->setCellValue('Q' . $column, $row['b7'])
+				->setCellValue('R' . $column, $row['b8'])
+				->setCellValue('S' . $column, $row['b9'])
+				->setCellValue('T' . $column, $row['b10'])
+				->setCellValue('U' . $column, $row['b11'])
+				->setCellValue('V' . $column, $row['b12']);
 
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column)->getFill()
 				->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
@@ -455,23 +461,24 @@ class Ropk_organisasi extends BaseController
 				'rkpd_kegiatan' => $row[1],
 				'rkpd_kegiatan_sub' => $row[2],
 				'rkpd_indikator_kegiatan_sub' => $row[3],
-				'ropk_tahap_aktivitas' => $row[4],
-				'ropk_sasaran' => $row[5],
-				'ropk_sasaran_target' => $row[6],
-				'ropk_sasaran_satuan' => $row[7],
-				'ropk_bobot_acuan' => $row[8],
-				'b1' => $row[9],
-				'b2' => $row[10],
-				'b3' => $row[11],
-				'b4' => $row[12],
-				'b5' => $row[13],
-				'b6' => $row[14],
-				'b7' => $row[15],
-				'b8' => $row[16],
-				'b9' => $row[17],
-				'b10' => $row[18],
-				'b11' => $row[19],
-				'b12' => $row[20],
+				'ropk_group' => $row[4],
+				'ropk_tahap_aktivitas' => $row[5],
+				'ropk_sasaran' => $row[6],
+				'ropk_sasaran_target' => $row[7],
+				'ropk_sasaran_satuan' => $row[8],
+				'ropk_bobot_acuan' => empty($row[9]) ? '0' : $row[9],
+				'b1' => empty($row[10]) ? '0' : $row[10],
+				'b2' => empty($row[11]) ? '0' : $row['11'],
+				'b3' => empty($row[12]) ? '0' : $row['12'],
+				'b4' => empty($row[13]) ? '0' : $row['13'],
+				'b5' => empty($row[14]) ? '0' : $row['14'],
+				'b6' => empty($row[15]) ? '0' : $row['15'],
+				'b7' => empty($row[16]) ? '0' : $row['16'],
+				'b8' => empty($row[17]) ? '0' : $row['17'],
+				'b9' => empty($row[18]) ? '0' : $row['18'],
+				'b10' => empty($row[19]) ? '0' : $row['19'],
+				'b11' => empty($row[20]) ? '0' : $row['20'],
+				'b12' => empty($row[21]) ? '0' : $row['21'],
 
 				'opd_id' => user()->opd_id,
 				'updated_by' => user()->full_name,

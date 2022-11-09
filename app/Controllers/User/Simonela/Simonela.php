@@ -8,7 +8,7 @@ use App\Models\User\Simonela\Model_simonela_progres;
 use App\Models\User\Simonela\Model_simonela_dokumen;
 // use Google\Client;
 // use Google\Client\driv
-require_once '../vendor/google_api/vendor/autoload.php';
+// require_once '../vendor/google_api/vendor/autoload.php';
 
 use Google\Service\Drive;
 
@@ -28,7 +28,7 @@ class Simonela extends BaseController
 	 * Sub kegiatan di ambil dari ropk keuangan sub kegiatan
 	 * ---------------------------------------------------
 	 */
-	public function bb()
+	/* public function bb()
 	{
 		// setting config untuk layanan akses ke google drive
 		$client = new  \Google_Client();
@@ -61,7 +61,7 @@ class Simonela extends BaseController
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		endif;
-	}
+	} */
 	/*
 	 * ---------------------------------------------------
 	 * Menu sub kegiatan e-monev

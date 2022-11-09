@@ -12,7 +12,7 @@ class Model_ropk_organisasi extends Model
 	protected $allowedFields = [
 		'rkpd_kegiatan',
 		'rkpd_kegiatan_sub',
-		'ropk_tahap',
+		'ropk_group',
 		'rkpd_indikator_kegiatan_sub',
 		'ropk_tahap_aktivitas',
 		'ropk_bobot_acuan',

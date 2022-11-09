@@ -45,34 +45,42 @@
 		<input type="hidden" name="indikator_kegiatan_sub" value="<?= $DT['rkpd_indikator_kegiatan_sub']; ?>">
 		<input type="hidden" name="tahap" value="Persiapan">
 		<div class="row">
+			<div class="col-md">
+				<div class="form-group">
+					<label>Group <medium class="text-danger">*</medium></label>
+					<input type="text" name="group" class="form-control" maxlength="400" required>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-3">
 				<div class="form-group">
-					<label>Bobot Acuan <medium class="text-danger">*</medium></label>
+					<label>Pagu Anggaran <medium class="text-danger">*</medium></label>
 					<input type="text" name="bobot_acuan" class="form-control" maxlength="20" required>
 				</div>
 			</div>
 
 			<div class="col-md-9">
 				<div class="form-group">
-					<label>Tahap Aktifitas <medium class="text-danger">*</medium></label>
+					<label>Rekening Belanja <medium class="text-danger">*</medium></label>
 					<input type="text" name="aktifitas" class="form-control" maxlength="300" required>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8">
+			<!-- <div class="col-md-8">
 				<div class="form-group">
 					<label>Sasaran</label>
 					<input type="text" name="ropk_sasaran" class="form-control" maxlength="300" required>
 				</div>
-			</div>
-			<div class="col-md-2">
+			</div> -->
+			<div class="col-md-9">
 				<div class="form-group">
-					<label>Target Sasaran</label>
+					<label>Volume</label>
 					<input type="number" name="ropk_sasaran_target" class="form-control" maxlength="20" required>
 				</div>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<label>Satuan <medium class="text-danger">*</medium></label>
 				<select name="satuan" class="form-control select2bs4" required>
 					<option value="">Tidak Dipilih...</option>

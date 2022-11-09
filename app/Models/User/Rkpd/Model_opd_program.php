@@ -38,8 +38,14 @@ class Model_opd_program extends Model
 	}
 	public function getRenstraProgram()
 	{
-		return $this->db->table('tb_renstra_program')
-			->getWhere(['perubahan' => $_SESSION['perubahan'], 'tb_renstra_program.opd_id' => user()->opd_id])->getResultArray();
+		if ($_SESSION['tahun'] == '2022') {
+			return $this->db->table('tb_renstra_program')
+				->getWhere(['perubahan' => $_SESSION['perubahan'], 'tb_renstra_program.opd_id' => user()->opd_id])->getResultArray();
+		} else {
+			/* Export dari renstra perubahan */
+			return $this->db->table('tb_renstra_program')
+				->getWhere(['perubahan' => 'Perubahan', 'tb_renstra_program.opd_id' => user()->opd_id])->getResultArray();
+		}
 	}
 	public function getProgram()
 	{

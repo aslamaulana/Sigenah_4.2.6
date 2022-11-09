@@ -57,16 +57,18 @@
 		</tr>
 	</table><br>
 	<div class="">
-		<table id="example1" class="table table-bordered display nowrap table-responsive">
+		<table id="example1" class="table table-bordered display nowrap table-responsive table-sm" cellspacing="0">
 			<thead>
 				<tr>
 					<th rowspan="2" class="text-center align-middle" width="30px">NO</th>
 					<th rowspan="2" class="align-middle">
-						<div style="width:500px;">Tahap Aktivitas</div>
+						<div style="width:600px;">Rekening Belanja</div>
 					</th>
-					<th rowspan="2" class="align-middle" style="width: 300px;">Sub Unit Organisasi SKPD</th>
-					<th rowspan="2" class="text-center align-middle" style="width: 300px;">Sasaran / Target Sasaran</th>
-					<th rowspan="2" class="text-center align-middle" style="width: 60px;">Acuan</th>
+					<!--<th rowspan="2" class="align-middle" style="width: 300px;">Sub Unit Organisasi SKPD</th>-->
+					<th rowspan="2" class="text-center align-middle">
+						<div style="width:150px;">Volume</div>
+					</th>
+					<th rowspan="2" class="text-center align-middle" style="width: 60px;">Pagu Anggaran</th>
 					<th colspan="3" class="text-center" style="width: 60px;">Triwulan 1</th>
 					<th colspan="3" class="text-center" style="width: 60px;">Triwulan 2</th>
 					<th colspan="3" class="text-center" style="width: 60px;">Triwulan 3</th>
@@ -89,47 +91,73 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php $i = 1;
-				$query = $db->table('tb_ropk_keuangan')->getWhere([
-					'tb_ropk_keuangan.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
-					'tb_ropk_keuangan.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'],
-					'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
-					'tb_ropk_keuangan.ropk_tahap' => 'Persiapan',
-					'tb_ropk_keuangan.opd_id' => user()->opd_id,
-					'tb_ropk_keuangan.tahun' => $_SESSION['tahun'],
-					'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']
-				])->getResultArray();
-				foreach ($query as $ros) : ?>
-					<tr>
-						<td class="align-top text-center"><?= $i++; ?></td>
-						<td class="text-wrap align-top"> <?= $ros['ropk_tahap_aktivitas']; ?> </td>
-						<td class="align-top text-right"></td>
-						<td><?= isset($ros['ropk_sasaran']) ? $ros['ropk_sasaran'] . ': ' . $ros['ropk_sasaran_target'] . ' ' . $ros['ropk_sasaran_satuan'] : ''; ?></td>
-						<td class="text-center"><?php isset($ros['ropk_bobot_acuan']) ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0']; ?> <?= number_format($ros['ropk_bobot_acuan'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b1']) ? $num1[] = ($ros['b1']) : $num1[] = ['0']; ?><?= number_format($ros['b1'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b2']) ? $num2[] = ($ros['b2']) : $num2[] = ['0']; ?><?= number_format($ros['b2'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b3']) ? $num3[] = ($ros['b3']) : $num3[] = ['0']; ?><?= number_format($ros['b3'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b4']) ? $num4[] = ($ros['b4']) : $num4[] = ['0']; ?><?= number_format($ros['b4'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b5']) ? $num5[] = ($ros['b5']) : $num5[] = ['0']; ?><?= number_format($ros['b5'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b6']) ? $num6[] = ($ros['b6']) : $num6[] = ['0']; ?><?= number_format($ros['b6'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b7']) ? $num7[] = ($ros['b7']) : $num7[] = ['0']; ?><?= number_format($ros['b7'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b8']) ? $num8[] = ($ros['b8']) : $num8[] = ['0']; ?><?= number_format($ros['b8'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b9']) ? $num9[] = ($ros['b9']) : $num9[] = ['0']; ?><?= number_format($ros['b9'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b10']) ? $num10[] = ($ros['b10']) : $num10[] = ['0']; ?><?= number_format($ros['b10'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b11']) ? $num11[] = ($ros['b11']) : $num11[] = ['0']; ?><?= number_format($ros['b11'], 0, ',', '.'); ?></td>
-						<td class="text-center"><?php isset($ros['b12']) ? $num12[] = ($ros['b12']) : $num12[] = ['0']; ?><?= number_format($ros['b12'], 0, ',', '.'); ?></td>
-						<td style="text-align: center;">
-							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_edit/' . $ros['id_ropk_keuangan'] . '/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
+				<?php
+				$group = $db->table('tb_ropk_keuangan')
+					->select('ropk_group')
+					->distinct('ropk_group')
+					->getWhere([
+						'tb_ropk_keuangan.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
+						'tb_ropk_keuangan.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'],
+						// 'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
+						// 'tb_ropk_keuangan.ropk_tahap' => 'Persiapan',
+						'tb_ropk_keuangan.opd_id' => user()->opd_id,
+						'tb_ropk_keuangan.tahun' => $_SESSION['tahun'],
+						'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']
+					])->getResultArray();
+				foreach ($group as $rol) : ?>
+					<tr class="font-weight-bold" style="background-color: blanchedalmond;">
+						<td colspan="17" class="text-wrap align-top"> <?= $rol['ropk_group']; ?> </td>
+						<!-- <td style="text-align: center;">
+							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_organisasi/organisasi_edit/'; ?>">
 								<i class="nav-icon fas fa-pen-alt"></i>
 							</a>
-							<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_hapus/' . $ros['id_ropk_keuangan']; ?>'}" href="#">
+							<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/ropk/ropk_organisasi/organisasi_hapus/'; ?>'}" href="#">
 								<i class="nav-icon fas fa-trash-alt"></i>
 							</a>
-						</td>
+						</td> -->
 					</tr>
+					<?php $i = 1;
+					$query = $db->table('tb_ropk_keuangan')->getWhere([
+						'tb_ropk_keuangan.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
+						'tb_ropk_keuangan.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'],
+						'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
+						'tb_ropk_keuangan.ropk_group' => $rol['ropk_group'],
+						'tb_ropk_keuangan.opd_id' => user()->opd_id,
+						'tb_ropk_keuangan.tahun' => $_SESSION['tahun'],
+						'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']
+					])->getResultArray();
+					foreach ($query as $ros) : ?>
+						<tr>
+							<td class="align-top text-center"><?= $i++; ?></td>
+							<td class="text-wrap align-top"> <?= $ros['ropk_tahap_aktivitas']; ?> </td>
+							<!--<td class="align-top text-right"></td>-->
+							<td class="text-wrap align-top"><?= isset($ros['ropk_sasaran_target']) ? $ros['ropk_sasaran_target'] . ' ' . $ros['ropk_sasaran_satuan'] : ''; ?></td>
+							<td class="text-center"><?php isset($ros['ropk_bobot_acuan']) ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0']; ?> <?= number_format($ros['ropk_bobot_acuan'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b1']) ? $num1[] = ($ros['b1']) : $num1[] = ['0']; ?><?= number_format($ros['b1'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b2']) ? $num2[] = ($ros['b2']) : $num2[] = ['0']; ?><?= number_format($ros['b2'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b3']) ? $num3[] = ($ros['b3']) : $num3[] = ['0']; ?><?= number_format($ros['b3'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b4']) ? $num4[] = ($ros['b4']) : $num4[] = ['0']; ?><?= number_format($ros['b4'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b5']) ? $num5[] = ($ros['b5']) : $num5[] = ['0']; ?><?= number_format($ros['b5'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b6']) ? $num6[] = ($ros['b6']) : $num6[] = ['0']; ?><?= number_format($ros['b6'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b7']) ? $num7[] = ($ros['b7']) : $num7[] = ['0']; ?><?= number_format($ros['b7'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b8']) ? $num8[] = ($ros['b8']) : $num8[] = ['0']; ?><?= number_format($ros['b8'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b9']) ? $num9[] = ($ros['b9']) : $num9[] = ['0']; ?><?= number_format($ros['b9'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b10']) ? $num10[] = ($ros['b10']) : $num10[] = ['0']; ?><?= number_format($ros['b10'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b11']) ? $num11[] = ($ros['b11']) : $num11[] = ['0']; ?><?= number_format($ros['b11'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b12']) ? $num12[] = ($ros['b12']) : $num12[] = ['0']; ?><?= number_format($ros['b12'], 0, ',', '.'); ?></td>
+							<td style="text-align: center;">
+								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_edit/' . $ros['id_ropk_keuangan'] . '/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
+									<i class="nav-icon fas fa-pen-alt"></i>
+								</a>
+								<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_hapus/' . $ros['id_ropk_keuangan']; ?>'}" href="#">
+									<i class="nav-icon fas fa-trash-alt"></i>
+								</a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
 				<?php endforeach; ?>
 				<tr style="background-color:beige;">
-					<td colspan="4"><b>Acuan Perbulan</b></td>
+					<td colspan="3"><b>Acuan Perbulan</b></td>
 					<td class="text-right" style="<?= !empty($acu) ? (array_sum($acu) < $DT['rp_tahun'] ? 'background: #ffc107;' : (array_sum($acu) == $DT['rp_tahun'] ? 'background: #20c997;' : 'background: #e74c3c;')) : ''; ?>">
 						<?= !empty($acu) ? number_format(array_sum($acu), 0, ',', '.') : '0.00'; ?>
 					</td>
@@ -164,7 +192,7 @@
 				?>
 				<tr style="background-color:beige;">
 					<td colspan="4"><b>Kumulatif per Bulan</b></td>
-					<td class="text-right"></td>
+					<!--<td class="text-right"></td>-->
 					<td class="text-right"><?= number_format($bb1, 0, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb2, 0, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb3, 0, ',', '.'); ?></td>
@@ -181,7 +209,7 @@
 				</tr>
 				<tr style="background-color:beige;">
 					<td colspan="4"><b>Kumulatif per Bulan (%)</b></td>
-					<td></td>
+					<!--<td></td>-->
 					<td class="text-right">
 						<?php
 						try {

@@ -76,6 +76,18 @@
 									<p><small></small> Setting</p>
 								</a>
 							</li>
+							<li class="nav-item">
+								<a href="<?= base_url('/admin/menu/tag'); ?>" class="nav-link <?= $mn == 'tag' ? 'active' : ''; ?>">
+									<i class="far nav-icon"></i>
+									<p><small></small> Tag</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="<?= base_url('/admin/menu/satuan'); ?>" class="nav-link <?= $mn == 'satuan' ? 'active' : ''; ?>">
+									<i class="far nav-icon"></i>
+									<p><small></small> Satuan</p>
+								</a>
+							</li>
 						</ul>
 					</li>
 					<!-- =============================================================== -->
@@ -225,8 +237,8 @@
 					<!-- =============================================================== -->
 					<li class="nav-header">=====================</li>
 					<!-- =============================================================== -->
-					<li class="nav-item  <?= $gr == 'Renstra' || $gr == 'rkpd' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'Renstra' || $gr == 'rkpd' ? 'active' : ''; ?>" title="Data Perencanaan">
+					<li class="nav-item  <?= $gr == 'Dokumen' || $gr == 'Renstra' || $gr == 'rkpd' ? 'menu-open' : ''; ?>">
+						<a href="#" class="nav-link <?= $gr == 'Dokumen' || $gr == 'Renstra' || $gr == 'rkpd' ? 'active' : ''; ?>" title="Data Perencanaan">
 							<i class="nav-icon fas fa-circle"></i>
 							<p>
 								DARA
@@ -334,6 +346,12 @@
 									</li>
 								</ul>
 							</li>
+							<li class="nav-item">
+								<a href="<?= base_url('/user/renstra/opd_dokumen'); ?>" class="nav-link <?= $mn == 'dokumen' ? 'active' : ''; ?>">
+									<i class="nav-icon fas fa-folder-open"></i>
+									<p><small></small> Dokumen</p>
+								</a>
+							</li>
 						</ul>
 					</li>
 					<!-- =============================================================== -->
@@ -359,15 +377,15 @@
 							<li class="nav-item">
 								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/keuangan'); ?>" class="nav-link <?= $mn == 'ropk_keuangan' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja Keuangan">
 									<i class="far nav-icon"></i>
-									<p><small>2. </small> Cantik Keuangan</p>
+									<p><small>2. </small> Cantiku</p>
 								</a>
 							</li>
 						</ul>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/fisik'); ?>" class="nav-link <?= $mn == 'ropk_fisik' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja Fisik">
+								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/fisik'); ?>" class="nav-link <?= $mn == 'ropk_fisik' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerjas">
 									<i class="far nav-icon"></i>
-									<p><small>2. </small> Cantik Fisik</p>
+									<p><small>2. </small> Cantika</p>
 								</a>
 							</li>
 						</ul>

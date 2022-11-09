@@ -45,6 +45,14 @@
 		<input type="hidden" name="kegiatan_sub" value="<?= $fisik['rkpd_kegiatan_sub']; ?>">
 		<input type="hidden" name="indikator_kegiatan_sub" value="<?= $fisik['rkpd_indikator_kegiatan_sub']; ?>">
 		<div class="row">
+			<div class="col-md">
+				<div class="form-group">
+					<label>Group <medium class="text-danger">*</medium></label>
+					<input type="text" name="group" value="<?= $fisik['ropk_group']; ?>" class="form-control" maxlength="400" required>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<!-- <div class="col-md-2">
 				<div class="form-group">
 					<label>Kode <medium class="text-danger">*</medium></label>
