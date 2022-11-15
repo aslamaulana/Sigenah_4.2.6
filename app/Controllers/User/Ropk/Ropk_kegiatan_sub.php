@@ -73,4 +73,24 @@ class Ropk_kegiatan_sub extends BaseController
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		endif;
 	}
+	/*
+	 * ---------------------------------------------------
+	 * Hapus data sub kegiatan Organisasi
+	 * ---------------------------------------------------
+	 */
+	public function delete_organisasi()
+	{
+		try {
+			foreach ($_POST['id_sub'] as $key => $val) {
+				$data[] = $val;
+			}
+		} catch (\Exception $e) {
+			session()->setFlashdata('error', 'Data Gagal di hapus.');
+			return redirect()->back();
+		}
+
+		$this->ropk_organisasi_rkpd_kegiatan_sub->delete($data);
+		session()->setFlashdata('pesan', 'Data berhasil di hapus.');
+		return redirect()->to(base_url() . '/user/ropk/ropk_kegiatan_sub/organisasi');
+	}
 }
