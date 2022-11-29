@@ -160,9 +160,9 @@ class Opd_kegiatan_sub extends BaseController
 				->setCellValue('C' . $column, $row['opd_indikator_kegiatan_sub'])
 				->setCellValue('D' . $column, $row['satuan'])
 				->setCellValue('E' . $column, $row['t_' . $tahun])
-				->setCellValue('F' . $column, $row['rp_' . $tahun])
+				->setCellValue('F' . $column, number_format($row['rp_' . $tahun], 0, ',', '.'))
 				->setCellValue('G' . $column, $row['t_' . $tahun + 1])
-				->setCellValue('H' . $column, $row['rp_' . $tahun + 1]);
+				->setCellValue('H' . $column, number_format($row['rp_' . $tahun + 1], 0, ',', '.'));
 
 			$column++;
 		}
@@ -193,6 +193,7 @@ class Opd_kegiatan_sub extends BaseController
 			if ($x == 0) {
 				continue;
 			}
+
 			$simpandata = [
 				'rkpd_kegiatan_n' => $row[0],
 				'rkpd_kegiatan_sub_n' => $row[1],
@@ -200,9 +201,9 @@ class Opd_kegiatan_sub extends BaseController
 				'satuan' => $row[3],
 
 				't_tahun' => $row[4],
-				'rp_tahun' => $row[5],
+				'rp_tahun' => str_replace([' ', '  ', '-', ','], ['', '', '0', '.'], $row[5]),
 				't_tahun+n' => $row[6],
-				'rp_tahun+n' => $row[7],
+				'rp_tahun+n' => str_replace([' ', '  ', '-', ','], ['', '', '0', '.'], $row[7]),
 				'lokasi' => $row[8],
 				'sumber_dana' => $row[9],
 
@@ -253,9 +254,9 @@ class Opd_kegiatan_sub extends BaseController
 				->setCellValue('D' . $column, $row['rkpd_indikator_kegiatan_sub'])
 				->setCellValue('E' . $column, $row['satuan'])
 				->setCellValue('F' . $column, $row['t_tahun'])
-				->setCellValue('G' . $column, $row['rp_tahun'])
+				->setCellValue('G' . $column, number_format($row['rp_tahun'], 0, ',', '.'))
 				->setCellValue('H' . $column, $row['t_tahun+n'])
-				->setCellValue('I' . $column, $row['rp_tahun+n'])
+				->setCellValue('I' . $column, number_format($row['rp_tahun+n'], 0, ',', '.'))
 				->setCellValue('J' . $column, $row['lokasi'])
 				->setCellValue('K' . $column, $row['sumber_dana']);
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column)->getFill()
@@ -289,15 +290,18 @@ class Opd_kegiatan_sub extends BaseController
 			if ($x == 0) {
 				continue;
 			}
+			$yang_diubah = array(' ', '-');
+			$menjadi = array('', '0');
+
 			$simpandata = [
 				'rkpd_kegiatan_n' => $row[1],
 				'rkpd_kegiatan_sub_n' => $row[2],
 				'rkpd_indikator_kegiatan_sub' => $row[3],
 				'satuan' => $row[4],
 				't_tahun' => $row[5],
-				'rp_tahun' => $row[6],
+				'rp_tahun' => str_replace($yang_diubah, $menjadi, $row[6]),
 				't_tahun+n' => $row[7],
-				'rp_tahun+n' => $row[8],
+				'rp_tahun+n' => str_replace($yang_diubah, $menjadi, $row[8]),
 				'lokasi' => $row[9],
 				'sumber_dana' => $row[10],
 

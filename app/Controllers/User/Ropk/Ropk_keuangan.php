@@ -84,7 +84,7 @@ class Ropk_keuangan extends BaseController
 			$this->ropk_keuangan->save([
 				'rkpd_kegiatan' => $this->request->getVar('kegiatan'),
 				'rkpd_kegiatan_sub' => $this->request->getVar('kegiatan_sub'),
-				'ropk_tahap' => $this->request->getVar('tahap'),
+				// 'ropk_tahap' => $this->request->getVar('tahap'),
 				'rkpd_indikator_kegiatan_sub' => $this->request->getVar('indikator_kegiatan_sub'),
 				'ropk_group' => $this->request->getVar('group'),
 				'ropk_tahap_aktivitas' => $this->request->getVar('aktifitas'),

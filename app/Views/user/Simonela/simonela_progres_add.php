@@ -72,7 +72,7 @@
 									'tb_ropk_fisik.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
 									'tb_ropk_fisik.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'],
 									'tb_ropk_fisik.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
-									'tb_ropk_fisik.ropk_tahap' => 'Persiapan',
+									//'tb_ropk_fisik.ropk_tahap' => 'Persiapan',
 									'tb_ropk_fisik.opd_id' => user()->opd_id,
 									'tb_ropk_fisik.tahun' => $_SESSION['tahun'],
 									'tb_ropk_fisik.perubahan' => $_SESSION['perubahan']

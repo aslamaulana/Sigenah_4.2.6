@@ -76,12 +76,28 @@
 						</tr>
 						<?php
 
+						// $qu = $db->table('tb_ropk_organisasi_rkpd_kegiatan_sub')
+						// 	->select('tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n,	tb_renstra_kegiatan.opd_kegiatan_n,	tb_renstra_program.opd_program_n, tb_renstra_sasaran.opd_sasaran,tb_renstra_sasaran.rpjmd_sasaran_n,tb_rpjmd_tujuan.tujuan,	tb_misi.misi,	tb_misi.visi')
+						// 	->distinct('tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n,tb_renstra_kegiatan.opd_kegiatan_n,tb_renstra_program.opd_program_n,tb_renstra_sasaran.opd_sasaran,tb_renstra_sasaran.rpjmd_sasaran_n,	tb_rpjmd_tujuan.tujuan,	tb_misi.misi,	tb_misi.visi')
+						// 	->join('tb_renstra_kegiatan', 'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_n = tb_renstra_kegiatan.opd_kegiatan_n AND tb_ropk_organisasi_rkpd_kegiatan_sub.opd_id = tb_renstra_kegiatan.opd_id', 'left')
+						// 	->join('tb_renstra_program', 'tb_renstra_kegiatan.opd_id = tb_renstra_program.opd_id AND tb_renstra_kegiatan.opd_program_n = tb_renstra_program.opd_program_n', 'left')
+						// 	->join('tb_renstra_sasaran', 'tb_renstra_program.opd_id = tb_renstra_sasaran.opd_id AND	tb_renstra_program.opd_sasaran_n = tb_renstra_sasaran.opd_sasaran', 'left')
+						// 	->join('tb_rpjmd_sasaran', 'tb_renstra_sasaran.rpjmd_sasaran_n = tb_rpjmd_sasaran.sasaran', 'left')
+						// 	->join('tb_rpjmd_tujuan', 'tb_rpjmd_sasaran.tujuan_n = tb_rpjmd_tujuan.tujuan', 'left')
+						// 	->join('tb_misi', 'tb_rpjmd_tujuan.misi_n = tb_misi.misi', 'left')
+						// 	->getWhere([
+						// 		'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_n' => $rol['rkpd_kegiatan_n'],
+						// 		'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n' => $ros['rkpd_kegiatan_sub_n'],
+						// 		'tb_ropk_organisasi_rkpd_kegiatan_sub.opd_id' => user()->opd_id,
+						// 		'tb_ropk_organisasi_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun'],
+						// 		'tb_ropk_organisasi_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan']
+						// 	])->getResultArray();
 						$qu = $db->table('tb_ropk_organisasi_rkpd_kegiatan_sub')
 							->select('tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n,	tb_renstra_kegiatan.opd_kegiatan_n,	tb_renstra_program.opd_program_n, tb_renstra_sasaran.opd_sasaran,tb_renstra_sasaran.rpjmd_sasaran_n,tb_rpjmd_tujuan.tujuan,	tb_misi.misi,	tb_misi.visi')
 							->distinct('tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n,tb_renstra_kegiatan.opd_kegiatan_n,tb_renstra_program.opd_program_n,tb_renstra_sasaran.opd_sasaran,tb_renstra_sasaran.rpjmd_sasaran_n,	tb_rpjmd_tujuan.tujuan,	tb_misi.misi,	tb_misi.visi')
-							->join('tb_renstra_kegiatan', 'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_n = tb_renstra_kegiatan.opd_kegiatan_n AND tb_ropk_organisasi_rkpd_kegiatan_sub.opd_id = tb_renstra_kegiatan.opd_id', 'left')
-							->join('tb_renstra_program', 'tb_renstra_kegiatan.opd_id = tb_renstra_program.opd_id AND tb_renstra_kegiatan.opd_program_n = tb_renstra_program.opd_program_n', 'left')
-							->join('tb_renstra_sasaran', 'tb_renstra_program.opd_id = tb_renstra_sasaran.opd_id AND	tb_renstra_program.opd_sasaran_n = tb_renstra_sasaran.opd_sasaran', 'left')
+							->join('tb_renstra_kegiatan', 'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_n = tb_renstra_kegiatan.opd_kegiatan_n AND tb_ropk_organisasi_rkpd_kegiatan_sub.opd_id = tb_renstra_kegiatan.opd_id AND tb_ropk_organisasi_rkpd_kegiatan_sub.perubahan = tb_renstra_kegiatan.perubahan',	'left')
+							->join('tb_renstra_program', 'tb_renstra_kegiatan.opd_id = tb_renstra_program.opd_id AND tb_renstra_kegiatan.opd_program_n = tb_renstra_program.opd_program_n AND tb_renstra_kegiatan.perubahan = tb_renstra_program.perubahan', 'left')
+							->join('tb_renstra_sasaran', 'tb_renstra_program.opd_id = tb_renstra_sasaran.opd_id AND tb_renstra_program.opd_sasaran_n = tb_renstra_sasaran.opd_sasaran AND tb_renstra_program.perubahan = tb_renstra_sasaran.perubahan', 'left')
 							->join('tb_rpjmd_sasaran', 'tb_renstra_sasaran.rpjmd_sasaran_n = tb_rpjmd_sasaran.sasaran', 'left')
 							->join('tb_rpjmd_tujuan', 'tb_rpjmd_sasaran.tujuan_n = tb_rpjmd_tujuan.tujuan', 'left')
 							->join('tb_misi', 'tb_rpjmd_tujuan.misi_n = tb_misi.misi', 'left')

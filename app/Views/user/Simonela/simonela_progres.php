@@ -64,7 +64,7 @@
 				<th class="text-center">Fisik</th>
 			</tr>
 		</thead>
-		<?php $keuangan = $db->table('tb_ropk_keuangan')->getWhere(['tb_ropk_keuangan.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'], 'tb_ropk_keuangan.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'tb_ropk_keuangan.ropk_tahap' => 'Persiapan', 'tb_ropk_keuangan.opd_id' => user()->opd_id, 'tb_ropk_keuangan.tahun' => $_SESSION['tahun'], 'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']])->getResultArray();
+		<?php $keuangan = $db->table('tb_ropk_keuangan')->getWhere(['tb_ropk_keuangan.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'], 'tb_ropk_keuangan.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'tb_ropk_keuangan.opd_id' => user()->opd_id, 'tb_ropk_keuangan.tahun' => $_SESSION['tahun'], 'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']])->getResultArray();
 		foreach ($keuangan as $ros) {
 			isset($ros['ropk_bobot_acuan']) ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0'];
 			isset($ros['b1']) ? $keu1[] = ($ros['b1']) : $keu1[] = ['0'];
@@ -94,7 +94,7 @@
 		$bb12 = (!empty($keu1) ? array_sum($keu1) : '0') + (!empty($keu2) ? array_sum($keu2) : '0') + (!empty($keu3) ? array_sum($keu3) : '0') + (!empty($keu4) ? array_sum($keu4) : '0') + (!empty($keu5) ? array_sum($keu5) : '0') + (!empty($keu6) ? array_sum($keu6) : '0') + (!empty($keu7) ? array_sum($keu7) : '0') + (!empty($keu8) ? array_sum($keu8) : '0') + (!empty($keu9) ? array_sum($keu9) : '0') + (!empty($keu10) ? array_sum($keu10) : '0') + (!empty($keu11) ? array_sum($keu11) : '0') + (!empty($keu1) ? array_sum($keu12) : '0');
 		?>
 
-		<?php $fisik = $db->table('tb_ropk_fisik')->getWhere(['tb_ropk_fisik.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'], 'tb_ropk_fisik.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'tb_ropk_fisik.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'tb_ropk_fisik.ropk_tahap' => 'Persiapan', 'tb_ropk_fisik.opd_id' => user()->opd_id,	'tb_ropk_fisik.tahun' => $_SESSION['tahun'], 'tb_ropk_fisik.perubahan' => $_SESSION['perubahan']])->getResultArray();
+		<?php $fisik = $db->table('tb_ropk_fisik')->getWhere(['tb_ropk_fisik.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'], 'tb_ropk_fisik.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'tb_ropk_fisik.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'tb_ropk_fisik.opd_id' => user()->opd_id,	'tb_ropk_fisik.tahun' => $_SESSION['tahun'], 'tb_ropk_fisik.perubahan' => $_SESSION['perubahan']])->getResultArray();
 		foreach ($fisik as $ros) {
 			isset($ros['ropk_bobot_acuan']) ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0'];
 			isset($ros['b1']) ? $fis1[] = ($ros['b1']) : $fis1[] = ['0'];
