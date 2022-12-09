@@ -160,9 +160,9 @@ class Opd_kegiatan_sub extends BaseController
 				->setCellValue('C' . $column, $row['opd_indikator_kegiatan_sub'])
 				->setCellValue('D' . $column, $row['satuan'])
 				->setCellValue('E' . $column, $row['t_' . $tahun])
-				->setCellValue('F' . $column, number_format($row['rp_' . $tahun], 0, ',', '.'))
+				->setCellValue('F' . $column, $row['rp_' . $tahun])
 				->setCellValue('G' . $column, $row['t_' . $tahun + 1])
-				->setCellValue('H' . $column, number_format($row['rp_' . $tahun + 1], 0, ',', '.'));
+				->setCellValue('H' . $column, $row['rp_' . $tahun + 1]);
 
 			$column++;
 		}
@@ -197,13 +197,13 @@ class Opd_kegiatan_sub extends BaseController
 			$simpandata = [
 				'rkpd_kegiatan_n' => $row[0],
 				'rkpd_kegiatan_sub_n' => $row[1],
-				'rkpd_indikator_kegiatan_sub' => $row[2],
+				'rkpd_indikator_kegiatan_sub' => preg_replace("/\r|\n/", " ", $row[2]),
 				'satuan' => $row[3],
 
 				't_tahun' => $row[4],
-				'rp_tahun' => str_replace([' ', '  ', '-', ','], ['', '', '0', '.'], $row[5]),
+				'rp_tahun' => str_replace([' ', '  ', '-'], ['', '', '0'], $row[5]),
 				't_tahun+n' => $row[6],
-				'rp_tahun+n' => str_replace([' ', '  ', '-', ','], ['', '', '0', '.'], $row[7]),
+				'rp_tahun+n' => str_replace([' ', '  ', '-'], ['', '', '0'], $row[7]),
 				'lokasi' => $row[8],
 				'sumber_dana' => $row[9],
 
@@ -254,9 +254,9 @@ class Opd_kegiatan_sub extends BaseController
 				->setCellValue('D' . $column, $row['rkpd_indikator_kegiatan_sub'])
 				->setCellValue('E' . $column, $row['satuan'])
 				->setCellValue('F' . $column, $row['t_tahun'])
-				->setCellValue('G' . $column, number_format($row['rp_tahun'], 0, ',', '.'))
+				->setCellValue('G' . $column,$row['rp_tahun'])
 				->setCellValue('H' . $column, $row['t_tahun+n'])
-				->setCellValue('I' . $column, number_format($row['rp_tahun+n'], 0, ',', '.'))
+				->setCellValue('I' . $column,$row['rp_tahun+n'])
 				->setCellValue('J' . $column, $row['lokasi'])
 				->setCellValue('K' . $column, $row['sumber_dana']);
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column)->getFill()
@@ -296,7 +296,7 @@ class Opd_kegiatan_sub extends BaseController
 			$simpandata = [
 				'rkpd_kegiatan_n' => $row[1],
 				'rkpd_kegiatan_sub_n' => $row[2],
-				'rkpd_indikator_kegiatan_sub' => $row[3],
+				'rkpd_indikator_kegiatan_sub' =>  preg_replace("/\r|\n/", " ", $row[3]),
 				'satuan' => $row[4],
 				't_tahun' => $row[5],
 				'rp_tahun' => str_replace($yang_diubah, $menjadi, $row[6]),

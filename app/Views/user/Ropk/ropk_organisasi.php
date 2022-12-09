@@ -44,7 +44,7 @@
 				</div><br>
 				<div style="display: inline-flex;">
 					<li></li>
-					<div>Rp. <?= number_format($DT['rp_tahun'], 2, ',', '.'); ?></div>
+					<div>Rp. <?= (float) $DT['rp_tahun'] == $DT['rp_tahun'] ? number_format($DT['rp_tahun'], 2, ',', '.') : "ERROR"; ?></div>
 				</div><br>
 			</td>
 		</tr>
@@ -133,19 +133,19 @@
 							<td class="text-wrap align-top"> <?= $ros['ropk_tahap_aktivitas']; ?> </td>
 							<!--<td class="align-top text-right"></td>-->
 							<td class="text-wrap align-top"><?= isset($ros['ropk_sasaran']) ? $ros['ropk_sasaran'] . ': ' . $ros['ropk_sasaran_target'] . ' ' . $ros['ropk_sasaran_satuan'] : ''; ?></td>
-							<td class="text-center"><?= isset($ros['ropk_bobot_acuan']) ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b1']) ? $num1[] = ($ros['b1']) : $num1[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b2']) ? $num2[] = ($ros['b2']) : $num2[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b3']) ? $num3[] = ($ros['b3']) : $num3[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b4']) ? $num4[] = ($ros['b4']) : $num4[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b5']) ? $num5[] = ($ros['b5']) : $num5[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b6']) ? $num6[] = ($ros['b6']) : $num6[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b7']) ? $num7[] = ($ros['b7']) : $num7[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b8']) ? $num8[] = ($ros['b8']) : $num8[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b9']) ? $num9[] = ($ros['b9']) : $num9[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b10']) ? $num10[] = ($ros['b10']) : $num10[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b11']) ? $num11[] = ($ros['b11']) : $num11[] = ['0']; ?></td>
-							<td class="text-center"><?= isset($ros['b12']) ? $num12[] = ($ros['b12']) : $num12[] = ['0']; ?></td>
+							<td class="text-center"><?php isset($ros['ropk_bobot_acuan']) ? ((float) $ros['ropk_bobot_acuan'] == $ros['ropk_bobot_acuan'] ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0']) : $acu[] = ['0']; ?> <?= (float) $ros['ropk_bobot_acuan'] != $ros['ropk_bobot_acuan'] ? "ERROR" : number_format($ros['ropk_bobot_acuan'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['b1']) ? ((float) $ros['b1'] == $ros['b1'] ? $num1[] = ($ros['b1']) : $num1[] = ['0']) : $num1[] = ['0']; ?><?= (float) $ros['b1'] == $ros['b1'] ? number_format($ros['b1'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b2']) ? ((float) $ros['b2'] == $ros['b2'] ? $num2[] = ($ros['b2']) : $num2[] = ['0']) : $num2[] = ['0']; ?><?= (float) $ros['b2'] == $ros['b2'] ? number_format($ros['b2'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b3']) ? ((float) $ros['b3'] == $ros['b3'] ? $num3[] = ($ros['b3']) : $num3[] = ['0']) : $num3[] = ['0']; ?><?= (float) $ros['b3'] == $ros['b3'] ? number_format($ros['b3'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b4']) ? ((float) $ros['b4'] == $ros['b4'] ? $num4[] = ($ros['b4']) : $num4[] = ['0']) : $num4[] = ['0']; ?><?= (float) $ros['b4'] == $ros['b4'] ? number_format($ros['b4'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b5']) ? ((float) $ros['b5'] == $ros['b5'] ? $num5[] = ($ros['b5']) : $num5[] = ['0']) : $num5[] = ['0']; ?><?= (float) $ros['b5'] == $ros['b5'] ? number_format($ros['b5'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b6']) ? ((float) $ros['b6'] == $ros['b6'] ? $num6[] = ($ros['b6']) : $num6[] = ['0']) : $num6[] = ['0']; ?><?= (float) $ros['b6'] == $ros['b6'] ? number_format($ros['b6'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b7']) ? ((float) $ros['b7'] == $ros['b7'] ? $num7[] = ($ros['b7']) : $num7[] = ['0']) : $num7[] = ['0']; ?><?= (float) $ros['b7'] == $ros['b7'] ? number_format($ros['b7'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b8']) ? ((float) $ros['b8'] == $ros['b8'] ? $num8[] = ($ros['b8']) : $num8[] = ['0']) : $num8[] = ['0']; ?><?= (float) $ros['b8'] == $ros['b8'] ? number_format($ros['b8'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b9']) ? ((float) $ros['b9'] == $ros['b9'] ? $num9[] = ($ros['b9']) : $num9[] = ['0']) : $num9[] = ['0']; ?><?= (float) $ros['b9'] == $ros['b9'] ? number_format($ros['b9'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b10']) ? ((float) $ros['b10'] == $ros['b10'] ? $num10[] = ($ros['b10']) : $num10[] = ['0']) : $num10[] = ['0']; ?><?= (float) $ros['b10'] == $ros['b10'] ? number_format($ros['b10'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b11']) ? ((float) $ros['b11'] == $ros['b11'] ? $num11[] = ($ros['b11']) : $num11[] = ['0']) : $num11[] = ['0']; ?><?= (float) $ros['b11'] == $ros['b11'] ? number_format($ros['b11'], 0, ',', '.') : "ERROR"; ?></td>
+							<td class="text-center"><?php isset($ros['b12']) ? ((float) $ros['b12'] == $ros['b12'] ? $num12[] = ($ros['b12']) : $num12[] = ['0']) : $num12[] = ['0']; ?><?= (float) $ros['b12'] == $ros['b12'] ? number_format($ros['b12'], 0, ',', '.') : "ERROR"; ?></td>
 							<td style="text-align: center;">
 								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_organisasi/organisasi_edit/' . $ros['id_ropk_organisasi'] . '/' . $DT['id_ropk_organisasi_rkpd_kegiatan_sub']; ?>">
 									<i class="nav-icon fas fa-pen-alt"></i>
@@ -205,7 +205,15 @@
 					<td class="text-right"><?= number_format($bb9, 2, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb10, 2, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb11, 2, ',', '.'); ?></td>
-					<td class="text-right" style="<?= $bb12 < '100' ? 'background: #ffc107;' : ($bb12 == '100' ? 'background: #20c997;' : 'background: #e74c3c;'); ?>">
+					<td class="text-right" style="
+					<?php
+					if ($bb12 <= '100') {
+						echo 'background: #ffc107;';
+					} elseif ($bb12 == '100') {
+						echo 'background: #20c997;';
+					} elseif ($bb12 >= '100') {
+						echo 'background: #e74c3c;';
+					}; ?>">
 						<?= number_format($bb12, 2, ',', '.'); ?>
 					</td>
 					<td></td>

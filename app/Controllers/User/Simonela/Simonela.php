@@ -107,6 +107,31 @@ class Simonela extends BaseController
 	}
 	/*
 	 * ---------------------------------------------------
+	 * Progres Perbulan
+	 * ---------------------------------------------------
+	 */
+	public function progres_bulan($id, $b = '', $nm = '')
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela',
+				'title' => 'User | Si-Monela',
+				// 'lok' => 'Si-Monela -> <a onclick="history.back(-1)" href="#">Progres</a> -> <b>Progres ' . $nm . '</b>',
+				'lok' => 'Si-Monela -> <a href="/user/simonela/simonela/progres/' . $id . '/' . $b . '/' . $nm . '?keu=' . $_GET['keu'] . '&fis=' . $_GET['fis'] . '">Progres</a> -> <b>Progres ' . $nm . '</b>',
+				'DT' => $this->sub_kegiatan->find($id),
+				'id_ropk_keuangan' => $id,
+				'b' => $b,
+				'nm' => $nm,
+				'db' => \Config\Database::connect(),
+			];
+			echo view('user/Simonela/simonela_progres_bulan', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
 	 * Tambah Progres berdasarkan sub kegiatan
 	 * ---------------------------------------------------
 	 */
@@ -117,7 +142,7 @@ class Simonela extends BaseController
 				'gr' => 'simonela',
 				'mn' => 'simonela',
 				'title' => 'User | Si-Monela',
-				'lok' => 'Si-Monela -> <a onclick="history.back(-1)" href="#">Progres</a> -> <b>Tambah Progres</b>',
+				'lok' => 'Si-Monela -> Progres -> <a href="/user/simonela/simonela/progres_bulan/' . $id . '/' . $b . '/' . $nm . '?keu=' . $_GET['keu'] . '&fis=' . $_GET['fis'] . '">Progres ' . $nm . '</a> -> <b>Tambah Progres</b>',
 				'DT' => $this->sub_kegiatan->find($id),
 				'b' => $b,
 				'nm' => $nm,
@@ -154,7 +179,7 @@ class Simonela extends BaseController
 			]);
 
 			session()->setFlashdata('pesan', 'Data berhasil di simpan.');
-			return redirect()->to(base_url() . '/user/simonela/simonela/progres/' . $this->request->getVar('id'));
+			return redirect()->to(base_url() . '/user/simonela/simonela/progres_bulan/' . $this->request->getVar('id') . '/' . $this->request->getVar('bulan') . '/' . $this->request->getVar('nm') . '?keu=' . $this->request->getVar('keu1') . '&fis=' . $this->request->getVar('fis1'));
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		endif;
@@ -171,7 +196,7 @@ class Simonela extends BaseController
 				'gr' => 'simonela',
 				'mn' => 'simonela',
 				'title' => 'User | Si-Monela',
-				'lok' => 'Si-Monela -> <a onclick="history.back(-1)" href="#">Progres</a> -> <b>Ubah Progres</b>',
+				'lok' => 'Si-Monela -> Progres -> <a href="/user/simonela/simonela/progres_bulan/' . $id . '/' . $b . '/' . $nm . '?keu=' . $_GET['keu'] . '&fis=' . $_GET['fis'] . '">Progres ' . $nm . '</a> -> <b>Ubah Progres</b>',
 				'DT' => $this->sub_kegiatan->find($id),
 				'simonela' => $this->simonela->find($p),
 				'b' => $b,
@@ -210,7 +235,27 @@ class Simonela extends BaseController
 			]);
 
 			session()->setFlashdata('pesan', 'Data berhasil di simpan.');
-			return redirect()->to(base_url() . '/user/simonela/simonela/progres/' . $this->request->getVar('id'));
+			return redirect()->to(base_url() . '/user/simonela/simonela/progres_bulan/' . $this->request->getVar('id') . '/' . $this->request->getVar('bulan') . '/' . $this->request->getVar('nm') . '?keu=' . $this->request->getVar('keu1') . '&fis=' . $this->request->getVar('fis1'));
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
+	 * Hapus Progres
+	 * ---------------------------------------------------
+	 */
+	public function progres_hapus($id)
+	{
+		if (has_permission('User')) :
+			try {
+				$this->simonela->delete($id);
+			} catch (\Exception $e) {
+				session()->setFlashdata('error', 'Data Gagal di hapus.');
+				return redirect()->back();
+			}
+			session()->setFlashdata('pesan', 'Data berhasil di hapus.');
+			return redirect()->back();
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		endif;

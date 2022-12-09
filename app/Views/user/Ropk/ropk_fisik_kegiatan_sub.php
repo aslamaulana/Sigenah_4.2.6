@@ -55,7 +55,15 @@
 						<td class="align-top"><?= $ros['id_sub_kegiatan']; ?></td>
 						<td class="text-wrap align-top"><i class="glyphicon glyphicon-plus nav-icon fas fa-plus"></i> <?= $ros['rkpd_kegiatan_sub_n']; ?> </td>
 						<td class="text-right align-top">
-							<?php $pagu = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')->selectsum('rp_tahun')->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n' => $rol['rkpd_kegiatan_n'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n' => $ros['rkpd_kegiatan_sub_n'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id, 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getRowArray(); ?>
+							<?php $pagu = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
+							->selectsum('rp_tahun')
+							->getWhere([
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n' => $rol['rkpd_kegiatan_n'],
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n' => $ros['rkpd_kegiatan_sub_n'],
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id,
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun'],
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan']
+								])->getRowArray(); ?>
 							<?= number_format($pagu['rp_tahun'], 2, ',', '.'); ?>
 						</td>
 						<td class="align-top text-wrap"><?= $ros['lokasi']; ?></td>

@@ -51,7 +51,7 @@ class Ropk_keuangan extends BaseController
 				'mn' => 'ropk_keuangan',
 				'title' => 'User | Cantiku',
 				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Grafik</b>',
-				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s']])->findAll(),
+				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' =>$_SESSION['perubahan']])->findAll(),
 				'db' => \Config\Database::connect(),
 			];
 			// dd($data);
@@ -84,7 +84,7 @@ class Ropk_keuangan extends BaseController
 			$this->ropk_keuangan->save([
 				'rkpd_kegiatan' => $this->request->getVar('kegiatan'),
 				'rkpd_kegiatan_sub' => $this->request->getVar('kegiatan_sub'),
-				// 'ropk_tahap' => $this->request->getVar('tahap'),
+				//'ropk_tahap' => $this->request->getVar('tahap'),
 				'rkpd_indikator_kegiatan_sub' => $this->request->getVar('indikator_kegiatan_sub'),
 				'ropk_group' => $this->request->getVar('group'),
 				'ropk_tahap_aktivitas' => $this->request->getVar('aktifitas'),

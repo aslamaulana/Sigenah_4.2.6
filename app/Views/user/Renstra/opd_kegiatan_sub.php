@@ -127,17 +127,17 @@
 					<td>[<?= $rom['id_sub_kegiatan']; ?>]</td>
 					<td class="text-wrap align-top"><?= '<a href="/user/renstra/opd_kegiatan_sub/opd_kegiatan_sub_indik_add?p=' . $rom['opd_kegiatan_sub_n'] . '&a=' . $rom['opd_kegiatan_n'] . '" title="Tambah Indikator Sub Kegiatan">' . $rom['opd_kegiatan_sub_n'] . '</a>'; ?></td>
 					<td class="align-top text-center"><?= $rom['t_2021'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-right"><?= number_format($rom['rp_2021'], 0, '.', ','); ?></td>
+					<td class="align-top text-right"><?= (float) $rom['rp_2021'] == $rom['rp_2021'] ? number_format($rom['rp_2021'], 0, ',', '.') : "ERROR"; ?></td>
 					<td class="align-top text-center"><?= $rom['t_2022'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-right"><?= number_format($rom['rp_2022'], 0, '.', ','); ?></td>
+					<td class="align-top text-right"><?= (float) $rom['rp_2022'] == $rom['rp_2022'] ? number_format($rom['rp_2022'], 0, ',', '.') : "ERROR"; ?></td>
 					<td class="align-top text-center"><?= $rom['t_2023'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-right"><?= number_format($rom['rp_2023'], 0, '.', ','); ?></td>
+					<td class="align-top text-right"><?= (float) $rom['rp_2023'] == $rom['rp_2023'] ? number_format($rom['rp_2023'], 0, ',', '.') : "ERROR"; ?></td>
 					<td class="align-top text-center"><?= $rom['t_2024'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-right"><?= number_format($rom['rp_2024'], 0, '.', ','); ?></td>
+					<td class="align-top text-right"><?= (float) $rom['rp_2024'] == $rom['rp_2024'] ? number_format($rom['rp_2024'], 0, ',', '.') : "ERROR"; ?></td>
 					<td class="align-top text-center"><?= $rom['t_2025'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-right"><?= number_format($rom['rp_2025'], 0, '.', ','); ?></td>
+					<td class="align-top text-right"><?= (float) $rom['rp_2025'] == $rom['rp_2025'] ? number_format($rom['rp_2025'], 0, ',', '.') : "ERROR"; ?></td>
 					<td class="align-top text-center"><?= $rom['t_2026'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-right"><?= number_format($rom['rp_2026'], 0, '.', ','); ?></td>
+					<td class="align-top text-right"><?= (float) $rom['rp_2026'] == $rom['rp_2026'] ? number_format($rom['rp_2026'], 0, ',', '.') : "ERROR"; ?></td>
 					<td style="text-align: center;">
 						<?php if (menu('renstra')->kunci == 'tidak') { ?>
 							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra/opd_kegiatan_sub/opd_kegiatan_sub_indik_edit/' . $rom['id_opd_kegiatan_sub']; ?>">

@@ -51,7 +51,7 @@ class Ropk_fisik extends BaseController
 				'mn' => 'ropk_fisik',
 				'title' => 'User | Cantika',
 				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantika</a> -> <b>Grafik</b>',
-				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s']])->findAll(),
+				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' =>$_SESSION['perubahan']])->findAll(),
 				'db' => \Config\Database::connect(),
 			];
 			// dd($data);

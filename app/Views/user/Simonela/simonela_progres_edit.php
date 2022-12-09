@@ -59,6 +59,9 @@
 				<input type="hidden" name="id_progres" value="<?= $simonela['id_simonela_progres']; ?>">
 				<input type="hidden" name="id" value="<?= $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
 				<input type="hidden" name="bulan" value="<?= $b; ?>">
+				<input type="hidden" name="nm" value="<?= $nm; ?>">
+				<input type="hidden" name="keu1" value="<?= $_GET['keu']; ?>">
+				<input type="hidden" name="fis1" value="<?= $_GET['fis']; ?>">
 				<input type="hidden" name="kegiatan" value="<?= $DT['rkpd_kegiatan_n']; ?>">
 				<input type="hidden" name="kegiatan_sub" value="<?= $DT['rkpd_kegiatan_sub_n']; ?>">
 				<input type="hidden" name="indikator_kegiatan_sub" value="<?= $DT['rkpd_indikator_kegiatan_sub']; ?>">

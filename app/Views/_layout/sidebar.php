@@ -143,8 +143,8 @@
 					<!-- =============================================================== -->
 					<li class="nav-header">=====================</li>
 					<!-- =============================================================== -->
-					<li class="nav-item  <?= $gr == 'A_Renstra' || $gr == 'A_rkpd' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'A_Renstra' || $gr == 'A_rkpd' ? 'active' : ''; ?>" title="Data Perencanaan">
+					<li class="nav-item  <?= $gr == 'A_Renstra' || $gr == 'A_rkpd' || $gr == 'A_dokumen' ? 'menu-open' : ''; ?>">
+						<a href="#" class="nav-link <?= $gr == 'A_Renstra' || $gr == 'A_rkpd' || $gr == 'A_dokumen' ? 'active' : ''; ?>" title="Data Perencanaan">
 							<i class="nav-icon fas fa-circle"></i>
 							<p>
 								DARA
@@ -210,6 +210,12 @@
 										</a>
 									</li>
 								</ul>
+							</li>
+							<li class="nav-item">
+								<a href="<?= base_url('/admin/renstra/opd_dokumen'); ?>" class="nav-link <?= $mn == 'A_dokumen' ? 'active' : ''; ?>">
+									<i class="nav-icon fas fa-folder-open"></i>
+									<p><small></small> Dokumen</p>
+								</a>
 							</li>
 						</ul>
 					</li>
@@ -341,7 +347,13 @@
 									<li class="nav-item">
 										<a href="<?= base_url('/user/rkpd/opd_kegiatan_sub_tag'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan_sub_tag' ? 'active' : ''; ?>">
 											<i class="far nav-icon"></i>
-											<p><small>3. </small> Pelabelan</p>
+											<p><small>4. </small> Pelabelan</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="<?= base_url('/user/rkpd/opd_error_fix'); ?>" class="nav-link <?= $mn == 'opd_renstra_error_fix' ? 'active' : ''; ?>">
+											<i class="far nav-icon"></i>
+											<p><small>3X. </small> Error Fix</p>
 										</a>
 									</li>
 								</ul>
@@ -385,7 +397,7 @@
 							<li class="nav-item">
 								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/fisik'); ?>" class="nav-link <?= $mn == 'ropk_fisik' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerjas">
 									<i class="far nav-icon"></i>
-									<p><small>2. </small> Cantika</p>
+									<p><small>3. </small> Cantika</p>
 								</a>
 							</li>
 						</ul>

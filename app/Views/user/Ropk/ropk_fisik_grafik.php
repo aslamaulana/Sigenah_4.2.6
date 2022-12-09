@@ -117,7 +117,8 @@
 	}
 	?>
 
-	<?php foreach ($rkpd_kegiatan as $rol) {
+	<?php 
+	foreach ($rkpd_kegiatan as $rol) {
 		$query = $db->table('tb_ropk_fisik')->getWhere([
 			'tb_ropk_fisik.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
 			'tb_ropk_fisik.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
@@ -155,7 +156,7 @@
 	$fbb9 = (!empty($nu1) ? array_sum($nu1) : '0') + (!empty($nu2) ? array_sum($nu2) : '0') + (!empty($nu3) ? array_sum($nu3) : '0') + (!empty($nu4) ? array_sum($nu4) : '0') + (!empty($nu5) ? array_sum($nu5) : '0') + (!empty($nu6) ? array_sum($nu6) : '0') + (!empty($nu7) ? array_sum($nu7) : '0') + (!empty($nu8) ? array_sum($nu8) : '0') + (!empty($nu9) ? array_sum($nu9) : '0');
 	$fbb10 = (!empty($nu1) ? array_sum($nu1) : '0') + (!empty($nu2) ? array_sum($nu2) : '0') + (!empty($nu3) ? array_sum($nu3) : '0') + (!empty($nu4) ? array_sum($nu4) : '0') + (!empty($nu5) ? array_sum($nu5) : '0') + (!empty($nu6) ? array_sum($nu6) : '0') + (!empty($nu7) ? array_sum($nu7) : '0') + (!empty($nu8) ? array_sum($nu8) : '0') + (!empty($nu9) ? array_sum($nu9) : '0') + (!empty($nu10) ? array_sum($nu10) : '0');
 	$fbb11 = (!empty($nu1) ? array_sum($nu1) : '0') + (!empty($nu2) ? array_sum($nu2) : '0') + (!empty($nu3) ? array_sum($nu3) : '0') + (!empty($nu4) ? array_sum($nu4) : '0') + (!empty($nu5) ? array_sum($nu5) : '0') + (!empty($nu6) ? array_sum($nu6) : '0') + (!empty($nu7) ? array_sum($nu7) : '0') + (!empty($nu8) ? array_sum($nu8) : '0') + (!empty($nu9) ? array_sum($nu9) : '0') + (!empty($nu10) ? array_sum($nu10) : '0') + (!empty($nu11) ? array_sum($nu11) : '0');
-	$fbb12 = (!empty($nu1) ? array_sum($nu1) : '0') + (!empty($nu2) ? array_sum($nu2) : '0') + (!empty($nu3) ? array_sum($nu3) : '0') + (!empty($nu4) ? array_sum($nu4) : '0') + (!empty($nu5) ? array_sum($nu5) : '0') + (!empty($nu6) ? array_sum($nu6) : '0') + (!empty($nu7) ? array_sum($nu7) : '0') + (!empty($nu8) ? array_sum($nu8) : '0') + (!empty($nu9) ? array_sum($nu9) : '0') + (!empty($nu10) ? array_sum($nu10) : '0') + (!empty($nu11) ? array_sum($nu11) : '0') + (!empty($nu1) ? array_sum($nu12) : '0');
+	$fbb12 = (!empty($nu1) ? array_sum($nu1) : '0') + (!empty($nu2) ? array_sum($nu2) : '0') + (!empty($nu3) ? array_sum($nu3) : '0') + (!empty($nu4) ? array_sum($nu4) : '0') + (!empty($nu5) ? array_sum($nu5) : '0') + (!empty($nu6) ? array_sum($nu6) : '0') + (!empty($nu7) ? array_sum($nu7) : '0') + (!empty($nu8) ? array_sum($nu8) : '0') + (!empty($nu9) ? array_sum($nu9) : '0') + (!empty($nu10) ? array_sum($nu10) : '0') + (!empty($nu11) ? array_sum($nu11) : '0') + (!empty($nu12) ? array_sum($nu12) : '0');
 	?>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
@@ -168,18 +169,18 @@
 			var data = new google.visualization.arrayToDataTable(
 				[
 					["BULAN", "ROPK Fisik", "ROPK Keuangan"],
-					['Januari', <?= $fbb1 . ',' . $s2; ?>],
-					['Februari', <?= $fbb2 . ',' . $s2; ?>],
-					['Maret', <?= $fbb3 . ',' . $s3; ?>],
-					['April', <?= $fbb4 . ',' . $s4; ?>],
-					['Mei', <?= $fbb5 . ',' . $s5; ?>],
-					['Juni', <?= $fbb6 . ',' . $s6; ?>],
-					['Juli', <?= $fbb7 . ',' . $s7; ?>],
-					['Agustus', <?= $fbb8 . ',' . $s8; ?>],
-					['September', <?= $fbb9 . ',' . $s9; ?>],
-					['Oktober', <?= $fbb10 . ',' . $s10; ?>],
-					['November', <?= $fbb11 . ',' . $s11; ?>],
-					['Desember', <?= $fbb12 . ',' . $s12; ?>]
+					['Januari', <?= round($fbb1) . ',' . $s1; ?>],
+					['Februari', <?= round($fbb2) . ',' . $s2; ?>],
+					['Maret', <?= round($fbb3) . ',' . $s3; ?>],
+					['April', <?= round($fbb4) . ',' . $s4; ?>],
+					['Mei', <?= round($fbb5) . ',' . $s5; ?>],
+					['Juni', <?= round($fbb6) . ',' . $s6; ?>],
+					['Juli', <?= round($fbb7) . ',' . $s7; ?>],
+					['Agustus', <?= round($fbb8) . ',' . $s8; ?>],
+					['September', <?= round($fbb9) . ',' . $s9; ?>],
+					['Oktober', <?= round($fbb10) . ',' . $s10; ?>],
+					['November', <?= round($fbb11) . ',' . $s11; ?>],
+					['Desember', <?= round($fbb12) . ',' . $s12; ?>]
 				]);
 			var view = new google.visualization.DataView(data);
 			view.setColumns(

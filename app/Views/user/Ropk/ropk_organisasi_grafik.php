@@ -121,7 +121,7 @@
 			var data = new google.visualization.arrayToDataTable(
 				[
 					["BULAN", "ROPK Organisasi", "ROPK Keuangan"],
-					['Januari', <?= $fbb1 . ',' . $s2; ?>],
+					['Januari', <?= $fbb1 . ',' . $s1; ?>],
 					['Februari', <?= $fbb2 . ',' . $s2; ?>],
 					['Maret', <?= $fbb3 . ',' . $s3; ?>],
 					['April', <?= $fbb4 . ',' . $s4; ?>],

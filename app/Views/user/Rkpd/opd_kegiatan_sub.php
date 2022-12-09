@@ -75,9 +75,9 @@
 					<td><?= $rom['id_sub_kegiatan']; ?></td>
 					<td><?= $rom['rkpd_kegiatan_sub_n']; ?> </td>
 					<td class="align-top text-wrap text-center"><?= $rom['t_tahun'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-wrap text-right"><?= number_format($rom['rp_tahun'], 0, ',', '.'); ?></td>
+					<td class="align-top text-wrap text-right"><?= (float) $rom['rp_tahun'] == $rom['rp_tahun'] ? number_format($rom['rp_tahun'], 0, ',', '.') : "ERROR"; ?> </td>
 					<td class="align-top text-wrap text-center"><?= $rom['t_tahun+n'] . ' ' . $rom['satuan']; ?></td>
-					<td class="align-top text-wrap text-right"><?= number_format($rom['rp_tahun+n'], 0, ',', '.'); ?></td>
+					<td class="align-top text-wrap text-right"><?= (float) $rom['rp_tahun+n'] == $rom['rp_tahun+n'] ? number_format($rom['rp_tahun+n'], 0, ',', '.') : "ERROR"; ?></td>
 					<td class="align-top text-wrap text-center"><?= $rom['lokasi']; ?></td>
 					<td class="align-top text-wrap text-center"><?= $rom['sumber_dana']; ?></td>
 					<td style="text-align: center;">
