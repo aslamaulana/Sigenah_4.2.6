@@ -105,16 +105,24 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<label>Rencana Tindak Lanjut </label>
+							<input type="text" name="rencana_tindak_lanjut" value="<?= $simonela['rencana_tindak_lanjut']; ?>" class="form-control" maxlength="500">
+						</div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-md">
 						<div class="form-group">
-							<label>Realisasi Keuangan Hingga Bulan <?= $nm; ?> (Rp) </label>
-							<input type="number" name="keu" value="<?= $simonela['realisasi_keu']; ?>" class="form-control" maxlength="20">
+							<label>Realisasi Keuangan Bulan <?= $nm; ?> (Rp) </label>
+							<input ype="number" step="any" name="keu" value="<?= $simonela['realisasi_keu']; ?>" class="form-control" maxlength="20">
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="form-group">
-							<label>Realisasi Fisik Hingga Bulan <?= $nm; ?> (%) <medium class="text-danger">*</medium></label>
-							<input type="number" name="fis" value="<?= $simonela['realisasi_fisik']; ?>" class="form-control" maxlength="20" required>
+							<label>Realisasi Fisik Bulan <?= $nm; ?> (%) <medium class="text-danger">*</medium></label>
+							<input ype="number" step="any" name="fis" value="<?= $simonela['realisasi_fisik']; ?>" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 				</div>

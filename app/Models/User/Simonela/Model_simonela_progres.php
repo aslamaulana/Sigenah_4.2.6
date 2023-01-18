@@ -18,6 +18,7 @@ class Model_simonela_progres extends Model
 		'tahap_aktifitas',
 		'faktor_pendukung',
 		'faktor_penghambat',
+		'rencana_tindak_lanjut',
 		'realisasi_keu',
 		'realisasi_fisik',
 		'opd_id',

@@ -128,7 +128,7 @@
 		function drawChart() {
 			var data = new google.visualization.arrayToDataTable(
 				[
-					["BULAN", "ROPK Keuangan"],
+					["BULAN", "Cantiku (Keuangan)"],
 					['Januari', <?= $bb1i; ?>],
 					['Februari', <?= $bb2i; ?>],
 					['Maret', <?= $bb3i; ?>],

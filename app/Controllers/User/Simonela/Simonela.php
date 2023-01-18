@@ -14,7 +14,7 @@ use Google\Service\Drive;
 
 class Simonela extends BaseController
 {
-	protected $sub_kegiatan;
+	protected $sub_kegiatan, $simonela, $simonela_dokumen;
 
 	public function __construct()
 	{
@@ -86,6 +86,70 @@ class Simonela extends BaseController
 	}
 	/*
 	 * ---------------------------------------------------
+	 * Menu sub kegiatan e-monev
+	 * kegiatan di ambil dari ropk keuangan sub kegiatan
+	 * ---------------------------------------------------
+	 */
+	public function simonela_kegiatan()
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela',
+				'title' => 'User | Si-Monela',
+				'lok' => '<b>Si-Monela</b>',
+				'program_kegiatan' => $this->sub_kegiatan->Program_simonela(), //Miroring dari sub Kegiatan keuangan
+				'db' => \Config\Database::connect(),
+			];
+			echo view('user/Simonela/simonela_kegiatan', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
+	 * Progres berdasarkan kegiatan
+	 * ---------------------------------------------------
+	 */
+	public function kegiatan_progres($id)
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela',
+				'title' => 'User | Si-Monela',
+				'lok' => '<a onclick="history.back(-1)" href="#">Si-Monela</a> -> <b>Kegiatan Progres</b>',
+				'DT' => $id,
+				'db' => \Config\Database::connect(),
+			];
+			echo view('user/Simonela/simonela_progres_kegiatan', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
+	 * Progres berdasarkan program
+	 * ---------------------------------------------------
+	 */
+	public function program_progres($id)
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela',
+				'title' => 'User | Si-Monela',
+				'lok' => '<a onclick="history.back(-1)" href="#">Si-Monela</a> -> <b>Kegiatan Progres</b>',
+				'nm_program' => $id,
+				'db' => \Config\Database::connect(),
+			];
+			echo view('user/Simonela/simonela_progres_program', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
 	 * Progres berdasarkan sub kegiatan
 	 * ---------------------------------------------------
 	 */
@@ -101,6 +165,27 @@ class Simonela extends BaseController
 				'db' => \Config\Database::connect(),
 			];
 			echo view('user/Simonela/simonela_progres', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
+	 * Progres berdasarkan sub kegiatan
+	 * ---------------------------------------------------
+	 */
+	public function progres_grafik($id)
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela',
+				'title' => 'User | Si-Monela',
+				'lok' => 'Si-Monela -> <a onclick="history.back(-1)" href="#">Progres</a> -> <b>Progres Grafik</b>',
+				'DT' => $this->sub_kegiatan->find($id),
+				'db' => \Config\Database::connect(),
+			];
+			echo view('user/Simonela/simonela_progres_grafik', $data);
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		endif;
@@ -170,6 +255,7 @@ class Simonela extends BaseController
 				'tahap_aktifitas' => $this->request->getVar('tahap_aktifitas'),
 				'faktor_pendukung' => $this->request->getVar('pendukung'),
 				'faktor_penghambat' => $this->request->getVar('penghambat'),
+				'rencana_tindak_lanjut' => $this->request->getVar('rencana_tindak_lanjut'),
 				'realisasi_keu' => $this->request->getVar('keu'),
 				'realisasi_fisik' => $this->request->getVar('fis'),
 				'opd_id' => user()->opd_id,
@@ -226,6 +312,7 @@ class Simonela extends BaseController
 				'tahap_aktifitas' => $this->request->getVar('tahap_aktifitas'),
 				'faktor_pendukung' => $this->request->getVar('pendukung'),
 				'faktor_penghambat' => $this->request->getVar('penghambat'),
+				'rencana_tindak_lanjut' => $this->request->getVar('rencana_tindak_lanjut'),
 				'realisasi_keu' => $this->request->getVar('keu'),
 				'realisasi_fisik' => $this->request->getVar('fis'),
 				'opd_id' => user()->opd_id,

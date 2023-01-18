@@ -117,7 +117,7 @@
 	}
 	?>
 
-	<?php 
+	<?php
 	foreach ($rkpd_kegiatan as $rol) {
 		$query = $db->table('tb_ropk_fisik')->getWhere([
 			'tb_ropk_fisik.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
@@ -168,19 +168,19 @@
 		function drawChart() {
 			var data = new google.visualization.arrayToDataTable(
 				[
-					["BULAN", "ROPK Fisik", "ROPK Keuangan"],
-					['Januari', <?= round($fbb1) . ',' . $s1; ?>],
-					['Februari', <?= round($fbb2) . ',' . $s2; ?>],
-					['Maret', <?= round($fbb3) . ',' . $s3; ?>],
-					['April', <?= round($fbb4) . ',' . $s4; ?>],
-					['Mei', <?= round($fbb5) . ',' . $s5; ?>],
-					['Juni', <?= round($fbb6) . ',' . $s6; ?>],
-					['Juli', <?= round($fbb7) . ',' . $s7; ?>],
-					['Agustus', <?= round($fbb8) . ',' . $s8; ?>],
-					['September', <?= round($fbb9) . ',' . $s9; ?>],
-					['Oktober', <?= round($fbb10) . ',' . $s10; ?>],
-					['November', <?= round($fbb11) . ',' . $s11; ?>],
-					['Desember', <?= round($fbb12) . ',' . $s12; ?>]
+					["BULAN", "Cantiku (Keuangan)", "Cantika (Fisik)"],
+					['Januari', <?= $s1 . ',' . round($fbb1); ?>],
+					['Februari', <?= $s2 . ',' . round($fbb2); ?>],
+					['Maret', <?= $s3 . ',' . round($fbb3); ?>],
+					['April', <?= $s4 . ',' . round($fbb4); ?>],
+					['Mei', <?= $s5 . ',' . round($fbb5); ?>],
+					['Juni', <?= $s6 . ',' . round($fbb6); ?>],
+					['Juli', <?= $s7 . ',' . round($fbb7); ?>],
+					['Agustus', <?= $s8 . ',' . round($fbb8); ?>],
+					['September', <?= $s9 . ',' . round($fbb9); ?>],
+					['Oktober', <?= $s10 . ',' . round($fbb10); ?>],
+					['November', <?= $s11 . ',' . round($fbb11); ?>],
+					['Desember', <?= $s12 . ',' . round($fbb12); ?>]
 				]);
 			var view = new google.visualization.DataView(data);
 			view.setColumns(

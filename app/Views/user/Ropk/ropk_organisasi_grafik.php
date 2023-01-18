@@ -120,19 +120,19 @@
 		function drawChart() {
 			var data = new google.visualization.arrayToDataTable(
 				[
-					["BULAN", "ROPK Organisasi", "ROPK Keuangan"],
-					['Januari', <?= $fbb1 . ',' . $s1; ?>],
-					['Februari', <?= $fbb2 . ',' . $s2; ?>],
-					['Maret', <?= $fbb3 . ',' . $s3; ?>],
-					['April', <?= $fbb4 . ',' . $s4; ?>],
-					['Mei', <?= $fbb5 . ',' . $s5; ?>],
-					['Juni', <?= $fbb6 . ',' . $s6; ?>],
-					['Juli', <?= $fbb7 . ',' . $s7; ?>],
-					['Agustus', <?= $fbb8 . ',' . $s8; ?>],
-					['September', <?= $fbb9 . ',' . $s9; ?>],
-					['Oktober', <?= $fbb10 . ',' . $s10; ?>],
-					['November', <?= $fbb11 . ',' . $s11; ?>],
-					['Desember', <?= $fbb12 . ',' . $s12; ?>]
+					["BULAN", "Cantiku (Keuangan)", "Cantik Organisasi"],
+					['Januari', <?= $s1 . ',' . $fbb1; ?>],
+					['Februari', <?= $s2 . ',' . $fbb2; ?>],
+					['Maret', <?= $s3 . ',' . $fbb3; ?>],
+					['April', <?= $s4 . ',' . $fbb4; ?>],
+					['Mei', <?= $s5 . ',' . $fbb5; ?>],
+					['Juni', <?= $s6 . ',' . $fbb6; ?>],
+					['Juli', <?= $s7 . ',' . $fbb7; ?>],
+					['Agustus', <?= $s8 . ',' . $fbb8; ?>],
+					['September', <?= $s9 . ',' . $fbb9; ?>],
+					['Oktober', <?= $s10 . ',' . $fbb10; ?>],
+					['November', <?= $s11 . ',' . $fbb11; ?>],
+					['Desember', <?= $s12 . ',' . $fbb12; ?>]
 				]);
 			var view = new google.visualization.DataView(data);
 			view.setColumns(

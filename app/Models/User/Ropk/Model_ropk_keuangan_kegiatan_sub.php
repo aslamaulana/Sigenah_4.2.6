@@ -37,6 +37,15 @@ class Model_ropk_keuangan_kegiatan_sub extends Model
 			->select('tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n')
 			->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id, 'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getResultArray();
 	}
+	public function Program_simonela()
+	{
+		return $this->db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
+			->distinct('tb_rkpd_program.rkpd_program_n')
+			->select('tb_rkpd_program.rkpd_program_n')
+			->join('tb_rkpd_kegiatan', 'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n = tb_rkpd_kegiatan.rkpd_kegiatan_n AND tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id = tb_rkpd_kegiatan.opd_id AND	tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan = tb_rkpd_kegiatan.perubahan AND tb_ropk_keuangan_rkpd_kegiatan_sub.tahun = tb_rkpd_kegiatan.tahun', 'LEFT')
+			->join('tb_rkpd_program', 'tb_rkpd_kegiatan.rkpd_program_n = tb_rkpd_program.rkpd_program_n AND tb_rkpd_kegiatan.opd_id = tb_rkpd_program.opd_id AND tb_rkpd_kegiatan.tahun = tb_rkpd_program.tahun AND tb_rkpd_kegiatan.perubahan = tb_rkpd_program.perubahan', 'LEFT')
+			->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id, 'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getResultArray();
+	}
 	public function Kegiatan_sub()
 	{
 		return $this->db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')

@@ -132,7 +132,7 @@
 							<td class="text-wrap align-top"> <?= $ros['ropk_tahap_aktivitas']; ?> </td>
 							<!--<td class="align-top text-right"></td>-->
 							<td class="text-wrap align-top"><?= isset($ros['ropk_sasaran']) ? $ros['ropk_sasaran'] . ': ' . $ros['ropk_sasaran_target'] . ' ' . $ros['ropk_sasaran_satuan'] : ''; ?></td>
-							<td class="text-center"><?php isset($ros['ropk_bobot_acuan']) ? ((float) $ros['ropk_bobot_acuan'] == $ros['ropk_bobot_acuan'] ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0']) : $acu[] = ['0']; ?> <?= (float) $ros['ropk_bobot_acuan'] != $ros['ropk_bobot_acuan'] ? "ERROR" : number_format($ros['ropk_bobot_acuan'], 0, ',', '.'); ?></td>
+							<td class="text-center"><?php isset($ros['ropk_bobot_acuan']) ? ((float) $ros['ropk_bobot_acuan'] == $ros['ropk_bobot_acuan'] ? $acu[] = ($ros['ropk_bobot_acuan']) : $acu[] = ['0']) : $acu[] = ['0']; ?> <?= (float) $ros['ropk_bobot_acuan'] != $ros['ropk_bobot_acuan'] ? "ERROR" : $ros['ropk_bobot_acuan']; ?></td>
 							<td class="text-center"><?php isset($ros['b1']) ? ((float) $ros['b1'] == $ros['b1'] ? $num1[] = ($ros['b1']) : $num1[] = ['0']) : $num1[] = ['0']; ?><?= (float) $ros['b1'] == $ros['b1'] ? $ros['b1'] : "ERROR"; ?></td>
 							<td class="text-center"><?php isset($ros['b2']) ? ((float) $ros['b2'] == $ros['b2'] ? $num2[] = ($ros['b2']) : $num2[] = ['0']) : $num2[] = ['0']; ?><?= (float) $ros['b2'] == $ros['b2'] ? $ros['b2'] : "ERROR"; ?></td>
 							<td class="text-center"><?php isset($ros['b3']) ? ((float) $ros['b3'] == $ros['b3'] ? $num3[] = ($ros['b3']) : $num3[] = ['0']) : $num3[] = ['0']; ?><?= (float) $ros['b3'] == $ros['b3'] ? $ros['b3'] : "ERROR"; ?></td>
@@ -204,7 +204,9 @@
 					<td class="text-right"><?= $bb9; ?></td>
 					<td class="text-right"><?= $bb10; ?></td>
 					<td class="text-right"><?= $bb11; ?></td>
-					<td class="text-right"><?= $bb12; ?></td>
+					<td class="text-right" style="<?= !empty($acu) ? ($bb12 < array_sum($acu) ? 'background: #ffc107;' : ($bb12 == array_sum($acu) ? 'background: #20c997;' : 'background: #e74c3c;')) : ''; ?>">
+						<?= $bb12; ?>
+					</td>
 					<td></td>
 				</tr>
 			</tbody>

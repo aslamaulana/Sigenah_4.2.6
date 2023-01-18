@@ -61,6 +61,51 @@
 				</th>
 			</tr>
 		</thead>
+		<tfoot>
+			<tr>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width: 130px; margin:auto;">Kode</div>
+				</th>
+				<th rowspan="2" class="align-middle">
+					<div style="width: 890px;">Total Pagu Anggaran Prangkat Daerah</div>
+				</th>
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+				<th colspan="2" class="text-center align-middle"><?= $_SESSION['tahun']; ?></th>
+				<th colspan="2" class="text-center align-middle"><?= $_SESSION['tahun'] + 1; ?></th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width: 120px; margin:auto;">Lokasi</div>
+				</th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width: 120px; margin:auto;">Sumber Dana</div>
+				</th>
+				<th rowspan="2" class="text-center align-middle"> Aksi </th>
+			</tr>
+			<tr>
+				<th class="text-center align-middle" colspan="2">
+					<?php
+					$pagu1 = $db->table('tb_rkpd_kegiatan_sub')->selectsum('rp_tahun')->getWhere([
+						'perubahan' => $_SESSION['perubahan'],
+						'tahun' => $_SESSION['tahun'],
+						'opd_id' => user()->opd_id
+					])->getRowArray();
+					echo isset($pagu1['rp_tahun']) ? number_format($pagu1['rp_tahun'], 0, ',', '.') : '0';
+					?>
+				</th>
+				<th class="text-center align-middle" colspan="2">
+					<?php
+					$pagu2 = $db->table('tb_rkpd_kegiatan_sub')->selectsum('rp_tahun+n')->getWhere([
+						'perubahan' => $_SESSION['perubahan'],
+						'tahun' => $_SESSION['tahun'],
+						'opd_id' => user()->opd_id
+					])->getRowArray();
+					echo isset($pagu2['rp_tahun+n']) ? number_format($pagu2['rp_tahun+n'], 0, ',', '.') : '0';
+					?>
+				</th>
+			</tr>
+		</tfoot>
 		<tbody>
 			<?php
 			$tahun = $_SESSION['tahun'];

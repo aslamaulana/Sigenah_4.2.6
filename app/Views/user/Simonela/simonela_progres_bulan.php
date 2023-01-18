@@ -63,11 +63,12 @@
 		<thead>
 			<tr>
 				<th class="text-center" width="40px">No</th>
-				<th>Tahapan pekerjaan (fisik) yang sudah dilakukan</th>
-				<th>Faktor Penghambat</th>
-				<th>Faktor Pendukung</th>
-				<th>Realisasi Keuangan Hingga Bulan <?= $nm; ?> (Rp)</th>
-				<th>Realisasi Fisik Hingga Bulan <?= $nm; ?> (%)</th>
+				<th class="text-wrap">Tahapan pekerjaan (fisik) yang sudah dilakukan</th>
+				<th class="align-middle">Faktor Penghambat</th>
+				<th class="align-middle">Faktor Pendukung</th>
+				<th class="align-middle">Rencana Tindak lanjut</th>
+				<th class="text-wrap">Realisasi Keuangan Hingga Bulan <?= $nm; ?> (Rp)</th>
+				<th class="text-wrap">Realisasi Fisik Hingga Bulan <?= $nm; ?> (%)</th>
 				<th class="text-center" width="60px">Aksi</th>
 			</tr>
 		</thead>
@@ -90,6 +91,7 @@
 					<td class="align-top"><?= $row['tahap_aktifitas']; ?></td>
 					<td class="align-top"><?= $row['faktor_penghambat']; ?></td>
 					<td class="align-top"><?= $row['faktor_pendukung']; ?></td>
+					<td class="align-top"><?= $row['rencana_tindak_lanjut']; ?></td>
 					<td class="align-top"><?= $row['realisasi_keu']; ?></td>
 					<td class="align-top"><?= $row['realisasi_fisik']; ?></td>
 					<td class="text-center align-top">
@@ -110,20 +112,26 @@
 <?= $this->section('Javascript'); ?>
 <!-- DataTables  & Plugins -->
 <script src="<?= base_url('/toping/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
-
+<script src="<?= base_url('/toping/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script>
 	$(function() {
 		bsCustomFileInput.init();
 	});
 	$(function() {
 		$("#example1").DataTable({
+			"scrollX": true,
+			"scrollY": '65vh',
+			"scrollCollapse": true,
 			"paging": false,
-			"lengthChange": false,
-			"searching": false,
-			"ordering": true,
-			"info": true,
-			"autoWidth": false,
 			"responsive": true,
+			"autoWidth": false,
+			"ordering": false,
+			"searching": false,
+			"info": false,
+			"lengthMenu": [
+				[20, 40, 60, 100, -1],
+				[20, 40, 60, 100, 'All']
+			],
 		});
 	});
 </script>

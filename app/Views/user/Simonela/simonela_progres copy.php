@@ -54,8 +54,9 @@
 	<p>&nbsp;</p>
 	<div class="row">
 		<div class="col">
-			<form action="<?= base_url('/user/simonela/simonela/progres_create'); ?>" method="POST">
+			<form action="<?= base_url('/user/simonela/simonela/progres_update'); ?>" method="POST">
 				<?= csrf_field() ?>
+				<input type="hidden" name="id_progres" value="<?= $simonela['id_simonela_progres']; ?>">
 				<input type="hidden" name="id" value="<?= $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
 				<input type="hidden" name="bulan" value="<?= $b; ?>">
 				<input type="hidden" name="nm" value="<?= $nm; ?>">
@@ -69,7 +70,7 @@
 						<div class="form-group">
 							<label>Tahapan pekerjaan (fisik) yang sudah dilakukan </label>
 							<select name="tahap_aktifitas" id="tahap_aktifitas" class="form-control select2bs4" required>
-								<option value="">Tidak Dipilih...</option>
+								<option value="<?= $simonela['tahap_aktifitas']; ?>"><?= $simonela['tahap_aktifitas']; ?></option>
 								<?php
 								$query = $db->table('tb_ropk_fisik')->getWhere([
 									'tb_ropk_fisik.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
@@ -91,7 +92,7 @@
 					<div class="col">
 						<div class="form-group">
 							<label>Faktor Penghambat </label>
-							<input type="text" name="penghambat" class="form-control" maxlength="500">
+							<input type="text" name="penghambat" value="<?= $simonela['faktor_penghambat']; ?>" class="form-control" maxlength="500">
 						</div>
 					</div>
 				</div>
@@ -99,15 +100,7 @@
 					<div class="col">
 						<div class="form-group">
 							<label>Faktor Pendukung </label>
-							<input type="text" name="pendukung" class="form-control" maxlength="500">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="form-group">
-							<label>Rencana Tindak Lanjut </label>
-							<input type="text" name="rencana_tindak_lanjut" class="form-control" maxlength="500">
+							<input type="text" name="pendukung" value="<?= $simonela['faktor_pendukung']; ?>" class="form-control" maxlength="500">
 						</div>
 					</div>
 				</div>
@@ -115,13 +108,13 @@
 					<div class="col-md">
 						<div class="form-group">
 							<label>Realisasi Keuangan Bulan <?= $nm; ?> (Rp) </label>
-							<input ype="number" step="any" name="keu" class="form-control" maxlength="20">
+							<input type="number" name="keu" value="<?= $simonela['realisasi_keu']; ?>" class="form-control" maxlength="20">
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="form-group">
 							<label>Realisasi Fisik Bulan <?= $nm; ?> (%) <medium class="text-danger">*</medium></label>
-							<input ype="number" step="any" name="fis" class="form-control" maxlength="20" required>
+							<input type="number" name="fis" value="<?= $simonela['realisasi_fisik']; ?>" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 				</div>

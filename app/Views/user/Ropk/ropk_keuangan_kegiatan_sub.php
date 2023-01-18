@@ -43,6 +43,20 @@
 					<th> Sumber Dana </th>
 					<th class="text-center">Aksi</th>
 				</tr>
+				<tr class="font-weight-bold" style="background-color: #333940; color: white;">
+					<th class="text-center" colspan="3">Total Pagu</th>
+					<th class="text-center" colspan="4">
+						<?php
+						$pagu1 = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')->selectsum('rp_tahun')
+							->getWhere([
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id,
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun'],
+								'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan']
+							])->getRowArray();
+						echo isset($pagu1['rp_tahun']) ? number_format($pagu1['rp_tahun'], 0, ',', '.') : '0';
+						?>
+					</th>
+				</tr>
 			</tfoot>
 			<tbody>
 				<?php

@@ -204,7 +204,9 @@
 					<td class="text-right"><?= number_format($bb9, 0, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb10, 0, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb11, 0, ',', '.'); ?></td>
-					<td class="text-right"><?= number_format($bb12, 0, ',', '.'); ?></td>
+					<td class="text-right" style="<?= !empty($acu) ? ($bb12 < array_sum($acu) ? 'background: #ffc107;' : ($bb12 == array_sum($acu) ? 'background: #20c997;' : 'background: #e74c3c;')) : ''; ?>">
+						<?= number_format($bb12, 0, ',', '.'); ?>
+					</td>
 					<td></td>
 				</tr>
 				<tr style="background-color:beige;">
