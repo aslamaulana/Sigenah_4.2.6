@@ -55,7 +55,7 @@
 	$bb11 = (!empty($num1) ? array_sum($num1) : '0') + (!empty($num2) ? array_sum($num2) : '0') + (!empty($num3) ? array_sum($num3) : '0') + (!empty($num4) ? array_sum($num4) : '0') + (!empty($num5) ? array_sum($num5) : '0') + (!empty($num6) ? array_sum($num6) : '0') + (!empty($num7) ? array_sum($num7) : '0') + (!empty($num8) ? array_sum($num8) : '0') + (!empty($num9) ? array_sum($num9) : '0') + (!empty($num10) ? array_sum($num10) : '0') + (!empty($num11) ? array_sum($num11) : '0');
 	$bb12 = (!empty($num1) ? array_sum($num1) : '0') + (!empty($num2) ? array_sum($num2) : '0') + (!empty($num3) ? array_sum($num3) : '0') + (!empty($num4) ? array_sum($num4) : '0') + (!empty($num5) ? array_sum($num5) : '0') + (!empty($num6) ? array_sum($num6) : '0') + (!empty($num7) ? array_sum($num7) : '0') + (!empty($num8) ? array_sum($num8) : '0') + (!empty($num9) ? array_sum($num9) : '0') + (!empty($num10) ? array_sum($num10) : '0') + (!empty($num11) ? array_sum($num11) : '0') + (!empty($num1) ? array_sum($num12) : '0');
 
-	!empty($acu) ? $s2 = round(($bb1 / array_sum($acu)) * 100, 2) : $s2 = '0';
+	!empty($acu) ? $s1 = round(($bb1 / array_sum($acu)) * 100, 2) : $s1 = '0';
 	!empty($acu) ? $s2 = round(($bb2 / array_sum($acu)) * 100, 2) : $s2 = '0';
 	!empty($acu) ? $s3 = round(($bb3 / array_sum($acu)) * 100, 2) : $s3 = '0';
 	!empty($acu) ? $s4 = round(($bb4 / array_sum($acu)) * 100, 2) : $s4 = '0';

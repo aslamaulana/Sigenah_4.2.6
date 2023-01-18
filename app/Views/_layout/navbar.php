@@ -22,7 +22,11 @@
 		</li>
 	</ul>
 	<ul class="navbar-nav ml-auto">
-		<?php if (menu('renstra')->timer_a == 'aktif' || menu('renja')->timer_a == 'aktif') { ?>
+		<?php if (
+			menu('renstra')->timer_a == 'aktif' ||
+			menu('renja')->timer_a == 'aktif' ||
+			menu('cantik')->timer_a == 'aktif'
+		) { ?>
 			<li class="nav-item dropdown">
 				<a class="nav-link" data-toggle="dropdown" href="#">
 					<i id="area" class="fa fa-stopwatch fa-2x" style="color:red;"></i>
@@ -39,6 +43,12 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item">
 							RENSTRA <i class="fa mr-2" id="timer_renstra"></i>
+						</a>
+					<?php } ?>
+					<?php if (menu('cantik')->timer_a == 'aktif') { ?>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item">
+							CANTIK <i class="fa mr-2" id="timer_cantik"></i>
 						</a>
 					<?php } ?>
 				</div>
@@ -80,7 +90,34 @@
 		</li> -->
 	</ul>
 </nav>
+<?php if (menu('cantik')->timer_a == 'aktif') { ?>
+	<script>
+		// Mengatur waktu akhir perhitungan mundur
+		var countDownDateCantik = new Date("<?= menu('cantik')->timer; ?>").getTime();
 
+		// Memperbarui hitungan mundur setiap 1 detik
+		var x = setInterval(function() {
+			// Untuk mendapatkan tanggal dan waktu hari ini
+			var nowCantik = new Date().getTime();
+			// Temukan jarak antara sekarang dan tanggal hitung mundur
+			var distanceCantik = countDownDateCantik - nowCantik;
+			// Perhitungan waktu untuk hari, jam, menit dan detik
+			var daysCantik = Math.floor(distanceCantik / (1000 * 60 * 60 * 24));
+			var hoursCantik = Math.floor((distanceCantik % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutesCantik = Math.floor((distanceCantik % (1000 * 60 * 60)) / (1000 * 60));
+			var secondsCantik = Math.floor((distanceCantik % (1000 * 60)) / 1000);
+			// Keluarkan hasil dalam elemen dengan id = "demo"
+			document.getElementById("timer_cantik").innerHTML = daysCantik + "d " + hoursCantik + "h " +
+				minutesCantik + "m " + secondsCantik + "s ";
+			// Jika hitungan mundur selesai, tulis beberapa teks 
+			if (distanceCantik < 0) {
+				clearInterval(x);
+				document.getElementById("timer_cantik").innerHTML = "EXPIRED";
+				window.location.href = "<?php echo base_url('/admin/menu/menu/set/' . menu('cantik')->id_menu); ?>";
+			}
+		}, 1000);
+	</script>
+<?php }	?>
 <?php if (menu('renstra')->timer_a == 'aktif') { ?>
 	<script>
 		// Mengatur waktu akhir perhitungan mundur
@@ -137,6 +174,7 @@
 		}, 1000);
 	</script>
 <?php }	?>
+
 
 <script>
 	setInterval(() => {

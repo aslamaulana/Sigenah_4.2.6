@@ -7,7 +7,13 @@
 <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
 	<div class="wrapper">
 		<?= $this->include('_layout/navbar'); ?>
-		<?= $this->include('_layout/sidebar'); ?>
+
+		<?php if (has_permission('Admin')) {
+			echo $this->include('_layout/sidebar_admin');
+		} else {
+			echo $this->include('_layout/sidebar');
+		} ?>
+
 		<div class="content-wrapper">
 			<?php if (session()->getFlashdata('pesan')) : ?>
 				<script>

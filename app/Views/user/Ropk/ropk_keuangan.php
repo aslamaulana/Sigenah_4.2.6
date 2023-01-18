@@ -5,26 +5,49 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('tombol'); ?>
-<div style="width:90px;">
-	<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/keuangan'); ?>">
-		<li class="btn btn-block btn-info btn-sm" active><i class="nav-icon fa fa-chevron-left"></i> Kembali</li>
-	</a>
-</div>
-<div style="width:80px;">
-	<a href="<?= base_url('/user/ropk/ropk_keuangan/grafik?k=' . $DT['rkpd_kegiatan_n'] . '&s=' . $DT['rkpd_kegiatan_sub_n']); ?>">
-		<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-chart-bar"></i> Grafik</li>
-	</a>
-</div>
-<div>
-	<a href="<?= base_url('/user/ropk/ropk_keuangan/import/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']); ?>">
-		<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
-	</a>
-</div>
-<div style="width:90px;">
-	<a href="<?= base_url('/user/ropk/ropk_keuangan/keuangan_add/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']); ?>">
-		<li class="btn btn-block btn-warning btn-sm" active><i class="nav-icon fa fa-plus"></i> Add</li>
-	</a>
-</div>
+<?php if (menu('cantik')->kunci == 'tidak') { ?>
+	<div style="width:90px;">
+		<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/keuangan'); ?>">
+			<li class="btn btn-block btn-info btn-sm" active><i class="nav-icon fa fa-chevron-left"></i> Kembali</li>
+		</a>
+	</div>
+	<div style="width:80px;">
+		<a href="<?= base_url('/user/ropk/ropk_keuangan/grafik?k=' . $DT['rkpd_kegiatan_n'] . '&s=' . $DT['rkpd_kegiatan_sub_n']); ?>">
+			<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-chart-bar"></i> Grafik</li>
+		</a>
+	</div>
+	<div>
+		<a href="<?= base_url('/user/ropk/ropk_keuangan/import/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']); ?>">
+			<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
+		</a>
+	</div>
+	<div style="width:90px;">
+		<a href="<?= base_url('/user/ropk/ropk_keuangan/keuangan_add/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']); ?>">
+			<li class="btn btn-block btn-warning btn-sm" active><i class="nav-icon fa fa-plus"></i> Add</li>
+		</a>
+	</div>
+<?php } else { ?>
+	<div style="width:90px;">
+		<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/keuangan'); ?>">
+			<li class="btn btn-block btn-info btn-sm" active><i class="nav-icon fa fa-chevron-left"></i> Kembali</li>
+		</a>
+	</div>
+	<div style="width:80px;">
+		<a href="<?= base_url('/user/ropk/ropk_keuangan/grafik?k=' . $DT['rkpd_kegiatan_n'] . '&s=' . $DT['rkpd_kegiatan_sub_n']); ?>">
+			<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-chart-bar"></i> Grafik</li>
+		</a>
+	</div>
+	<div>
+		<a href="#">
+			<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-lock"></i> Import</li>
+		</a>
+	</div>
+	<div style="width:90px;">
+		<a href="#">
+			<li class="btn btn-block btn-warning btn-sm" active><i class="nav-icon fa fa-lock"></i> Add</li>
+		</a>
+	</div>
+<?php } ?>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
@@ -146,12 +169,18 @@
 							<td class="text-center"><?php isset($ros['b11']) ? ((float) $ros['b11'] == $ros['b11'] ? $num11[] = ($ros['b11']) : $num11[] = ['0']) : $num11[] = ['0']; ?><?= (float) $ros['b11'] == $ros['b11'] ? number_format($ros['b11'], 0, ',', '.') : "ERROR"; ?></td>
 							<td class="text-center"><?php isset($ros['b12']) ? ((float) $ros['b12'] == $ros['b12'] ? $num12[] = ($ros['b12']) : $num12[] = ['0']) : $num12[] = ['0']; ?><?= (float) $ros['b12'] == $ros['b12'] ? number_format($ros['b12'], 0, ',', '.') : "ERROR"; ?></td>
 							<td style="text-align: center;">
-								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_edit/' . $ros['id_ropk_keuangan'] . '/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
-									<i class="nav-icon fas fa-pen-alt"></i>
-								</a>
-								<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_hapus/' . $ros['id_ropk_keuangan']; ?>'}" href="#">
-									<i class="nav-icon fas fa-trash-alt"></i>
-								</a>
+								<?php if (menu('cantik')->kunci == 'tidak') { ?>
+									<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_edit/' . $ros['id_ropk_keuangan'] . '/' . $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
+										<i class="nav-icon fas fa-pen-alt"></i>
+									</a>
+									<a class="btn btn-danger btn-circle btn-xs" onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){location.href='<?= base_url() . '/user/ropk/ropk_keuangan/keuangan_hapus/' . $ros['id_ropk_keuangan']; ?>'}" href="#">
+										<i class="nav-icon fas fa-trash-alt"></i>
+									</a>
+								<?php } else { ?>
+									<a class="btn btn-danger btn-circle btn-xs">
+										<i class="nav-icon fas fa-lock"></i>
+									</a>
+								<?php } ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>

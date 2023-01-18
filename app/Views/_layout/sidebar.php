@@ -43,435 +43,252 @@
 						</p>
 					</a>
 				</li>
-				<?php if (has_permission('Admin')) : ?>
-					<li class="nav-item <?= $gr == 'skpd' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'skpd' ? 'active' : ''; ?>">
-							<i class="nav-icon fas fa-university"></i>
-							<p>
-								SKPD
-								<i class="fas fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/user/bidang'); ?>" class="nav-link <?= $mn == 'skpd' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small></small> SKPD</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item <?= $gr == 'menu' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'menu' ? 'active' : ''; ?>">
-							<i class="nav-icon fas fa-th"></i>
-							<p>
-								Menu
-								<i class="fas fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/menu/menu'); ?>" class="nav-link <?= $mn == 'menu' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small></small> Setting</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/menu/tag'); ?>" class="nav-link <?= $mn == 'tag' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small></small> Tag</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/menu/satuan'); ?>" class="nav-link <?= $mn == 'satuan' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small></small> Satuan</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<!-- =============================================================== -->
-					<li class="nav-header">=====================</li>
-					<!-- =============================================================== -->
-					<li class="nav-item <?= $gr == 'rpjmd' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'rpjmd' ? 'active' : ''; ?>">
-							<i class="nav-icon fas fa-copy"></i>
-							<p>
-								RPJMD
-								<i class="fas fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/rpjmd/visi'); ?>" class="nav-link <?= $mn == 'visi' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>1. </small> VISI / MISI</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/rpjmd/tujuan'); ?>" class="nav-link <?= $mn == 'tujuan' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>2. </small> Tujuan</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/rpjmd/sasaran'); ?>" class="nav-link <?= $mn == 'sasaran' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>3. </small> Sasaran</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/rpjmd/strategi'); ?>" class="nav-link <?= $mn == 'strategi' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>4. </small> Strategi</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/rpjmd/arah_kebijakan'); ?>" class="nav-link <?= $mn == 'arah_kebijakan' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>5. </small> Arah Kebijakan</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/rpjmd/program'); ?>" class="nav-link <?= $mn == 'program' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>6. </small> Program</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<!-- =============================================================== -->
-					<li class="nav-header">=====================</li>
-					<!-- =============================================================== -->
-					<li class="nav-item  <?= $gr == 'A_Renstra' || $gr == 'A_rkpd' || $gr == 'A_dokumen' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'A_Renstra' || $gr == 'A_rkpd' || $gr == 'A_dokumen' ? 'active' : ''; ?>" title="Data Perencanaan">
-							<i class="nav-icon fas fa-circle"></i>
-							<p>
-								DARA
-								<i class="right fas fa-angle-left"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item <?= $gr == 'A_Renstra' ? 'menu-open' : ''; ?>">
-								<a href="#" class="nav-link <?= $gr == 'A_Renstra' ? 'active' : ''; ?>">
-									<i class="nav-icon fab fa-buffer"></i>
-									<p>
-										RENSTRA
-										<i class="right fas fa-angle-left"></i>
-									</p>
-								</a>
-								<ul class="nav nav-treeview">
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_tujuan'); ?>" class="nav-link <?= $mn == 'A_opd_tujuan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>1. </small> Tujuan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_sasaran'); ?>" class="nav-link <?= $mn == 'A_opd_sasaran' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>2. </small> Sasaran</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_strategi'); ?>" class="nav-link <?= $mn == 'A_opd_strategi' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>3. </small> Strategi</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_arah_kebijakan'); ?>" class="nav-link <?= $mn == 'A_opd_arah_kebijakan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>4. </small> Arah Kebijakan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_program'); ?>" class="nav-link <?= $mn == 'A_opd_program' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>5.</small> Program</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_kegiatan'); ?>" class="nav-link <?= $mn == 'A_opd_kegiatan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>6. </small> Kegiatan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_kegiatan_sub'); ?>" class="nav-link <?= $mn == 'A_opd_kegiatan_sub' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>7. </small> Kegiatan Sub</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/admin/renstra/opd_renstra_laporan'); ?>" class="nav-link <?= $mn == 'A_opd_laporan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>8. </small> Laporan</p>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/admin/renstra/opd_dokumen'); ?>" class="nav-link <?= $mn == 'A_dokumen' ? 'active' : ''; ?>">
-									<i class="nav-icon fas fa-folder-open"></i>
-									<p><small></small> Dokumen</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<br><br>
-					<br><br>
-				<?php endif; ?>
-				<?php if (has_permission('User')) : ?>
-					<li class="nav-item <?= $gr == 'opd' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'opd' ? 'active' : ''; ?>">
-							<i class="nav-icon fas fa-house-user"></i>
-							<p>
-								OPD
-								<i class="fas fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/user/user/users/user'); ?>" class="nav-link <?= $mn == 'bidang' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>1. </small> Bidang & Sub Bidang</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<!-- =============================================================== -->
-					<li class="nav-header">=====================</li>
-					<!-- =============================================================== -->
-					<li class="nav-item  <?= $gr == 'Dokumen' || $gr == 'Renstra' || $gr == 'rkpd' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'Dokumen' || $gr == 'Renstra' || $gr == 'rkpd' ? 'active' : ''; ?>" title="Data Perencanaan">
-							<i class="nav-icon fas fa-circle"></i>
-							<p>
-								DARA
-								<i class="right fas fa-angle-left"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item <?= $gr == 'Renstra' ? 'menu-open' : ''; ?>">
-								<a href="#" class="nav-link <?= $gr == 'Renstra' ? 'active' : ''; ?>">
-									<i class="nav-icon fab fa-buffer"></i>
-									<p>
-										RENSTRA
-										<i class="right fas fa-angle-left"></i>
-									</p>
-								</a>
-								<ul class="nav nav-treeview">
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_tujuan'); ?>" class="nav-link <?= $mn == 'opd_tujuan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>1. </small> Tujuan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_sasaran'); ?>" class="nav-link <?= $mn == 'opd_sasaran' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>2. </small> Sasaran</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_strategi'); ?>" class="nav-link <?= $mn == 'opd_strategi' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>3. </small> Strategi</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_arah_kebijakan'); ?>" class="nav-link <?= $mn == 'opd_arah_kebijakan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>4. </small> Arah Kebijakan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_program'); ?>" class="nav-link <?= $mn == 'opd_program' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>5.</small> Program</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_kegiatan'); ?>" class="nav-link <?= $mn == 'opd_kegiatan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>6. </small> Kegiatan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_kegiatan_sub'); ?>" class="nav-link <?= $mn == 'opd_kegiatan_sub' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>7. </small> Kegiatan Sub</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_renstra_laporan'); ?>" class="nav-link <?= $mn == 'opd_laporan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>8. </small> Laporan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra/opd_error_fix'); ?>" class="nav-link <?= $mn == 'opd_renstra_error_fix' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>7X. </small> Error Fix</p>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-item <?= $gr == 'rkpd' ? 'menu-open' : ''; ?>">
-								<a href="#" class="nav-link <?= $gr == 'rkpd' ? 'active' : ''; ?>">
-									<i class="nav-icon fab fa-buffer"></i>
-									<p>
-										RENJA
-										<i class="fas fa-angle-left right"></i>
-									</p>
-								</a>
-								<ul class="nav nav-treeview">
-									<li class="nav-item">
-										<a href="<?= base_url('/user/rkpd/opd_program'); ?>" class="nav-link <?= $mn == 'rkpd_program' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>1. </small> Program</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/rkpd/opd_kegiatan'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>2. </small> Kegiatan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/rkpd/opd_kegiatan_sub'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan_sub' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>3. </small> Kegiatan Sub</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/rkpd/opd_kegiatan_sub_tag'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan_sub_tag' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>4. </small> Pelabelan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/rkpd/opd_error_fix'); ?>" class="nav-link <?= $mn == 'opd_renstra_error_fix' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>3X. </small> Error Fix</p>
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-item">
-								<a href="<?= base_url('/user/renstra/opd_dokumen'); ?>" class="nav-link <?= $mn == 'dokumen' ? 'active' : ''; ?>">
-									<i class="nav-icon fas fa-folder-open"></i>
-									<p><small></small> Dokumen</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<!-- =============================================================== -->
-					<li class="nav-header">=====================</li>
-					<!-- =============================================================== -->
-					<li class="nav-item <?= $gr == 'ropk' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'ropk' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja">
-							<i class="nav-icon fas fa-chart-bar"></i>
-							<p>
-								Cantik
-								<i class="fas fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/organisasi'); ?>" class="nav-link <?= $mn == 'ropk_organisasi' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja Organisasi">
-									<i class="far nav-icon"></i>
-									<p><small>1. </small> Cantik Organisasi</p>
-								</a>
-							</li>
-						</ul>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/keuangan'); ?>" class="nav-link <?= $mn == 'ropk_keuangan' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja Keuangan">
-									<i class="far nav-icon"></i>
-									<p><small>2. </small> Cantiku</p>
-								</a>
-							</li>
-						</ul>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/fisik'); ?>" class="nav-link <?= $mn == 'ropk_fisik' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerjas">
-									<i class="far nav-icon"></i>
-									<p><small>3. </small> Cantika</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<!-- =============================================================== -->
-					<li class="nav-header">=====================</li>
-					<!-- =============================================================== -->
-					<li class="nav-item <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
-						<a href="#" class="nav-link <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'active' : ''; ?>" title="Sistem Minitoring, Evaluasi dan Pelaporan Kinerja">
-							<i class="nav-icon fas fa-tachometer-alt"></i>
-							<p>
-								Simonela
-								<i class="fas fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/user/simonela/simonela'); ?>" class="nav-link <?= $mn == 'simonela' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>1. </small> Entri Progres</p>
-								</a>
-							</li>
-						</ul>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="<?= base_url('/user/ropk/ropk_fisik'); ?>" class="nav-link <?= $mn == 'e_fisik' ? 'active' : ''; ?>">
-									<i class="far nav-icon"></i>
-									<p><small>2. </small> Laporan</p>
-								</a>
-							</li>
-						</ul>
-						<ul class="nav nav-treeview">
-							<li class="nav-item <?= $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
-								<a href="#" class="nav-link <?= $gr == 'Renstra_capaian' ? 'active' : ''; ?>">
-									<i class="nav-icon fab fa-buffer"></i>
-									<p>
-										Renstra Capaian
-										<i class="right fas fa-angle-left"></i>
-									</p>
-								</a>
-								<ul class="nav nav-treeview">
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_tujuan'); ?>" class="nav-link <?= $mn == 'opd_capaian_tujuan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>1. </small> Tujuan</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_sasaran'); ?>" class="nav-link <?= $mn == 'opd_capaian_sasaran' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>2. </small> Sasaran</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_program'); ?>" class="nav-link <?= $mn == 'opd_capaian_program' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>5.</small> Program</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?= base_url('/user/renstra_capaian/opd_capaian_kegiatan'); ?>" class="nav-link <?= $mn == 'opd_capaian_kegiatan' ? 'active' : ''; ?>">
-											<i class="far nav-icon"></i>
-											<p><small>6. </small> Kegiatan</p>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<br><br>
-					<br><br>
-
-				<?php endif; ?>
+				<li class="nav-item <?= $gr == 'opd' ? 'menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= $gr == 'opd' ? 'active' : ''; ?>">
+						<i class="nav-icon fas fa-house-user"></i>
+						<p>
+							OPD
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/user/users/user'); ?>" class="nav-link <?= $mn == 'bidang' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>1. </small> Bidang & Sub Bidang</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!-- =============================================================== -->
+				<li class="nav-header">=====================</li>
+				<!-- =============================================================== -->
+				<li class="nav-item  <?= $gr == 'Dokumen' || $gr == 'Renstra' || $gr == 'rkpd' ? 'menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= $gr == 'Dokumen' || $gr == 'Renstra' || $gr == 'rkpd' ? 'active' : ''; ?>" title="Data Perencanaan">
+						<i class="nav-icon fas fa-circle"></i>
+						<p>
+							DARA
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item <?= $gr == 'Renstra' ? 'menu-open' : ''; ?>">
+							<a href="#" class="nav-link <?= $gr == 'Renstra' ? 'active' : ''; ?>">
+								<i class="nav-icon fab fa-buffer"></i>
+								<p>
+									RENSTRA
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_tujuan'); ?>" class="nav-link <?= $mn == 'opd_tujuan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>1. </small> Tujuan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_sasaran'); ?>" class="nav-link <?= $mn == 'opd_sasaran' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>2. </small> Sasaran</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_strategi'); ?>" class="nav-link <?= $mn == 'opd_strategi' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>3. </small> Strategi</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_arah_kebijakan'); ?>" class="nav-link <?= $mn == 'opd_arah_kebijakan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>4. </small> Arah Kebijakan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_program'); ?>" class="nav-link <?= $mn == 'opd_program' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>5.</small> Program</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_kegiatan'); ?>" class="nav-link <?= $mn == 'opd_kegiatan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>6. </small> Kegiatan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_kegiatan_sub'); ?>" class="nav-link <?= $mn == 'opd_kegiatan_sub' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>7. </small> Kegiatan Sub</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_renstra_laporan'); ?>" class="nav-link <?= $mn == 'opd_laporan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>8. </small> Laporan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra/opd_error_fix'); ?>" class="nav-link <?= $mn == 'opd_renstra_error_fix' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>7X. </small> Error Fix</p>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item <?= $gr == 'rkpd' ? 'menu-open' : ''; ?>">
+							<a href="#" class="nav-link <?= $gr == 'rkpd' ? 'active' : ''; ?>">
+								<i class="nav-icon fab fa-buffer"></i>
+								<p>
+									RENJA
+									<i class="fas fa-angle-left right"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="<?= base_url('/user/rkpd/opd_program'); ?>" class="nav-link <?= $mn == 'rkpd_program' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>1. </small> Program</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/rkpd/opd_kegiatan'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>2. </small> Kegiatan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/rkpd/opd_kegiatan_sub'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan_sub' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>3. </small> Kegiatan Sub</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/rkpd/opd_kegiatan_sub_tag'); ?>" class="nav-link <?= $mn == 'rkpd_kegiatan_sub_tag' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>4. </small> Pelabelan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/rkpd/opd_error_fix'); ?>" class="nav-link <?= $mn == 'opd_renstra_error_fix' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>3X. </small> Error Fix</p>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('/user/renstra/opd_dokumen'); ?>" class="nav-link <?= $mn == 'dokumen' ? 'active' : ''; ?>">
+								<i class="nav-icon fas fa-folder-open"></i>
+								<p><small></small> Dokumen</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!-- =============================================================== -->
+				<li class="nav-header">=====================</li>
+				<!-- =============================================================== -->
+				<li class="nav-item <?= $gr == 'ropk' ? 'menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= $gr == 'ropk' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja">
+						<i class="nav-icon fas fa-chart-bar"></i>
+						<p>
+							Cantik
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/organisasi'); ?>" class="nav-link <?= $mn == 'ropk_organisasi' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja Organisasi">
+								<i class="far nav-icon"></i>
+								<p><small>1. </small> Cantik Organisasi</p>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/keuangan'); ?>" class="nav-link <?= $mn == 'ropk_keuangan' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerja Keuangan">
+								<i class="far nav-icon"></i>
+								<p><small>2. </small> Cantiku</p>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/ropk/ropk_kegiatan_sub/fisik'); ?>" class="nav-link <?= $mn == 'ropk_fisik' ? 'active' : ''; ?>" title="Rencana Aktifitas Kinerjas">
+								<i class="far nav-icon"></i>
+								<p><small>3. </small> Cantika</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!-- =============================================================== -->
+				<li class="nav-header">=====================</li>
+				<!-- =============================================================== -->
+				<li class="nav-item <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'active' : ''; ?>" title="Sistem Minitoring, Evaluasi dan Pelaporan Kinerja">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Simonela
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/simonela/simonela'); ?>" class="nav-link <?= $mn == 'simonela' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>1. </small> Entri Progres</p>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/ropk/ropk_fisik'); ?>" class="nav-link <?= $mn == 'e_fisik' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>2. </small> Laporan</p>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item <?= $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
+							<a href="#" class="nav-link <?= $gr == 'Renstra_capaian' ? 'active' : ''; ?>">
+								<i class="nav-icon fab fa-buffer"></i>
+								<p>
+									Renstra Capaian
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra_capaian/opd_capaian_tujuan'); ?>" class="nav-link <?= $mn == 'opd_capaian_tujuan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>1. </small> Tujuan</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra_capaian/opd_capaian_sasaran'); ?>" class="nav-link <?= $mn == 'opd_capaian_sasaran' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>2. </small> Sasaran</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra_capaian/opd_capaian_program'); ?>" class="nav-link <?= $mn == 'opd_capaian_program' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>5.</small> Program</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra_capaian/opd_capaian_kegiatan'); ?>" class="nav-link <?= $mn == 'opd_capaian_kegiatan' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>6. </small> Kegiatan</p>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<br><br>
+				<br><br>
 			</ul>
 		</nav>
 	</div>

@@ -27,11 +27,11 @@ class Home extends BaseController
 		// Pertama login jika tudak set tahun maka auto set tahun dan perubahan (tahun sekarang / murni)
 		if (!isset($_SESSION['tahun']) && !isset($_SESSION['perubahan'])) {
 			try {
-				$this->session->set('tahun', '2022');
-				$this->session->set('perubahan', 'Perubahan');
+				$this->session->set('tahun', Date("Y"));
+				$this->session->set('perubahan', 'Murni');
 			} catch (\Exception $e) {
 			}
-			return redirect()->to(base_url('/'))->with('tahun2', '2022');
+			return redirect()->to(base_url('/'))->with('tahun2', Date("Y"));
 		}
 		return view('dashboard', $data);
 	}

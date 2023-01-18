@@ -5,11 +5,19 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('tombol'); ?>
-<div>
-	<a href="<?= base_url('/user/ropk/ropk_keuangan/import_rkpd'); ?>">
-		<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
-	</a>
-</div>
+<?php if (menu('cantik')->kunci == 'tidak') { ?>
+	<div>
+		<a href="<?= base_url('/user/ropk/ropk_keuangan/import_rkpd'); ?>">
+			<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
+		</a>
+	</div>
+<?php } else { ?>
+	<div style="width:90px;">
+		<a href="#">
+			<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-lock"></i></li>
+		</a>
+	</div>
+<?php } ?>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
@@ -19,9 +27,15 @@
 			<thead>
 				<tr>
 					<th class="text-center" width="30px">
-						<button class="btn btn-danger btn-circle btn-xs" type="submit" alt='Submit Form' onclick="return confirm('Apakah anda yakin ingin menghapus data ini ??');">
-							<i class="nav-icon fas fa-trash-alt"></i>
-						</button>
+						<?php if (menu('cantik')->kunci == 'tidak') { ?>
+							<button class="btn btn-danger btn-circle btn-xs" type="submit" alt='Submit Form' onclick="return confirm('Apakah anda yakin ingin menghapus data ini ??');">
+								<i class="nav-icon fas fa-trash-alt"></i>
+							</button>
+						<?php } else { ?>
+							<button class="btn btn-danger btn-circle btn-xs" disabled>
+								<i class="nav-icon fas fa-lock"></i>
+							</button>
+						<?php } ?>
 					</th>
 					<th class="text-center" width="30px">No</th>
 					<th> Kegiatan / Sub Kegiatan </th>
