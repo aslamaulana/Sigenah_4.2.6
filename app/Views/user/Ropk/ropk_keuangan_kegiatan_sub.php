@@ -39,7 +39,7 @@
 					</th>
 					<th class="text-center" width="30px">No</th>
 					<th> Kegiatan / Sub Kegiatan </th>
-					<th class="text-center">Pagu 2022</th>
+					<th class="text-center">Pagu <?= $_SESSION['tahun']; ?></th>
 					<th style="width:300px;"> Lokasi </th>
 					<th> Sumber Dana </th>
 					<th class="text-center">
@@ -52,7 +52,7 @@
 					<th class="text-center"></th>
 					<th class="text-center">No</th>
 					<th>Kegiatan / Sub Kegiatan</th>
-					<th class="text-center">Pagu 2022</th>
+					<th class="text-center">Pagu <?= $_SESSION['tahun']; ?></th>
 					<th> Lokasi </th>
 					<th> Sumber Dana </th>
 					<th class="text-center">Aksi</th>
@@ -119,9 +119,15 @@
 								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/keuangan/' . $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
 									<i class="nav-icon fas fa-chart-bar"> Rencana</i>
 								</a>
-								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/ropk_keuangan_kegiatan_sub_edit/' . $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
-									<i class="nav-icon fas fa-pen-alt"></i>
-								</a>
+								<?php if (menu('cantik')->kunci == 'tidak') { ?>
+									<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/ropk_keuangan_kegiatan_sub_edit/' . $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
+										<i class="nav-icon fas fa-pen-alt"></i>
+									</a>
+								<?php } else { ?>
+									<a class="btn btn-danger btn-circle btn-xs">
+										<i class="nav-icon fas fa-lock"></i>
+									</a>
+								<?php } ?>
 							</td>
 						</tr>
 						<?php
