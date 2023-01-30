@@ -6,19 +6,11 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('tombol'); ?>
-<?php if (menu('renstra')->kunci == 'tidak') { ?>
-	<div>
-		<a href="<?= base_url('/user/renstra_capaian/opd_capaian_sasaran/import'); ?>">
-			<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
-		</a>
-	</div>
-<?php } else { ?>
-	<div style="width:90px;">
-		<a href="#">
-			<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-lock"></i></li>
-		</a>
-	</div>
-<?php } ?>
+<div>
+	<a href="<?= base_url('/user/renstra_capaian/opd_capaian_sasaran/import'); ?>">
+		<li class="btn btn-block btn-success btn-sm" active><i class="nav-icon fa fa-file-excel"></i> Import</li>
+	</a>
+</div>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
@@ -89,15 +81,9 @@
 					<td class="align-top text-center"><?= $rom['triwulan_3']; ?></td>
 					<td class="align-top text-center"><?= $rom['triwulan_4']; ?></td>
 					<td class="text-center align-top">
-						<?php if (menu('renstra')->kunci == 'tidak') { ?>
-							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra_capaian/opd_capaian_sasaran/opd_sasaran_edit/' . $rom['id_opd_sasaran']; ?>">
-								<i class="nav-icon fas fa-pen-alt"></i>
-							</a>
-						<?php } else { ?>
-							<a class="btn btn-danger btn-circle btn-xs">
-								<i class="nav-icon fas fa-lock"></i>
-							</a>
-						<?php } ?>
+						<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/renstra_capaian/opd_capaian_sasaran/opd_sasaran_edit/' . $rom['id_opd_sasaran']; ?>">
+							<i class="nav-icon fas fa-pen-alt"></i>
+						</a>
 					</td>
 				</tr>
 			<?php endforeach; ?>

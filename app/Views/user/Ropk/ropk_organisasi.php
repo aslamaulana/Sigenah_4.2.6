@@ -121,7 +121,7 @@
 					->getWhere([
 						'tb_ropk_organisasi.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
 						'tb_ropk_organisasi.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'],
-						// 'tb_ropk_organisasi.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
+						'tb_ropk_organisasi.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
 						// 'tb_ropk_organisasi.ropk_tahap' => 'Persiapan',
 						'tb_ropk_organisasi.opd_id' => user()->opd_id,
 						'tb_ropk_organisasi.tahun' => $_SESSION['tahun'],
@@ -143,7 +143,7 @@
 					$query = $db->table('tb_ropk_organisasi')->getWhere([
 						'tb_ropk_organisasi.rkpd_kegiatan' => $DT['rkpd_kegiatan_n'],
 						'tb_ropk_organisasi.rkpd_kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'],
-						// 'tb_ropk_organisasi.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
+						'tb_ropk_organisasi.rkpd_indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'],
 						// 'tb_ropk_organisasi.ropk_tahap' => 'Persiapan',
 						'tb_ropk_organisasi.ropk_group' => $rol['ropk_group'],
 						'tb_ropk_organisasi.opd_id' => user()->opd_id,
@@ -188,8 +188,9 @@
 				<?php endforeach; ?>
 				<tr>
 					<td colspan="3"><b>Acuan per Bulan</b></td>
-					<td class="text-right" style="<?= !empty($acu) ? (array_sum($acu) < '100' ? 'background: #ffc107;' : (array_sum($acu) == '100' ? 'background: #20c997;' : 'background: #e74c3c;')) : ''; ?>">
-						<?= !empty($acu) ? number_format(array_sum($acu), 2, ',', '.') : '0.00'; ?>
+					<?php !empty($acu) ? $acuan_per_bulan = number_format(array_sum($acu), 0, ',', '.') :  $acuan_per_bulan = '0.00'; ?>
+					<td class="text-right" style="<?= $acuan_per_bulan < '100' ? 'background: #ffc107;' : ($acuan_per_bulan == '100' ? 'background: #20c997;' : ($acuan_per_bulan > '100' ? 'background: #e74c3c;' : '')); ?>">
+						<?= !empty($acu) ? number_format(array_sum($acu), 2, ',', '.') :  '0.00'; ?>
 					</td>
 					<td class="text-right"><?= !empty($num1) ? number_format(array_sum($num1), 2, ',', '.') : '0.00'; ?></td>
 					<td class="text-right"><?= !empty($num2) ? number_format(array_sum($num2), 2, ',', '.') : '0.00'; ?></td>
@@ -234,7 +235,7 @@
 					<td class="text-right"><?= number_format($bb9, 2, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb10, 2, ',', '.'); ?></td>
 					<td class="text-right"><?= number_format($bb11, 2, ',', '.'); ?></td>
-					<td class="text-right" style="<?= !empty($acu) ? ($bb12 < array_sum($acu) ? 'background: #ffc107;' : ($bb12 == array_sum($acu) ? 'background: #20c997;' : 'background: #e74c3c;')) : ''; ?>">
+					<td class="text-right" style="<?= !empty($acu) ? (number_format($bb12, 0, ',', '.') < number_format(array_sum($acu), 0, ',', '.') ? 'background: #ffc107;' : (number_format($bb12, 0, ',', '.') == number_format(array_sum($acu), 0, ',', '.') ? 'background: #20c997;' : 'background: #e74c3c;')) : ''; ?>">
 						<?= number_format($bb12, 2, ',', '.'); ?>
 					</td>
 					<td></td>

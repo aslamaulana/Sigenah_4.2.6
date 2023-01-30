@@ -36,7 +36,7 @@ class Database extends Config
         'username' => 'root',
         'password' => 'pangandaran1.',
         // 'database' => 'sigenah_sep24',
-        'database' => 'db_ropk',
+        'database' => 'sigenah_ropk',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

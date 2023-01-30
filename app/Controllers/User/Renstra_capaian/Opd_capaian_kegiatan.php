@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Opd_capaian_kegiatan extends BaseController
 {
-	protected $opd_kegiatan, $satuan, $tahun;
+	protected $opd_kegiatan, $opd_capaian_kegiatan, $tahun;
 
 	public function __construct()
 	{
@@ -26,6 +26,7 @@ class Opd_capaian_kegiatan extends BaseController
 				'title' => 'User | Kegiatan',
 				'lok' => '<b>Kegiatan</b>',
 				'opd_kegiatan' => $this->opd_capaian_kegiatan->kegiatan(),
+				'db' => \Config\Database::connect(),
 			];
 			echo view('user/Renstra_capaian/opd_kegiatan', $data);
 		else :
@@ -55,9 +56,21 @@ class Opd_capaian_kegiatan extends BaseController
 			$this->opd_capaian_kegiatan->save([
 				'id_opd_kegiatan' => $this->request->getVar('id_kegiatan'),
 				'triwulan_1' => $this->request->getVar('triwulan_1'),
+				'penghambat_1' => $this->request->getVar('penghambat_1'),
+				'pendukung_1' => $this->request->getVar('pendukung_1'),
+				'tindak_lanjut_1' => $this->request->getVar('tindak_lanjut_1'),
 				'triwulan_2' => $this->request->getVar('triwulan_2'),
+				'penghambat_2' => $this->request->getVar('penghambat_2'),
+				'pendukung_2' => $this->request->getVar('pendukung_2'),
+				'tindak_lanjut_2' => $this->request->getVar('tindak_lanjut_2'),
 				'triwulan_3' => $this->request->getVar('triwulan_3'),
+				'penghambat_3' => $this->request->getVar('penghambat_3'),
+				'pendukung_3' => $this->request->getVar('pendukung_3'),
+				'tindak_lanjut_3' => $this->request->getVar('tindak_lanjut_3'),
 				'triwulan_4' => $this->request->getVar('triwulan_4'),
+				'penghambat_4' => $this->request->getVar('penghambat_4'),
+				'pendukung_4' => $this->request->getVar('pendukung_4'),
+				'tindak_lanjut_4' => $this->request->getVar('tindak_lanjut_4'),
 				'updated_by' => user()->full_name,
 			]);
 
@@ -87,8 +100,7 @@ class Opd_capaian_kegiatan extends BaseController
 	public function import_kegiatan()
 	{
 		if (has_permission('User')) :
-
-			$data = $this->opd_kegiatan->where(['perubahan' => $_SESSION['perubahan'], 'opd_id' => user()->opd_id])->findAll();
+			$data = $this->opd_kegiatan->where(['perubahan' => 'Perubahan', 'opd_id' => user()->opd_id])->findAll();
 			foreach ($data as $key => $val) {
 				$result[] = array(
 					'opd_program_n' => $data[$key]['opd_program_n'],
@@ -118,7 +130,7 @@ class Opd_capaian_kegiatan extends BaseController
 	{
 		$sisw = $this->opd_capaian_kegiatan->where(['perubahan' => $_SESSION['perubahan'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun']])->findAll();
 		$spreadsheet = new Spreadsheet();
-		$spreadsheet->getActiveSheet()->getStyle('A1:K1')->getFill()
+		$spreadsheet->getActiveSheet()->getStyle('A1:W1')->getFill()
 			->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('FFFF0000');
 		$spreadsheet->setActiveSheetIndex(0)
@@ -130,9 +142,21 @@ class Opd_capaian_kegiatan extends BaseController
 			->setCellValue('F1', 'Satuan')
 			->setCellValue('G1', 't_tahun')
 			->setCellValue('H1', 'triwulan_1')
-			->setCellValue('I1', 'triwulan_2')
-			->setCellValue('J1', 'triwulan_3')
-			->setCellValue('K1', 'triwulan_4');
+			->setCellValue('I1', 'penghambat_1')
+			->setCellValue('J1', 'pendukung_1')
+			->setCellValue('K1', 'tindak_lanjut_1')
+			->setCellValue('L1', 'triwulan_2')
+			->setCellValue('M1', 'penghambat_2')
+			->setCellValue('N1', 'pendukung_2')
+			->setCellValue('O1', 'tindak_lanjut_2')
+			->setCellValue('P1', 'triwulan_3')
+			->setCellValue('Q1', 'penghambat_3')
+			->setCellValue('R1', 'pendukung_3')
+			->setCellValue('S1', 'tindak_lanjut_3')
+			->setCellValue('T1', 'triwulan_4')
+			->setCellValue('U1', 'penghambat_4')
+			->setCellValue('V1', 'pendukung_4')
+			->setCellValue('W1', 'tindak_lanjut_4');
 
 		$column = 2;
 
@@ -146,9 +170,21 @@ class Opd_capaian_kegiatan extends BaseController
 				->setCellValue('F' . $column, $sisdata['satuan'])
 				->setCellValue('G' . $column, $sisdata['t_tahun'])
 				->setCellValue('H' . $column, $sisdata['triwulan_1'])
-				->setCellValue('I' . $column, $sisdata['triwulan_2'])
-				->setCellValue('J' . $column, $sisdata['triwulan_3'])
-				->setCellValue('K' . $column, $sisdata['triwulan_4']);
+				->setCellValue('I' . $column, $sisdata['penghambat_1'])
+				->setCellValue('J' . $column, $sisdata['pendukung_1'])
+				->setCellValue('K' . $column, $sisdata['tindak_lanjut_1'])
+				->setCellValue('L' . $column, $sisdata['triwulan_2'])
+				->setCellValue('M' . $column, $sisdata['penghambat_2'])
+				->setCellValue('N' . $column, $sisdata['pendukung_2'])
+				->setCellValue('O' . $column, $sisdata['tindak_lanjut_2'])
+				->setCellValue('P' . $column, $sisdata['triwulan_3'])
+				->setCellValue('Q' . $column, $sisdata['penghambat_3'])
+				->setCellValue('R' . $column, $sisdata['pendukung_3'])
+				->setCellValue('S' . $column, $sisdata['tindak_lanjut_3'])
+				->setCellValue('T' . $column, $sisdata['triwulan_4'])
+				->setCellValue('U' . $column, $sisdata['penghambat_4'])
+				->setCellValue('V' . $column, $sisdata['pendukung_4'])
+				->setCellValue('W' . $column, $sisdata['tindak_lanjut_4']);
 
 
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column)->getFill()
@@ -191,9 +227,25 @@ class Opd_capaian_kegiatan extends BaseController
 				// 'satuan' => $row[5],
 				// 't_tahun' => $row[6],
 				'triwulan_1' => $row[7],
-				'triwulan_2' => $row[8],
-				'triwulan_3' => $row[9],
-				'triwulan_4' => $row[10],
+				'penghambat_1' => $row[8],
+				'pendukung_1' => $row[9],
+				'tindak_lanjut_1' => $row[10],
+
+				'triwulan_2' => $row[11],
+				'penghambat_2' => $row[12],
+				'pendukung_2' => $row[13],
+				'tindak_lanjut_2' => $row[14],
+
+				'triwulan_3' => $row[15],
+				'penghambat_3' => $row[16],
+				'pendukung_3' => $row[17],
+				'tindak_lanjut_3' => $row[18],
+
+				'triwulan_4' => $row[19],
+				'penghambat_4' => $row[20],
+				'pendukung_4' => $row[21],
+				'tindak_lanjut_4' => $row[22],
+
 				'updated_by' => user()->full_name,
 			];
 			$id = [

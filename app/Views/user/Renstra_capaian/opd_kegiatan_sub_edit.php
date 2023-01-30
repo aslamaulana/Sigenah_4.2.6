@@ -9,29 +9,25 @@
 <div class="card-body">
 	<table class="table table-bordered table-sm">
 		<tr>
-			<td class="col-md-2">Sasaran:</td>
-			<td class="col-md-10"><?= $program['opd_sasaran_n']; ?></td>
+			<td class="col-md-2">Kegiatan:</td>
+			<td class="col-md-10"><?= $opd_kegiatan_sub['opd_kegiatan_n']; ?></td>
 		</tr>
 		<tr>
-			<td class="col-md-2">Program:</td>
-			<td class="col-md-10"><?= $program['opd_program_n']; ?></td>
+			<td class="col-md-2">Sub Kegiatan:</td>
+			<td class="col-md-10"><?= $opd_kegiatan_sub['opd_kegiatan_sub_n']; ?></td>
 		</tr>
 		<tr>
-			<td class="col-md-2">Sasaran Program:</td>
-			<td class="col-md-10"><?= $program['opd_program_sasaran_n']; ?></td>
+			<td class="col-md-2">Indikator Sub Kegiatan:</td>
+			<td class="col-md-10"><?= $opd_kegiatan_sub['opd_indikator_kegiatan_sub']; ?></td>
 		</tr>
 		<tr>
-			<td class="col-md-2">Indikator Program:</td>
-			<td class="col-md-10"><?= $program['opd_indikator_program']; ?></td>
-		</tr>
-		<tr>
-			<td class="col-md-2">Target <?= $program['tahun']; ?>:</td>
-			<td class="col-md-10"><?= $program['t_tahun'] . ' ' . $program['satuan']; ?></td>
+			<td class="col-md-2">Target <?= $opd_kegiatan_sub['tahun']; ?>:</td>
+			<td class="col-md-10"><?= $opd_kegiatan_sub['t_tahun'] . ' ' . $opd_kegiatan_sub['satuan']; ?></td>
 		</tr>
 	</table><br>
-	<form action="<?= base_url('/user/renstra_capaian/opd_capaian_program/opd_program_update') ?>" method="POST">
+	<form action="<?= base_url('/user/renstra_capaian/opd_capaian_kegiatan_sub/opd_kegiatan_sub_update') ?>" method="POST">
 		<?= csrf_field() ?>
-		<input type="hidden" name="id_program" value="<?= $program['id_opd_program']; ?>">
+		<input type="hidden" name="id_kegiatan_sub" value="<?= $opd_kegiatan_sub['id_opd_kegiatan_sub']; ?>">
 		<div class="row">
 			<div class="col-md">
 				<div class="form-group">
@@ -42,9 +38,9 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['triwulan_1']; ?>" class="form-control" name="triwulan_1" maxlength="20">
+								<input type="text" value="<?= $opd_kegiatan_sub['triwulan_1']; ?>" class="form-control" name="triwulan_1" maxlength="20">
 								<div class="input-group-append">
-									<span class="input-group-text"><?= $kegiatan['satuan']; ?></span>
+									<span class="input-group-text"><?= $opd_kegiatan_sub['satuan']; ?></span>
 								</div>
 							</div>
 						</div>
@@ -55,7 +51,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['penghambat_1']; ?>" class="form-control" name="penghambat_1" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['penghambat_1']; ?>" class="form-control" name="penghambat_1" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -65,7 +61,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['pendukung_1']; ?>" class="form-control" name="pendukung_1" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['pendukung_1']; ?>" class="form-control" name="pendukung_1" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -75,7 +71,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['tindak_lanjut_1']; ?>" class="form-control" name="tindak_lanjut_1" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['tindak_lanjut_1']; ?>" class="form-control" name="tindak_lanjut_1" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -88,9 +84,9 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['triwulan_2']; ?>" class="form-control" name="triwulan_2" maxlength="20">
+								<input type="text" value="<?= $opd_kegiatan_sub['triwulan_2']; ?>" class="form-control" name="triwulan_2" maxlength="20">
 								<div class="input-group-append">
-									<span class="input-group-text"><?= $kegiatan['satuan']; ?></span>
+									<span class="input-group-text"><?= $opd_kegiatan_sub['satuan']; ?></span>
 								</div>
 							</div>
 						</div>
@@ -101,7 +97,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['penghambat_2']; ?>" class="form-control" name="penghambat_2" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['penghambat_2']; ?>" class="form-control" name="penghambat_2" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -111,7 +107,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['pendukung_2']; ?>" class="form-control" name="pendukung_2" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['pendukung_2']; ?>" class="form-control" name="pendukung_2" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -121,7 +117,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['tindak_lanjut_2']; ?>" class="form-control" name="tindak_lanjut_2" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['tindak_lanjut_2']; ?>" class="form-control" name="tindak_lanjut_2" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -134,9 +130,9 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['triwulan_3']; ?>" class="form-control" name="triwulan_3" maxlength="20">
+								<input type="text" value="<?= $opd_kegiatan_sub['triwulan_3']; ?>" class="form-control" name="triwulan_3" maxlength="20">
 								<div class="input-group-append">
-									<span class="input-group-text"><?= $kegiatan['satuan']; ?></span>
+									<span class="input-group-text"><?= $opd_kegiatan_sub['satuan']; ?></span>
 								</div>
 							</div>
 						</div>
@@ -147,7 +143,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['penghambat_3']; ?>" class="form-control" name="penghambat_3" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['penghambat_3']; ?>" class="form-control" name="penghambat_3" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -157,7 +153,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['pendukung_3']; ?>" class="form-control" name="pendukung_3" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['pendukung_3']; ?>" class="form-control" name="pendukung_3" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -167,7 +163,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['tindak_lanjut_3']; ?>" class="form-control" name="tindak_lanjut_3" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['tindak_lanjut_3']; ?>" class="form-control" name="tindak_lanjut_3" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -180,9 +176,9 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['triwulan_4']; ?>" class="form-control" name="triwulan_4" maxlength="20">
+								<input type="text" value="<?= $opd_kegiatan_sub['triwulan_4']; ?>" class="form-control" name="triwulan_4" maxlength="20">
 								<div class="input-group-append">
-									<span class="input-group-text"><?= $kegiatan['satuan']; ?></span>
+									<span class="input-group-text"><?= $opd_kegiatan_sub['satuan']; ?></span>
 								</div>
 							</div>
 						</div>
@@ -193,7 +189,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['penghambat_4']; ?>" class="form-control" name="penghambat_4" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['penghambat_4']; ?>" class="form-control" name="penghambat_4" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -203,7 +199,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['pendukung_4']; ?>" class="form-control" name="pendukung_4" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['pendukung_4']; ?>" class="form-control" name="pendukung_4" maxlength="300">
 							</div>
 						</div>
 					</div>
@@ -213,7 +209,7 @@
 						</div>
 						<div class="col-10">
 							<div class="input-group mb-3">
-								<input type="text" value="<?= $kegiatan['tindak_lanjut_4']; ?>" class="form-control" name="tindak_lanjut_4" maxlength="300">
+								<input type="text" value="<?= $opd_kegiatan_sub['tindak_lanjut_4']; ?>" class="form-control" name="tindak_lanjut_4" maxlength="300">
 							</div>
 						</div>
 					</div>

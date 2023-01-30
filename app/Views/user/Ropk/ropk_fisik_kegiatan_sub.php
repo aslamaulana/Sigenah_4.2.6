@@ -12,10 +12,10 @@
 				<th class="text-center" width="30px">No</th>
 				<th> Kegiatan / Sub Kegiatan </th>
 				<th class="text-center">Pagu <?= $_SESSION['tahun']; ?></th>
-				<th style="width:300px;"> Lokasi </th>
-				<th> Sumber Dana </th>
+				<th class="text-center" style="width:250px;"> Lokasi </th>
+				<th class="text-center">Sumber Dana </th>
 				<th class="text-center">
-					<div style="width:100px; margin:auto;">Aksi</div>
+					<div style="width:50px; margin:auto;">Aksi</div>
 				</th>
 			</tr>
 		</thead>
@@ -24,8 +24,8 @@
 				<th class="text-center">No</th>
 				<th>Kegiatan / Sub Kegiatan</th>
 				<th class="text-center">Pagu <?= $_SESSION['tahun']; ?></th>
-				<th> Lokasi </th>
-				<th> Sumber Dana </th>
+				<th class="text-center">Lokasi </th>
+				<th class="text-center">Sumber Dana </th>
 				<th class="text-center">Aksi</th>
 			</tr>
 		</tfoot>
@@ -36,10 +36,10 @@
 				<tr class="font-weight-bold" style="background-color: blanchedalmond;">
 					<td class="text-center"><?= $nomor++; ?></td>
 					<td class="text-wrap align-top"><?= $rol['rkpd_kegiatan_n']; ?> </td>
-					<td style="text-align: center;"> </td>
-					<td style="text-align: center;"> </td>
-					<td style="text-align: center;"> </td>
-					<td style="text-align: center;"> </td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
 				<?php $query = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
 					->join('set_kegiatan_90', 'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n = set_kegiatan_90.kegiatan', 'left')
@@ -66,9 +66,9 @@
 								])->getRowArray(); ?>
 							<?= number_format($pagu['rp_tahun'], 2, ',', '.'); ?>
 						</td>
-						<td class="align-top text-wrap"><?= $ros['lokasi']; ?></td>
-						<td class="align-top"><?= $ros['sumber_dana']; ?></td>
-						<td style="text-align: center;">
+						<td class="align-top text-wrap text-center"><?= $ros['lokasi']; ?></td>
+						<td class="align-top text-wrap text-center"><?= $ros['sumber_dana']; ?></td>
+						<td class="text-center">
 							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_fisik/fisik/' . $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
 								<i class="nav-icon fas fa-chart-bar"> Rencana</i>
 							</a>

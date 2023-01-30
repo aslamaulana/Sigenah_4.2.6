@@ -65,6 +65,7 @@
 						<td style="text-align: center;"> </td>
 					</tr>
 					<?php $query = $db->table('tb_ropk_organisasi_rkpd_kegiatan_sub')
+						->select('tb_ropk_organisasi_rkpd_kegiatan_sub.*,set_kegiatan_90.*,set_sub_kegiatan_90.*, tb_ropk_organisasi_rkpd_kegiatan_sub.created_by as created_by1, tb_ropk_organisasi_rkpd_kegiatan_sub.updated_by as updated_by1, tb_ropk_organisasi_rkpd_kegiatan_sub.created_at as created_at1, tb_ropk_organisasi_rkpd_kegiatan_sub.updated_at as updated_at1')
 						->join('set_kegiatan_90', 'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_n = set_kegiatan_90.kegiatan', 'left')
 						->join('set_sub_kegiatan_90', 'tb_ropk_organisasi_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n = set_sub_kegiatan_90.sub_kegiatan AND set_kegiatan_90.id_kegiatan = set_sub_kegiatan_90.kegiatan_id', 'left')
 						->getWhere([
@@ -76,7 +77,9 @@
 					foreach ($query as $ros) : ?>
 						<tr>
 							<td class="text-center"><input type='checkbox' class='check-item' name='id_sub[]' value='<?= $ros['id_ropk_organisasi_rkpd_kegiatan_sub']; ?>'></td>
-							<td class="align-top"><?= $ros['id_sub_kegiatan']; ?></td>
+							<td class="align-top" rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-html="true" data-placement="right" title="Created by : <?= $ros['created_by1']; ?><br>Updated by : <?= $ros['updated_by1']; ?><br>Created at : <?= $ros['created_at1']; ?><br>Updated at : <?= $ros['updated_at1']; ?>">
+								<?= $ros['id_sub_kegiatan']; ?>
+							</td>
 							<!-- 	<td class="text-wrap align-top"> -->
 							<td class="text-wrap align-top clickable" data-toggle="collapse" id="<?= 'row-' . str_replace('.', '', $ros['id_sub_kegiatan']); ?>" data-target=".<?= 'row-' . str_replace('.', '', $ros['id_sub_kegiatan']); ?>">
 								<i class="glyphicon glyphicon-plus nav-icon fas fa-plus"></i> <?= $ros['rkpd_kegiatan_sub_n']; ?>

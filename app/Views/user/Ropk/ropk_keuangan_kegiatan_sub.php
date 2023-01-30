@@ -40,8 +40,8 @@
 					<th class="text-center" width="30px">No</th>
 					<th> Kegiatan / Sub Kegiatan </th>
 					<th class="text-center">Pagu <?= $_SESSION['tahun']; ?></th>
-					<th style="width:300px;"> Lokasi </th>
-					<th> Sumber Dana </th>
+					<th class="text-center" style="width:250px;"> Lokasi </th>
+					<th class="text-center"> Sumber Dana </th>
 					<th class="text-center">
 						<div style="width:100px; margin:auto;">Aksi</div>
 					</th>
@@ -53,8 +53,8 @@
 					<th class="text-center">No</th>
 					<th>Kegiatan / Sub Kegiatan</th>
 					<th class="text-center">Pagu <?= $_SESSION['tahun']; ?></th>
-					<th> Lokasi </th>
-					<th> Sumber Dana </th>
+					<th class="text-center">Lokasi </th>
+					<th class="text-center">Sumber Dana </th>
 					<th class="text-center">Aksi</th>
 				</tr>
 				<tr class="font-weight-bold" style="background-color: #333940; color: white;">
@@ -80,12 +80,13 @@
 						<td class="text-center"></td>
 						<td class="text-center"><?= $nomor++; ?></td>
 						<td class="text-wrap align-top"><?= $rol['rkpd_kegiatan_n']; ?> </td>
-						<td style="text-align: center;"> </td>
-						<td style="text-align: center;"> </td>
-						<td style="text-align: center;"> </td>
-						<td style="text-align: center;"> </td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
 					</tr>
 					<?php $query = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
+						->select('tb_ropk_keuangan_rkpd_kegiatan_sub.*,set_kegiatan_90.*,set_sub_kegiatan_90.*, tb_ropk_keuangan_rkpd_kegiatan_sub.created_by as created_by1, tb_ropk_keuangan_rkpd_kegiatan_sub.updated_by as updated_by1, tb_ropk_keuangan_rkpd_kegiatan_sub.created_at as created_at1, tb_ropk_keuangan_rkpd_kegiatan_sub.updated_at as updated_at1')
 						->join('set_kegiatan_90', 'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n = set_kegiatan_90.kegiatan', 'left')
 						->join('set_sub_kegiatan_90', 'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_sub_n = set_sub_kegiatan_90.sub_kegiatan AND set_kegiatan_90.id_kegiatan = set_sub_kegiatan_90.kegiatan_id', 'left')
 						->getWhere([
@@ -97,7 +98,9 @@
 					foreach ($query as $ros) : ?>
 						<tr>
 							<td class="text-center"><input type='checkbox' class='check-item' name='id_sub[]' value='<?= $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>'></td>
-							<td class="align-top"><?= $ros['id_sub_kegiatan']; ?></td>
+							<td class="align-top" rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-html="true" data-placement="right" title="Created by : <?= $ros['created_by1']; ?><br>Updated by : <?= $ros['updated_by1']; ?><br>Created at : <?= $ros['created_at1']; ?><br>Updated at : <?= $ros['updated_at1']; ?>">
+								<?= $ros['id_sub_kegiatan']; ?>
+							</td>
 							<td class="text-wrap align-top clickable" data-toggle="collapse" id="<?= 'row-' . str_replace('.', '', $ros['id_sub_kegiatan']); ?>" data-target=".<?= 'row-' . str_replace('.', '', $ros['id_sub_kegiatan']); ?>">
 								<i class="glyphicon glyphicon-plus nav-icon fas fa-plus"></i> <?= $ros['rkpd_kegiatan_sub_n']; ?>
 							</td>
@@ -113,9 +116,9 @@
 									])->getRowArray(); ?>
 								<?= (float) $pagu['rp_tahun'] == $pagu['rp_tahun'] ? number_format($pagu['rp_tahun'], 2, ',', '.') : "ERROR"; ?>
 							</td>
-							<td class="align-top text-wrap"><?= $ros['lokasi']; ?></td>
-							<td class="align-top text-wrap"><?= $ros['sumber_dana']; ?></td>
-							<td style="text-align: center;">
+							<td class="align-top text-wrap text-center"><?= $ros['lokasi']; ?></td>
+							<td class="align-top text-wrap text-center"><?= $ros['sumber_dana']; ?></td>
+							<td class="text-center">
 								<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/ropk/ropk_keuangan/keuangan/' . $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
 									<i class="nav-icon fas fa-chart-bar"> Rencana</i>
 								</a>

@@ -283,6 +283,12 @@
 										<p><small>6. </small> Kegiatan</p>
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="<?= base_url('/user/renstra_capaian/opd_capaian_kegiatan_sub'); ?>" class="nav-link <?= $mn == 'opd_capaian_kegiatan_sub' ? 'active' : ''; ?>">
+										<i class="far nav-icon"></i>
+										<p><small>7. </small> Sub Kegiatan</p>
+									</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
