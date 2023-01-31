@@ -462,4 +462,26 @@ class Simonela extends BaseController
 
 		return $this->response->download('./FileBerkasData/' . user()->opd_id . '/Si-Monela/' . $dokumen, NULL);
 	}
+	/*
+	 * ---------------------------------------------------
+	 * Menu sub kegiatan e-monev
+	 * Sub kegiatan di ambil dari ropk keuangan sub kegiatan
+	 * ---------------------------------------------------
+	 */
+	public function laporan()
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela_laporan',
+				'title' => 'User | Si-Monela',
+				'lok' => '<b>Si-Monela Laporan</b>',
+				'sub_kegiatan' => $this->sub_kegiatan->Kegiatan(), //Miroring dari sub Kegiatan keuangan
+				'db' => \Config\Database::connect(),
+			];
+			echo view('user/Simonela/simonela_laporan', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
 }

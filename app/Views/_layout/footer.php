@@ -2,7 +2,7 @@
 	<strong>Copyright &copy; <?= date('Y'); ?> <a href="https://www.instagram.com/aslamaulana/">.</a></strong>
 	BAPPEDA Kabpaten Pangandaran.
 	<div class="float-right d-none d-sm-inline-block">
-		<b>Version</b> 1.2.3
+		<b>Version</b> 1.2.4
 	</div>
 	<script>
 		$(".custom-file-input").on("change", function() {

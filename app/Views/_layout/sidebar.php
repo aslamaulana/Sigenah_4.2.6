@@ -243,7 +243,7 @@
 					</ul>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?= base_url('/user/ropk/ropk_fisik'); ?>" class="nav-link <?= $mn == 'e_fisik' ? 'active' : ''; ?>">
+							<a href="<?= base_url('/user/simonela/simonela/laporan?bu=b1'); ?>" class="nav-link <?= $mn == 'simonela_laporan' ? 'active' : ''; ?>">
 								<i class="far nav-icon"></i>
 								<p><small>2. </small> Laporan</p>
 							</a>
