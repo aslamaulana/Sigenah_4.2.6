@@ -6,9 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\User\Ropk\Model_ropk_keuangan_kegiatan_sub;
 use App\Models\User\Simonela\Model_simonela_progres;
 use App\Models\User\Simonela\Model_simonela_dokumen;
-// use Google\Client;
-// use Google\Client\driv
-// require_once '../vendor/google_api/vendor/autoload.php';
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 use Google\Service\Drive;
 
@@ -464,11 +463,10 @@ class Simonela extends BaseController
 	}
 	/*
 	 * ---------------------------------------------------
-	 * Menu sub kegiatan e-monev
-	 * Sub kegiatan di ambil dari ropk keuangan sub kegiatan
+	 * Simonela Laporan
 	 * ---------------------------------------------------
 	 */
-	public function laporan()
+	public function laporan($bulan_long = '')
 	{
 		if (has_permission('User')) :
 			$data = [
@@ -478,8 +476,51 @@ class Simonela extends BaseController
 				'lok' => '<b>Si-Monela Laporan</b>',
 				'sub_kegiatan' => $this->sub_kegiatan->Kegiatan(), //Miroring dari sub Kegiatan keuangan
 				'db' => \Config\Database::connect(),
+				'bulan_long' => $bulan_long,
 			];
 			echo view('user/Simonela/simonela_laporan', $data);
+		else :
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+		endif;
+	}
+	/*
+	 * ---------------------------------------------------
+	 * Menu sub kegiatan e-monev
+	 * Sub kegiatan di ambil dari ropk keuangan sub kegiatan
+	 * ---------------------------------------------------
+	 */
+	public function laporan_pdf($bulan_long)
+	{
+		if (has_permission('User')) :
+			$data = [
+				'gr' => 'simonela',
+				'mn' => 'simonela_laporan',
+				'title' => 'User | Si-Monela',
+				'lok' => '<b>Si-Monela Laporan</b>',
+				'sub_kegiatan' => $this->sub_kegiatan->Kegiatan(), //Miroring dari sub Kegiatan keuangan
+				'db' => \Config\Database::connect(),
+				'bulan_long' => $bulan_long,
+			];
+
+			// return view('surat/disposisi_print', $data);
+			$html = view('user/Simonela/simonela_laporan_pdf', $data);
+
+			$options = new Options();
+			$options->set('defaultFont', 'serif');
+
+			// $dompdf = new Dompdf($options);
+			$dompdf = new Dompdf($options);
+			$dompdf->loadHtml($html, 'UTF-8');
+
+			// (Optional) Setup the paper size and orientation
+			$dompdf->setPaper('a3', 'landscape');
+			// Render the HTML as PDF
+			$dompdf->render();
+
+			// Output the generated PDF to Browser
+			// $dompdf->stream();
+			$dompdf->stream('Lembar Disposisi-' . date('d-m-Y H:i'), array("Attachment" => false));
+		// echo view('user/Simonela/simonela_laporan_pdf', $data);
 		else :
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		endif;

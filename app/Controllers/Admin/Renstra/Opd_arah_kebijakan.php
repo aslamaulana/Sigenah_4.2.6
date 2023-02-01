@@ -7,7 +7,7 @@ use App\Models\Admin\Renstra\Model_opd_arah_kebijakan;
 
 class Opd_arah_kebijakan extends BaseController
 {
-	protected $opd_arah_kebijakan;
+	protected $opd_arah_kebijakan, $session;
 
 	public function __construct()
 	{

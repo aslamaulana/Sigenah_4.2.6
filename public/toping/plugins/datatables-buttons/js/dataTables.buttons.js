@@ -1532,6 +1532,170 @@ Buttons.defaults = {
 	}
 };
 
+// --------------------------------------------------------------------------------------------------
+var _exportData = function(dt, inOpts) {
+
+	var config = $.extend(true, {}, {
+		rows: null,
+		columns: '',
+		grouped_array_index: [],
+		modifier: {
+			search: 'applied',
+			order: 'applied'
+		},
+		orthogonal: 'display',
+		stripHtml: true,
+		stripNewlines: true,
+		decodeEntities: true,
+		trim: true,
+		format: {
+			header: function(d) {
+				return strip(d);
+			},
+			footer: function(d) {
+				return strip(d);
+			},
+			body: function(d) {
+				return strip(d);
+			}
+		}
+
+	}, inOpts);
+
+	var strip = function(str) {
+		if (typeof str !== 'string') {
+			return str;
+		}
+
+		// Always remove script tags
+		str = str.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+
+		if (config.stripHtml) {
+			str = str.replace(/<[^>]*>/g, '');
+		}
+
+		if (config.trim) {
+			str = str.replace(/^\s+|\s+$/g, '');
+		}
+
+		if (config.stripNewlines) {
+			str = str.replace(/\n/g, ' ');
+		}
+
+		if (config.decodeEntities) {
+			_exportTextarea.innerHTML = str;
+			str = _exportTextarea.value;
+		}
+
+		return str;
+	};
+
+
+	var header = dt.columns(config.columns).indexes().map(function(idx) {
+		var el = dt.column(idx).header();
+		return config.format.header(el.innerHTML, idx, el);
+	}).toArray();
+
+	var footer = dt.table().footer() ?
+		dt.columns(config.columns).indexes().map(function(idx) {
+			var el = dt.column(idx).footer();
+			return config.format.footer(el ? el.innerHTML : '', idx, el);
+		}).toArray() :
+		null;
+
+	var rowIndexes = dt.rows(config.rows, config.modifier).indexes().toArray();
+	var selectedCells = dt.cells(rowIndexes, config.columns);
+	var cells = selectedCells
+		.render(config.orthogonal)
+		.toArray();
+	var cellNodes = selectedCells
+		.nodes()
+		.toArray();
+
+	var grouped_array_index = config.grouped_array_index; //customised
+	var no_of_columns = header.length;
+	var no_of_rows = no_of_columns > 0 ? cells.length / no_of_columns : 0;
+	var body = new Array(no_of_rows);
+	var body_data = new Array(no_of_rows); //customised
+	var body_with_nodes = new Array(no_of_rows); //customised
+	var body_with_nodes_static = new Array(no_of_rows); //customised
+	var cellCounter = 0;
+
+	for (var i = 0, ien = no_of_rows; i < ien; i++) {
+		var rows = new Array(no_of_columns);
+		var rows_with_nodes = new Array(no_of_columns);
+
+		for (var j = 0; j < no_of_columns; j++) {
+			rows[j] = config.format.body(cells[cellCounter], i, j, cellNodes[cellCounter]);
+			rows_with_nodes[j] = config.format.body(cellNodes[cellCounter], i, j, cells[cellCounter]).outerHTML;
+			cellCounter++;
+		}
+
+		body[i] = rows;
+		body_data[i] = rows;
+		body_with_nodes[i] = $.parseHTML('<tr class="even">' + rows_with_nodes.join("") + '</tr>');
+		body_with_nodes_static[i] = $.parseHTML('<tr class="even">' + rows_with_nodes.join("") + '</tr>');
+	}
+
+	/******************************************** GROUP DATA *****************************************************/
+	var row_array = dt.rows().nodes();
+	var row_data_array = dt.rows().data();
+	var iColspan = no_of_columns;
+	var sLastGroup = "";
+	var inner_html = '',
+		grouped_index;
+	var individual_group_array = [],
+		sub_group_array = [],
+		total_group_array = [];
+	var no_of_splices = 0; //to keep track of no of element insertion into the array as index changes after splicing one element
+
+	for (var i = 0, row_length = body_with_nodes.length; i < row_length; i++) {
+		sub_group_array[i] = [];
+		individual_group_array[i] = [];
+
+		var sGroup = '';
+
+		for (var k = 0; k < grouped_array_index.length; k++) {
+			sGroup = row_data_array[i][grouped_array_index[k]];
+			inner_html = row_data_array[i][grouped_array_index[k]];
+			grouped_index = k;
+			individual_group_array[i][k] = row_data_array[i][grouped_array_index[k]];
+			sub_group_array[i][k] = sGroup;
+		}
+
+		total_group_array[i] = sGroup;
+
+
+		console.log("grouped_index", grouped_index);
+
+		if (sGroup !== sLastGroup) {
+			var table_data = [];
+			var table_data_with_node = '';
+
+			for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+				if ($column_index === 0) {
+					table_data_with_node += '<td style="border-left:none;border-right:none">' + inner_html + '</td>';
+					table_data[$column_index] = inner_html + " ";
+				} else {
+					table_data_with_node += '<td style="border-left:none;border-right:none"></td>';
+					table_data[$column_index] = '';
+				}
+			}
+
+			body_with_nodes.splice(i + no_of_splices, 0, $.parseHTML('<tr class="group group_' + grouped_index + ' grouped-array-index_' + grouped_array_index[grouped_index] + '">' + table_data_with_node + '</tr>'));
+			body_data.splice(i + no_of_splices, 0, table_data);
+			no_of_splices++;
+			sLastGroup = sGroup;
+		}
+	}
+
+	return {
+		header: header,
+		footer: footer,
+		body: body_data
+	};
+};
+// --------------------------------------------------------------------------------------------------
 /**
  * Version information
  * @type {string}

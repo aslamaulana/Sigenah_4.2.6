@@ -5,29 +5,35 @@
 <link rel="stylesheet" href="<?= base_url('/toping/plugins/datatables-rowgroup/css/rowGroup.bootstrap4.min.js') ?>">
 <?= $this->endSection(); ?>
 
+<?= $this->section('tombol'); ?>
+<div style="width:80px;">
+	<a href="<?= base_url('/user/simonela/simonela/laporan_pdf/' . $bulan_long . '?bu=' . $_GET['bu']); ?>" target="BLINK">
+		<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-file-pdf"></i> Celak</li>
+	</a>
+</div>
+<?= $this->endSection(); ?>
+
 <?= $this->section('content'); ?>
 <div class="card-body">
-	<table class="table table-bordered table-sm">
-		<tr>
-			<th class="col-md-2">Bulan:</th>
-			<th class="col-md-10">
-				<select class="form-control" onchange="location = this.value;">
-					<option <?= $_GET['bu'] == 'b1' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b1'); ?>">Januari</option>
-					<option <?= $_GET['bu'] == 'b2' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b2'); ?>">Februari</option>
-					<option <?= $_GET['bu'] == 'b3' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b3'); ?>">Maret</option>
-					<option <?= $_GET['bu'] == 'b4' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b4'); ?>">April</option>
-					<option <?= $_GET['bu'] == 'b5' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b5'); ?>">Mei</option>
-					<option <?= $_GET['bu'] == 'b6' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b6'); ?>">Juni</option>
-					<option <?= $_GET['bu'] == 'b7' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b7'); ?>">Juli</option>
-					<option <?= $_GET['bu'] == 'b8' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b8'); ?>">Agustus</option>
-					<option <?= $_GET['bu'] == 'b9' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b9'); ?>">September</option>
-					<option <?= $_GET['bu'] == 'b10' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b10'); ?>">Oktober</option>
-					<option <?= $_GET['bu'] == 'b11' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b11'); ?>">November</option>
-					<option <?= $_GET['bu'] == 'b12' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan?bu=b12'); ?>">Desember</option>
-				</select>
-			</th>
-		</tr>
-	</table><br>
+	<div class="row">
+		<div class="col-md-1">Bulan:</div>
+		<div class="col-md-11">
+			<select class="form-control" onchange="location = this.value;">
+				<option <?= $_GET['bu'] == 'b1' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Januari?bu=b1'); ?>">Januari</option>
+				<option <?= $_GET['bu'] == 'b2' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Februari?bu=b2'); ?>">Februari</option>
+				<option <?= $_GET['bu'] == 'b3' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Maret?bu=b3'); ?>">Maret</option>
+				<option <?= $_GET['bu'] == 'b4' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/April?bu=b4'); ?>">April</option>
+				<option <?= $_GET['bu'] == 'b5' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Mei?bu=b5'); ?>">Mei</option>
+				<option <?= $_GET['bu'] == 'b6' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Juni?bu=b6'); ?>">Juni</option>
+				<option <?= $_GET['bu'] == 'b7' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Juli?bu=b7'); ?>">Juli</option>
+				<option <?= $_GET['bu'] == 'b8' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Agustus?bu=b8'); ?>">Agustus</option>
+				<option <?= $_GET['bu'] == 'b9' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/September?bu=b9'); ?>">September</option>
+				<option <?= $_GET['bu'] == 'b10' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Oktober?bu=b10'); ?>">Oktober</option>
+				<option <?= $_GET['bu'] == 'b11' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/November?bu=b11'); ?>">November</option>
+				<option <?= $_GET['bu'] == 'b12' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Desember?bu=b12'); ?>">Desember</option>
+			</select>
+		</div>
+	</div><br>
 
 	<table id="example1" class="table table-bordered display nowrap table-hover table-sm">
 		<thead>
@@ -49,20 +55,13 @@
 					<div style="min-width: 400px; width:auto; max-width:600px;">Rencana Tindak Lanjut</div>
 				</th>
 				<th class="text-center" colspan="2">Target</th>
-				<!-- <th class="text-center" colspan="2">Target Dikurangi Efisiensi</th> -->
 				<th class="text-center" colspan="2">Realisasi</th>
 				<th class="text-center" colspan="2">Konsistensi (%)</th>
 				<th class="text-center" colspan="2">Deviasi</th>
-				<!-- <th rowspan="2" class="text-center align-middle">Tanggal Proses</th>
-				<th rowspan="2" class="text-center align-middle">Status</th>
-				<th rowspan="2" class="text-center align-middle" style="width: 90px;">Aksi</th>
-				<th rowspan="2" class="text-center align-middle" style="width: 90px;">Aksi</th> -->
 			</tr>
 			<tr>
 				<th class="text-center">Keu</th>
 				<th class="text-center">Fisik</th>
-				<!-- <th class="text-center">Keu</th>
-				<th class="text-center">Fisik</th> -->
 				<th class="text-center">Keu</th>
 				<th class="text-center">Fisik</th>
 				<th class="text-center">Keu</th>
@@ -76,6 +75,8 @@
 			$sub_kegiatan = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
 				->distinct('rkpd_kegiatan_n, rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
 				->select('rkpd_kegiatan_n, rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
+				->orderBy('rkpd_kegiatan_n', 'ASC')
+				->orderBy('rkpd_kegiatan_sub_n', 'ASC')
 				->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id, 'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getResultArray();
 
 			foreach ($sub_kegiatan as $rol) : ?>
@@ -175,7 +176,7 @@
 					//dd($progres1); 
 					?>
 					<td class="align-top text-wrap" style="padding-left: 20px;"><?= $rol['rkpd_kegiatan_sub_n']; ?></td>
-					<td><?= $rol['rkpd_kegiatan_n']; ?></td>
+					<td><b><?= $rol['rkpd_kegiatan_n']; ?></b></td>
 
 					<td class="align-top text-wrap">
 						<?php $tahap_aktifitas1 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
@@ -203,8 +204,6 @@
 					</td>
 					<td class="align-top text-right"><?= number_format($b[$bulan][$id_ropk], 0, ',', '.'); ?></td>
 					<td class="align-top text-right"><?= number_format($fb[$bulan][$id_ropk], 2, ',', '.'); ?></td>
-					<!-- <td class="align-top text-right"></td>
-				<td class="align-top text-right"></td> -->
 					<!-------------- Realisasi -->
 					<td class="align-top text-right"><?= isset($progres1['realisasi_keu']) ? number_format($progres1['realisasi_keu'], 0, ',', '.') : ''; ?></td>
 					<td class="align-top text-right"><?= isset($progres1['realisasi_fisik']) ? number_format($progres1['realisasi_fisik'], 2, ',', '.') : ''; ?></td>
@@ -232,22 +231,24 @@
 					<!-------------- Deviasi -->
 					<?php
 					try {
-						$deviasi_keu[$id_ropk] = isset($progres1['realisasi_keu']) ? number_format(round(((($progres1['realisasi_keu'] / $rol['rp_tahun']) * 100) - (($b[$bulan][$id_ropk] / $rol['rp_tahun']) * 100)), 2), 2, ',', '.') : '';
+						$deviasi_keu[$id_ropk] = isset($progres1['realisasi_keu']) ? number_format((((($progres1['realisasi_keu'] / $rol['rp_tahun']) * 100) - (($b[$bulan][$id_ropk] / $rol['rp_tahun']) * 100))), 2, ',', '.') : '';
+						$deviasi_keu_w[$id_ropk] = isset($progres1['realisasi_keu']) ? ((($progres1['realisasi_keu'] / $rol['rp_tahun']) * 100) - (($b[$bulan][$id_ropk] / $rol['rp_tahun']) * 100)) : '';
 					} catch (DivisionByZeroError $e) {
 						$deviasi_keu[$id_ropk] = "";
 					}
 					?>
-					<td class="align-top text-right" style=" <?= $deviasi_keu[$id_ropk] >= '-10,00' ? "background: greenyellow" : ($deviasi_keu[$id_ropk] != "" ? "background: #d81b60" : ''); ?>">
+					<td class="align-top text-right" style=" <?= $deviasi_keu_w[$id_ropk] == "" ? "" : ($deviasi_keu_w[$id_ropk] > '-5' ? "background: green" : ($deviasi_keu_w[$id_ropk] <= '-5' && $deviasi_keu_w[$id_ropk] >= '-10' ? "background: yellow" : ($deviasi_keu_w[$id_ropk] < '-10' ? "background: red" : ""))); ?>">
 						<?= $deviasi_keu[$id_ropk]; ?>
 					</td>
 					<?php
 					try {
-						$deviasi_fis[$id_ropk] = isset($progres1['realisasi_fisik']) ? number_format(round((($progres1['realisasi_fisik'] - $fb[$bulan][$id_ropk])), 2), 2, ',', '.') : '';
+						$deviasi_fis[$id_ropk] = isset($progres1['realisasi_fisik']) ? number_format((($progres1['realisasi_fisik'] - $fb[$bulan][$id_ropk])), 2, ',', '.') : '';
+						$deviasi_fis_w[$id_ropk] = isset($progres1['realisasi_fisik']) ? (($progres1['realisasi_fisik'] - $fb[$bulan][$id_ropk])) : '';
 					} catch (DivisionByZeroError $e) {
 						$deviasi_fis[$id_ropk] = "";
 					}
 					?>
-					<td class="align-top text-right" style=" <?= $deviasi_fis[$id_ropk] >= '-5,00' ? "background: greenyellow" : ($deviasi_fis[$id_ropk] != "" ? "background: #d81b60" : ''); ?>">
+					<td class="align-top text-right" style=" <?= $deviasi_fis_w[$id_ropk] == "" ? "" : ($deviasi_fis_w[$id_ropk] > '-5' ? "background: green" : ($deviasi_fis_w[$id_ropk] <= '-5' && $deviasi_fis_w[$id_ropk] >= '-10' ? "background: yellow" : ($deviasi_fis_w[$id_ropk] < '-10' ? "background: red" : ""))); ?>">
 						<?= $deviasi_fis[$id_ropk]; ?>
 					</td>
 					<!-------------- //Deviasi-->
@@ -308,7 +309,7 @@
 					}
 				},
 				dataSrc: [1]
-			}
+			},
 		});
 
 	});
