@@ -39,6 +39,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 // $routes->get('api/program/(:any)', 'Api\Api_opd_program::program/$1');
 
+$routes->get("simonela/dokumen/(:any)", "User\Simonela\Simonela::download/$1");
+
 $routes->group("api", function ($routes) {
     $routes->post("register", "Api\User\Register::index");
     $routes->post("login", "Api\User\Login::index");

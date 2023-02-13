@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Opd_kegiatan_sub extends BaseController
 {
-	protected $opd_kegiatan_sub, $satuan, $tahun;
+	protected $rkpd_kegiatan_sub, $satuan, $tahun;
 
 	public function __construct()
 	{
@@ -254,9 +254,9 @@ class Opd_kegiatan_sub extends BaseController
 				->setCellValue('D' . $column, $row['rkpd_indikator_kegiatan_sub'])
 				->setCellValue('E' . $column, $row['satuan'])
 				->setCellValue('F' . $column, $row['t_tahun'])
-				->setCellValue('G' . $column,$row['rp_tahun'])
+				->setCellValue('G' . $column, $row['rp_tahun'])
 				->setCellValue('H' . $column, $row['t_tahun+n'])
-				->setCellValue('I' . $column,$row['rp_tahun+n'])
+				->setCellValue('I' . $column, $row['rp_tahun+n'])
 				->setCellValue('J' . $column, $row['lokasi'])
 				->setCellValue('K' . $column, $row['sumber_dana']);
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column)->getFill()

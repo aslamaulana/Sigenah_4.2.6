@@ -10,7 +10,7 @@ use App\Models\Admin\RPJMD\Model_tahun;
 
 class Opd_tujuan extends BaseController
 {
-	protected $visi, $misi, $tujuan, $satuan, $tahun, $tujuan_indik_target;
+	protected $visi, $misi, $opd_tujuan, $satuan, $tahun, $tujuan_indik_target;
 
 	public function __construct()
 	{

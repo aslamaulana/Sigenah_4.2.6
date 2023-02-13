@@ -7,7 +7,7 @@ use App\Models\Admin\Renstra\Model_opd_dokumen;
 
 class Opd_dokumen extends BaseController
 {
-	protected $dokumen;
+	protected $dokumen, $session;
 
 	public function __construct()
 	{

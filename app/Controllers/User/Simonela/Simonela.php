@@ -454,12 +454,12 @@ class Simonela extends BaseController
 	 * Download Progres Dokument
 	 * ---------------------------------------------------
 	 */
-	public function download($id)
+	public function download($opd_id, $id)
 	{
-		$dt = $this->simonela_dokumen->getwhere(['id_simonela_progres_berkas' => $id])->getRow();
+		$dt = $this->simonela_dokumen->getwhere(['id_simonela_progres_berkas' => buka($id)])->getRow();
 		$dokumen = $dt->dokumen;
 
-		return $this->response->download('./FileBerkasData/' . user()->opd_id . '/Si-Monela/' . $dokumen, NULL);
+		return $this->response->download('./FileBerkasData/' . $opd_id . '/Si-Monela/' . $dokumen, NULL);
 	}
 	/*
 	 * ---------------------------------------------------

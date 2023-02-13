@@ -11,7 +11,7 @@ use App\Models\Admin\RPJMD\Model_tahun;
 
 class Ropk_kegiatan_sub extends BaseController
 {
-	protected $opd_kegiatan_sub, $satuan, $tahun;
+	protected $ropk_organisasi_rkpd_kegiatan_sub, $satuan, $tahun, $ropk_fisik_rkpd_kegiatan_sub, $ropk_keuangan_rkpd_kegiatan_sub;
 
 	public function __construct()
 	{

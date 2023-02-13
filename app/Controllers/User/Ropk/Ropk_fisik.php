@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Ropk_fisik extends BaseController
 {
-	protected $opd_kegiatan_sub, $satuan, $tahun;
+	protected $ropk_organisasi_kegiatan_sub, $satuan, $tahun, $ropk_kegiatan_sub, $ropk_fisik, $ropk_organisasi;
 
 	public function __construct()
 	{

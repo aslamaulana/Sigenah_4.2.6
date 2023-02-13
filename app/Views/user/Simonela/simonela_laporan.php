@@ -7,7 +7,8 @@
 
 <?= $this->section('tombol'); ?>
 <div style="width:80px;">
-	<a href="<?= base_url('/user/simonela/simonela/laporan_pdf/' . $bulan_long . '?bu=' . $_GET['bu']); ?>" target="BLINK">
+	<?php $bulan_long == '' ? $bulan_longg = 'Januari' : $bulan_longg = $bulan_long; ?>
+	<a href="<?= base_url('/user/simonela/simonela/laporan_pdf/' . $bulan_longg . '?bu=' . $_GET['bu']); ?>" target="BLINK">
 		<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-file-pdf"></i> Celak</li>
 	</a>
 </div>

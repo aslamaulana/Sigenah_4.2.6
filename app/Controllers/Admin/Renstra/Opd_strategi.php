@@ -7,7 +7,7 @@ use App\Models\Admin\Renstra\Model_opd_strategi;
 
 class Opd_strategi extends BaseController
 {
-	protected $opd_strategi, $opd_sasaran;
+	protected $opd_strategi, $session;
 
 	public function __construct()
 	{

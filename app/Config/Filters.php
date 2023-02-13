@@ -83,6 +83,6 @@ class Filters extends BaseConfig
                 '/admin/*',
                 '/user/*',
             ],
-        ]
+        ],
     ];
 }

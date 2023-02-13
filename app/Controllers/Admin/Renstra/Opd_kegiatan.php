@@ -8,7 +8,7 @@ use App\Models\Admin\RPJMD\Model_tahun;
 
 class Opd_kegiatan extends BaseController
 {
-	protected $opd_kegiatan, $tahun;
+	protected $opd_kegiatan, $tahun, $session;
 
 	public function __construct()
 	{

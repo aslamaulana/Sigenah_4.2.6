@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Opd_sasaran extends BaseController
 {
-	protected $opd_ujuan, $opd_sasaran, $satuan, $tahun, $opd_opd_sasaran_indik_target;
+	protected $opd_ujuan, $opd_sasaran, $satuan, $tahun, $tujuan;
 
 	public function __construct()
 	{

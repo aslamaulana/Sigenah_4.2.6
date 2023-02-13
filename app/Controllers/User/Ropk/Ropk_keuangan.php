@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Ropk_keuangan extends BaseController
 {
-	protected $opd_kegiatan_sub, $satuan, $tahun;
+	protected $ropk_organisasi_kegiatan_sub, $satuan, $tahun, $ropk_kegiatan_sub, $ropk_keuangan, $ropk_organisasi;
 
 	public function __construct()
 	{
@@ -51,7 +51,7 @@ class Ropk_keuangan extends BaseController
 				'mn' => 'ropk_keuangan',
 				'title' => 'User | Cantiku',
 				'lok' => 'Sub Kegiatan -> <a onclick="history.back(-1)" href="#">Cantiku</a> -> <b>Grafik</b>',
-				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' =>$_SESSION['perubahan']])->findAll(),
+				'rkpd_kegiatan' => $this->ropk_kegiatan_sub->where(['rkpd_kegiatan_n' => $_GET['k'], 'rkpd_kegiatan_sub_n' => $_GET['s'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan']])->findAll(),
 				'db' => \Config\Database::connect(),
 			];
 			// dd($data);

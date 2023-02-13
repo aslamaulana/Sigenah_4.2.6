@@ -62,13 +62,25 @@
 	<table id="example1" class="table table-bordered display nowrap table-sm">
 		<thead>
 			<tr>
-				<th class="text-center" width="40px">No</th>
-				<th class="text-wrap">Tahapan pekerjaan (fisik) yang sudah dilakukan</th>
-				<th class="align-middle">Faktor Penghambat</th>
-				<th class="align-middle">Faktor Pendukung</th>
-				<th class="align-middle">Rencana Tindak lanjut</th>
-				<th class="text-wrap">Realisasi Keuangan Hingga Bulan <?= $nm; ?> (Rp)</th>
-				<th class="text-wrap">Realisasi Fisik Hingga Bulan <?= $nm; ?> (%)</th>
+				<th class="align-middle text-center" width="40px">No</th>
+				<th class="align-middle text-wrap">
+					<div style="width:350px;">Tahapan pekerjaan (fisik) yang sudah dilakukan</div>
+				</th>
+				<th class="align-middle">
+					<div style="width:300px;">Faktor Penghambat</div>
+				</th>
+				<th class="align-middle">
+					<div style="width:300px;">Faktor Pendukung</div>
+				</th>
+				<th class="align-middle">
+					<div style="width:300px;"> Tindak lanjut</div>
+				</th>
+				<th class="align-middle text-wrap">
+					<div style="width:200px;">Realisasi Keuangan Hingga Bulan <?= $nm; ?> (Rp)</div>
+				</th>
+				<th class="align-middle text-wrap">
+					<div style="width:200px;">Realisasi Fisik Hingga Bulan <?= $nm; ?> (%)</div>
+				</th>
 				<th class="text-center" width="60px">Aksi</th>
 			</tr>
 		</thead>
@@ -88,10 +100,10 @@
 			foreach ($query as $row) : ?>
 				<tr>
 					<td class="text-center"><?= $no++; ?></td>
-					<td class="align-top"><?= $row['tahap_aktifitas']; ?></td>
-					<td class="align-top"><?= $row['faktor_penghambat']; ?></td>
-					<td class="align-top"><?= $row['faktor_pendukung']; ?></td>
-					<td class="align-top"><?= $row['rencana_tindak_lanjut']; ?></td>
+					<td class="align-top text-wrap"><?= $row['tahap_aktifitas']; ?></td>
+					<td class="align-top text-wrap"><?= $row['faktor_penghambat']; ?></td>
+					<td class="align-top text-wrap"><?= $row['faktor_pendukung']; ?></td>
+					<td class="align-top text-wrap"><?= $row['rencana_tindak_lanjut']; ?></td>
 					<td class="align-top"><?= $row['realisasi_keu']; ?></td>
 					<td class="align-top"><?= $row['realisasi_fisik']; ?></td>
 					<td class="text-center align-top">

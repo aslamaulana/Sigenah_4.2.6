@@ -9,7 +9,7 @@ use App\Models\User\Emonev\Model_emonev_progres_indikator;
 
 class Emonev extends BaseController
 {
-	protected $dpa, $emonev;
+	protected $dpa, $emonev, $emonev_indikator;
 	public function __construct()
 	{
 		$this->dpa = new Model_dpa();

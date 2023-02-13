@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Opd_program_sasaran extends BaseController
 {
-	protected $opd_program_sasaran, $sasaran;
+	protected $opd_program_sasaran, $sasaran, $opd_sasaran;
 
 	public function __construct()
 	{

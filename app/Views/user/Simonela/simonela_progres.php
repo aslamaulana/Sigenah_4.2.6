@@ -45,10 +45,18 @@
 		<thead>
 			<tr>
 				<th rowspan="2" class="text-center align-middle" width="40px">Bulan</th>
-				<th rowspan="2" class="text-center align-middle">Tahapan Aktifitas</th>
-				<th rowspan="2" class="text-center align-middle">Faktor Penghambat</th>
-				<th rowspan="2" class="text-center align-middle">Faktor Pendukung</th>
-				<th rowspan="2" class="text-center align-middle">Rencana Tindak Lanjut</th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width:350px;">Tahapan Aktifitas</div>
+				</th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width:300px;">Faktor Penghambat</div>
+				</th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width:300px;">Faktor Pendukung</div>
+				</th>
+				<th rowspan="2" class="text-center align-middle">
+					<div style="width:300px;">Rencana Tindak Lanjut</div>
+				</th>
 				<th class="text-center" colspan="2">Target</th>
 				<!-- <th class="text-center" colspan="2">Target Dikurangi Efisiensi</th> -->
 				<th class="text-center" colspan="2">Realisasi</th>
@@ -163,25 +171,25 @@
 				//dd($progres1); 
 				?>
 				<td class="align-top">Januari</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas1 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b1'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas1 as $tahap1) {
 						echo '-' . $tahap1['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat1 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b1'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat1 as $penghambat1) {
 						echo '-' . $penghambat1['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung1 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b1'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung1 as $pendukung1) {
 						echo '-' . $pendukung1['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut1 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b1'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut1 as $tindak_lanjut1) {
 						echo '-' . $tindak_lanjut1['rencana_tindak_lanjut'] . '<br>';
@@ -277,25 +285,25 @@
 				?>
 
 				<td class="align-top">Februari</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas2 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b2'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas2 as $tahap2) {
 						echo '-' . $tahap2['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat2 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b2'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat2 as $penghambat2) {
 						echo '-' . $penghambat2['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung2 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b2'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung2 as $pendukung2) {
 						echo '-' . $pendukung2['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut2 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b2'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut2 as $tindak_lanjut2) {
 						echo '-' . $tindak_lanjut2['rencana_tindak_lanjut'] . '<br>';
@@ -379,25 +387,25 @@
 				$realisasi3['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'];
 				?>
 				<td class="align-top">Maret</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas3 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b3'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas3 as $tahap3) {
 						echo '-' . $tahap3['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat3 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b3'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat3 as $penghambat3) {
 						echo '-' . $penghambat3['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung3 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b3'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung3 as $pendukung3) {
 						echo '-' . $pendukung3['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut3 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b3'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut3 as $tindak_lanjut3) {
 						echo '-' . $tindak_lanjut3['rencana_tindak_lanjut'] . '<br>';
@@ -481,25 +489,25 @@
 				$realisasi4['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'] + $progres4['realisasi_fisik'];
 				?>
 				<td class="align-top">April</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas4 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b4'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas4 as $tahap4) {
 						echo '-' . $tahap4['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat4 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b4'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat4 as $penghambat4) {
 						echo '-' . $penghambat4['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung4 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b4'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung4 as $pendukung4) {
 						echo '-' . $pendukung4['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut4 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b4'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut4 as $tindak_lanjut4) {
 						echo '-' . $tindak_lanjut4['rencana_tindak_lanjut'] . '<br>';
@@ -582,25 +590,25 @@
 				$realisasi5['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'] + $progres4['realisasi_fisik'] + $progres5['realisasi_fisik'];
 				?>
 				<td class="align-top">Mei</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas5 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b5'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas5 as $tahap5) {
 						echo '-' . $tahap5['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat5 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b5'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat5 as $penghambat5) {
 						echo '-' . $penghambat5['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung5 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b5'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung5 as $pendukung5) {
 						echo '-' . $pendukung5['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut5 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b5'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut5 as $tindak_lanjut5) {
 						echo '-' . $tindak_lanjut5['rencana_tindak_lanjut'] . '<br>';
@@ -683,25 +691,25 @@
 				$realisasi6['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'] + $progres4['realisasi_fisik'] + $progres5['realisasi_fisik'] + $progres6['realisasi_fisik'];
 				?>
 				<td class="align-top">Juni</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas6 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b6'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas6 as $tahap6) {
 						echo '-' . $tahap6['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat6 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b6'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat6 as $penghambat6) {
 						echo '-' . $penghambat6['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung6 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b6'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung6 as $pendukung6) {
 						echo '-' . $pendukung6['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut6 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b6'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut6 as $tindak_lanjut6) {
 						echo '-' . $tindak_lanjut6['rencana_tindak_lanjut'] . '<br>';
@@ -785,25 +793,25 @@
 
 				?>
 				<td class="align-top">Juli</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas7 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b7'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas7 as $tahap7) {
 						echo '-' . $tahap7['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat7 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b7'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat7 as $penghambat7) {
 						echo '-' . $penghambat7['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung7 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b7'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung7 as $pendukung7) {
 						echo '-' . $pendukung7['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut7 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b7'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut7 as $tindak_lanjut7) {
 						echo '-' . $tindak_lanjut7['rencana_tindak_lanjut'] . '<br>';
@@ -886,25 +894,25 @@
 				$realisasi8['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'] + $progres4['realisasi_fisik'] + $progres5['realisasi_fisik'] + $progres6['realisasi_fisik'] + $progres7['realisasi_fisik'] + $progres8['realisasi_fisik'];
 				?>
 				<td class="align-top">Agustus</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas8 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b8'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas8 as $tahap8) {
 						echo '-' . $tahap8['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat8 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b8'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat8 as $penghambat8) {
 						echo '-' . $penghambat8['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung8 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b8'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung8 as $pendukung8) {
 						echo '-' . $pendukung8['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut8 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b8'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut8 as $tindak_lanjut8) {
 						echo '-' . $tindak_lanjut8['rencana_tindak_lanjut'] . '<br>';
@@ -987,25 +995,25 @@
 				$realisasi9['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'] + $progres4['realisasi_fisik'] + $progres5['realisasi_fisik'] + $progres6['realisasi_fisik'] + $progres7['realisasi_fisik'] + $progres8['realisasi_fisik'] + $progres9['realisasi_fisik'];
 				?>
 				<td class="align-top">September</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas9 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b9'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas9 as $tahap9) {
 						echo '-' . $tahap9['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat9 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b9'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat9 as $penghambat9) {
 						echo '-' . $penghambat9['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung9 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b9'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung9 as $pendukung9) {
 						echo '-' . $pendukung9['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut9 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b9'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut9 as $tindak_lanjut9) {
 						echo '-' . $tindak_lanjut9['rencana_tindak_lanjut'] . '<br>';
@@ -1089,25 +1097,25 @@
 
 				?>
 				<td class="align-top">Oktober</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas10 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b10'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas10 as $tahap10) {
 						echo '-' . $tahap10['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat10 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b10'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat10 as $penghambat10) {
 						echo '-' . $penghambat10['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung10 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b10'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung10 as $pendukung10) {
 						echo '-' . $pendukung10['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut10 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b10'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut10 as $tindak_lanjut10) {
 						echo '-' . $tindak_lanjut10['rencana_tindak_lanjut'] . '<br>';
@@ -1190,25 +1198,25 @@
 				$realisasi11['realisasi_fisik'] = $progres1['realisasi_fisik'] + $progres2['realisasi_fisik'] + $progres3['realisasi_fisik'] + $progres4['realisasi_fisik'] + $progres5['realisasi_fisik'] + $progres6['realisasi_fisik'] + $progres7['realisasi_fisik'] + $progres8['realisasi_fisik'] + $progres9['realisasi_fisik'] + $progres10['realisasi_fisik'] + $progres11['realisasi_fisik'];
 				?>
 				<td class="align-top">November</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas11 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b11'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas11 as $tahap11) {
 						echo '-' . $tahap11['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat11 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b11'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat11 as $penghambat11) {
 						echo '-' . $penghambat11['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung11 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b11'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung11 as $pendukung11) {
 						echo '-' . $pendukung11['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut11 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b11'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut11 as $tindak_lanjut11) {
 						echo '-' . $tindak_lanjut11['rencana_tindak_lanjut'] . '<br>';
@@ -1292,25 +1300,25 @@
 
 				?>
 				<td class="align-top">Desember</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $tahap_aktifitas12 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b12'])->getResultArray(); ?>
 					<?php foreach ($tahap_aktifitas12 as $tahap12) {
 						echo '-' . $tahap12['tahap_aktifitas'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_penghambat12 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b12'])->getResultArray(); ?>
 					<?php foreach ($faktor_penghambat12 as $penghambat12) {
 						echo '-' . $penghambat12['faktor_penghambat'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $faktor_pendukung12 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b12'])->getResultArray(); ?>
 					<?php foreach ($faktor_pendukung12 as $pendukung12) {
 						echo '-' . $pendukung12['faktor_pendukung'] . '<br>';
 					} ?>
 				</td>
-				<td class="align-top">
+				<td class="align-top text-wrap">
 					<?php $rencana_tindak_lanjut12 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $DT['rkpd_kegiatan_n'], 'kegiatan_sub' => $DT['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $DT['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => 'b12'])->getResultArray(); ?>
 					<?php foreach ($rencana_tindak_lanjut12 as $tindak_lanjut12) {
 						echo '-' . $tindak_lanjut12['rencana_tindak_lanjut'] . '<br>';

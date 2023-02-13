@@ -11,7 +11,7 @@ use App\Models\User\Rkpd\Model_tag;
 
 class Opd_kegiatan_sub_tag extends BaseController
 {
-	protected $opd_kegiatan_sub, $satuan, $tahun, $tag;
+	protected $rkpd_kegiatan_sub_tag, $rkpd_kegiatan_sub, $tahun, $tag;
 
 	public function __construct()
 	{

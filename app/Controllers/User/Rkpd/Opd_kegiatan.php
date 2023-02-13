@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Opd_kegiatan extends BaseController
 {
-	protected $opd_kegiatan, $satuan, $tahun;
+	protected $rkpd_kegiatan, $satuan, $tahun;
 
 	public function __construct()
 	{

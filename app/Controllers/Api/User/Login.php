@@ -32,7 +32,10 @@ class Login extends BaseController
 
 		$key = getenv('JWT_SECRET');
 		$iat = time(); // current timestamp value
-		$exp = $iat + 3600;
+		// jwt valid for 60 days (60 seconds * 60 minutes * 24 hours * 60 days)
+		//$expirationTime = $issuedAt + 60 * 60 * 24 * 60;
+		// $exp = $iat + 3600;
+		$exp = $iat + 60 * 60 * 24;
 
 		$payload = array(
 			"iss" => "Issuer of the JWT",

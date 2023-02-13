@@ -15,7 +15,7 @@ use App\Models\Admin\User\Model_groups_permissions;
 
 class Modul extends BaseController
 {
-	protected $skpd, $permission, $group_permission;
+	protected $skpd, $permission, $group_permission, $bidang, $users, $group_users;
 
 	public function __construct()
 	{
