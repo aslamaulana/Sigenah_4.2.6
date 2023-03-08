@@ -8,7 +8,8 @@
 <?= $this->section('tombol'); ?>
 <div style="width:80px;">
 	<?php $bulan_long == '' ? $bulan_longg = 'Januari' : $bulan_longg = $bulan_long; ?>
-	<a href="<?= base_url('/user/simonela/simonela/laporan_pdf/' . $bulan_longg . '?bu=' . $_GET['bu']); ?>" target="_blank">
+	<?php isset($_GET['bu']) ? $buu = $_GET['bu'] : $buu = ''; ?>
+	<a href="<?= base_url('/admin/simonela/simonela/laporan_pdf/' . $bulan_longg . '?bu=' . $_GET['bu']); ?>" target="_blank">
 		<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-file-pdf"></i> Celak</li>
 	</a>
 </div>
@@ -17,21 +18,30 @@
 <?= $this->section('content'); ?>
 <div class="card-body">
 	<div class="row">
+		<div class="col-md">
+			<select class="form-control" onchange="location = this.value;">
+				<?php foreach ($opd as $row) : ?>
+					<option <?= $_SESSION['opd_set'] == $row['id'] ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/opd2/' . $row['id'] . '/' . $bulan_longg . '?bu=' . $buu); ?>"><?= $row['description']; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</div>
+	</div><br>
+	<div class="row">
 		<div class="col-md-1">Bulan:</div>
 		<div class="col-md-11">
 			<select class="form-control" onchange="location = this.value;">
-				<option <?= $_GET['bu'] == 'b1' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Januari?bu=b1'); ?>">Januari</option>
-				<option <?= $_GET['bu'] == 'b2' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Februari?bu=b2'); ?>">Februari</option>
-				<option <?= $_GET['bu'] == 'b3' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Maret?bu=b3'); ?>">Maret</option>
-				<option <?= $_GET['bu'] == 'b4' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/April?bu=b4'); ?>">April</option>
-				<option <?= $_GET['bu'] == 'b5' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Mei?bu=b5'); ?>">Mei</option>
-				<option <?= $_GET['bu'] == 'b6' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Juni?bu=b6'); ?>">Juni</option>
-				<option <?= $_GET['bu'] == 'b7' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Juli?bu=b7'); ?>">Juli</option>
-				<option <?= $_GET['bu'] == 'b8' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Agustus?bu=b8'); ?>">Agustus</option>
-				<option <?= $_GET['bu'] == 'b9' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/September?bu=b9'); ?>">September</option>
-				<option <?= $_GET['bu'] == 'b10' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Oktober?bu=b10'); ?>">Oktober</option>
-				<option <?= $_GET['bu'] == 'b11' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/November?bu=b11'); ?>">November</option>
-				<option <?= $_GET['bu'] == 'b12' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Desember?bu=b12'); ?>">Desember</option>
+				<option <?= $_GET['bu'] == 'b1' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Januari?bu=b1'); ?>">Januari</option>
+				<option <?= $_GET['bu'] == 'b2' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Februari?bu=b2'); ?>">Februari</option>
+				<option <?= $_GET['bu'] == 'b3' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Maret?bu=b3'); ?>">Maret</option>
+				<option <?= $_GET['bu'] == 'b4' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/April?bu=b4'); ?>">April</option>
+				<option <?= $_GET['bu'] == 'b5' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Mei?bu=b5'); ?>">Mei</option>
+				<option <?= $_GET['bu'] == 'b6' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Juni?bu=b6'); ?>">Juni</option>
+				<option <?= $_GET['bu'] == 'b7' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Juli?bu=b7'); ?>">Juli</option>
+				<option <?= $_GET['bu'] == 'b8' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Agustus?bu=b8'); ?>">Agustus</option>
+				<option <?= $_GET['bu'] == 'b9' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/September?bu=b9'); ?>">September</option>
+				<option <?= $_GET['bu'] == 'b10' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Oktober?bu=b10'); ?>">Oktober</option>
+				<option <?= $_GET['bu'] == 'b11' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/November?bu=b11'); ?>">November</option>
+				<option <?= $_GET['bu'] == 'b12' ? 'selected' : ''; ?> value="<?= base_url('/admin/simonela/simonela/laporan/Desember?bu=b12'); ?>">Desember</option>
 			</select>
 		</div>
 	</div><br>
@@ -78,7 +88,7 @@
 				->select('rkpd_kegiatan_n, rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
 				->orderBy('rkpd_kegiatan_n', 'ASC')
 				->orderBy('rkpd_kegiatan_sub_n', 'ASC')
-				->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id, 'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getResultArray();
+				->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => $_SESSION['opd_set'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getResultArray();
 
 			foreach ($sub_kegiatan as $rol) : ?>
 
@@ -91,7 +101,7 @@
 					'tb_ropk_keuangan.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
 					'tb_ropk_keuangan.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 					'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-					'tb_ropk_keuangan.opd_id' => user()->opd_id,
+					'tb_ropk_keuangan.opd_id' => $_SESSION['opd_set'],
 					'tb_ropk_keuangan.tahun' => $_SESSION['tahun'],
 					'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']
 				])->getResultArray();
@@ -128,7 +138,7 @@
 					'tb_ropk_fisik.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
 					'tb_ropk_fisik.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 					'tb_ropk_fisik.rkpd_indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-					'tb_ropk_fisik.opd_id' => user()->opd_id,
+					'tb_ropk_fisik.opd_id' => $_SESSION['opd_set'],
 					'tb_ropk_fisik.tahun' => $_SESSION['tahun'],
 					'tb_ropk_fisik.perubahan' => $_SESSION['perubahan']
 				])->getResultArray();
@@ -169,7 +179,7 @@
 							'kegiatan' => $rol['rkpd_kegiatan_n'],
 							'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 							'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-							'opd_id' => user()->opd_id,
+							'opd_id' => $_SESSION['opd_set'],
 							'tahun' => $_SESSION['tahun'],
 							'perubahan' => $_SESSION['perubahan'],
 							'bulan' => $bulan
@@ -180,25 +190,25 @@
 					<td><b><?= $rol['rkpd_kegiatan_n']; ?></b></td>
 
 					<td class="align-top text-wrap">
-						<?php $tahap_aktifitas1 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+						<?php $tahap_aktifitas1 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($tahap_aktifitas1 as $tahap1) {
 							echo '-' . $tahap1['tahap_aktifitas'] . '<br>';
 						} ?>
 					</td>
 					<td class="align-top text-wrap">
-						<?php $faktor_penghambat1 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+						<?php $faktor_penghambat1 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($faktor_penghambat1 as $penghambat1) {
 							echo '-' . $penghambat1['faktor_penghambat'] . '<br>';
 						} ?>
 					</td>
 					<td class="align-top text-wrap">
-						<?php $faktor_pendukung1 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+						<?php $faktor_pendukung1 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($faktor_pendukung1 as $pendukung1) {
 							echo '-' . $pendukung1['faktor_pendukung'] . '<br>';
 						} ?>
 					</td>
 					<td class="align-top text-wrap">
-						<?php $rencana_tindak_lanjut1 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+						<?php $rencana_tindak_lanjut1 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($rencana_tindak_lanjut1 as $tindak_lanjut1) {
 							echo '-' . $tindak_lanjut1['rencana_tindak_lanjut'] . '<br>';
 						} ?>

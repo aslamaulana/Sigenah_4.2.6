@@ -1,84 +1,142 @@
-<?= $this->extend('_layout/template'); ?>
+<!DOCTYPE html>
+<html>
 
-<?= $this->section('stylesheet'); ?>
-<link rel="stylesheet" href="<?= base_url('/toping/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
-<link rel="stylesheet" href="<?= base_url('/toping/plugins/datatables-rowgroup/css/rowGroup.bootstrap4.min.js') ?>">
-<?= $this->endSection(); ?>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		.c25 {
+			border-spacing: 0;
+			border-collapse: collapse;
+			margin-right: auto;
+			width: 100%;
+			font-size: 11px;
+		}
 
-<?= $this->section('tombol'); ?>
-<div style="width:80px;">
-	<?php $bulan_long == '' ? $bulan_longg = 'Januari' : $bulan_longg = $bulan_long; ?>
-	<a href="<?= base_url('/user/simonela/simonela/laporan_pdf/' . $bulan_longg . '?bu=' . $_GET['bu']); ?>" target="_blank">
-		<li class="btn btn-block btn-danger btn-sm" active><i class="nav-icon fa fa-file-pdf"></i> Celak</li>
-	</a>
-</div>
-<?= $this->endSection(); ?>
+		.c28 {
+			border-right-style: solid;
+			padding: 5pt 5pt 5pt 5pt;
+			border-bottom-color: #000000;
+			border-top-width: 1.2pt;
+			border-right-width: 1.2pt;
+			border-left-color: #000000;
+			vertical-align: middle;
+			border-right-color: #000000;
+			border-left-width: 1.2pt;
+			border-top-style: solid;
+			border-left-style: solid;
+			border-bottom-width: 1.2pt;
+			text-align: center;
+			border-top-color: #000000;
+			border-bottom-style: solid
+		}
 
-<?= $this->section('content'); ?>
-<div class="card-body">
-	<div class="row">
-		<div class="col-md-1">Bulan:</div>
-		<div class="col-md-11">
-			<select class="form-control" onchange="location = this.value;">
-				<option <?= $_GET['bu'] == 'b1' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Januari?bu=b1'); ?>">Januari</option>
-				<option <?= $_GET['bu'] == 'b2' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Februari?bu=b2'); ?>">Februari</option>
-				<option <?= $_GET['bu'] == 'b3' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Maret?bu=b3'); ?>">Maret</option>
-				<option <?= $_GET['bu'] == 'b4' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/April?bu=b4'); ?>">April</option>
-				<option <?= $_GET['bu'] == 'b5' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Mei?bu=b5'); ?>">Mei</option>
-				<option <?= $_GET['bu'] == 'b6' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Juni?bu=b6'); ?>">Juni</option>
-				<option <?= $_GET['bu'] == 'b7' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Juli?bu=b7'); ?>">Juli</option>
-				<option <?= $_GET['bu'] == 'b8' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Agustus?bu=b8'); ?>">Agustus</option>
-				<option <?= $_GET['bu'] == 'b9' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/September?bu=b9'); ?>">September</option>
-				<option <?= $_GET['bu'] == 'b10' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Oktober?bu=b10'); ?>">Oktober</option>
-				<option <?= $_GET['bu'] == 'b11' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/November?bu=b11'); ?>">November</option>
-				<option <?= $_GET['bu'] == 'b12' ? 'selected' : ''; ?> value="<?= base_url('/user/simonela/simonela/laporan/Desember?bu=b12'); ?>">Desember</option>
-			</select>
-		</div>
-	</div><br>
+		.c29 {
+			padding: 5pt 5pt 5pt 5pt;
+			border-color: #000000;
+			vertical-align: top;
+			border-width: 0.7pt;
+			border-style: solid;
+		}
 
-	<table id="example1" class="table table-bordered display nowrap table-hover table-sm">
-		<thead>
-			<tr>
-				<th rowspan="2" class="text-center align-middle">
-					<div style="min-width: 700px; width:auto; max-width:1200px;">Kegiatan/Sub Kegiatan</div>
-				</th>
-				<th rowspan="2"></th>
-				<th rowspan="2" class="text-center align-middle">
-					<div style="min-width: 400px; width:auto; max-width:600px;">Tahapan Aktifitas</div>
-				</th>
-				<th rowspan="2" class="text-center align-middle">
-					<div style="min-width: 400px; width:auto; max-width:600px;">Faktor Penghambat</div>
-				</th>
-				<th rowspan="2" class="text-center align-middle">
-					<div style="min-width: 400px; width:auto; max-width:600px;">Faktor Pendukung</div>
-				</th>
-				<th rowspan="2" class="text-center align-middle">
-					<div style="min-width: 400px; width:auto; max-width:600px;">Rencana Tindak Lanjut</div>
-				</th>
-				<th class="text-center" colspan="2">Target</th>
-				<th class="text-center" colspan="2">Realisasi</th>
-				<th class="text-center" colspan="2">Konsistensi (%)</th>
-				<th class="text-center" colspan="2">Deviasi</th>
+		.c30 {
+			text-align: center;
+		}
+
+		.c31 {
+			text-align: right;
+		}
+
+		.bordered th {
+			border: 1px solid #dee2e6;
+		}
+
+		.bordered td {
+			border: 1px solid #dee2e6;
+		}
+	</style>
+</head>
+
+<center>
+	<div align="center">
+		Laporan Realisasi Kegiatan/Sub Kegiatan Tahun Anggaran <?= $_SESSION['tahun']; ?><br>
+		s/d Bulan <?= $bulan_long; ?><br>
+		<b><?= $opd['description']; ?></b>
+	</div>
+</center><br><br>
+
+<table class="c25" border="1">
+	<thead>
+		<tr>
+			<th rowspan="2" class="text-center align-middle" width="350px">
+				Kegiatan/Sub Kegiatan
+			</th>
+			<th rowspan="2" class="text-center align-middle">
+				Tahapan Aktifitas
+			</th>
+			<th rowspan="2" class="text-center align-middle">
+				Faktor Penghambat
+			</th>
+			<th rowspan="2" class="text-center align-middle">
+				Faktor Pendukung
+			</th>
+			<th rowspan="2" class="text-center align-middle">
+				Rencana Tindak Lanjut
+			</th>
+			<th class="text-center" colspan="2">Target</th>
+			<th class="text-center" colspan="2">Realisasi</th>
+			<th class="text-center" colspan="2">Konsistensi (%)</th>
+			<th class="text-center" colspan="2">Deviasi</th>
+		</tr>
+		<tr>
+			<th class="text-center" width="60px">Keu</th>
+			<th class="text-center" width="40px">Fisik</th>
+			<th class="text-center" width="60px">Keu</th>
+			<th class="text-center" width="40px">Fisik</th>
+			<th class="text-center" width="40px">Keu</th>
+			<th class="text-center" width="40px">Fisik</th>
+			<th class="text-center" width="40px">Keu</th>
+			<th class="text-center" width="40px">Fisik</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+		$kegiatan = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
+			->distinct('rkpd_kegiatan_n')
+			->select('rkpd_kegiatan_n')
+			->orderBy('rkpd_kegiatan_n', 'ASC')
+			->getWhere([
+				'tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => $_SESSION['opd_set'],
+				'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'],
+				'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']
+			])->getResultArray();
+
+		foreach ($kegiatan as $rom) : ?>
+			<tr class="font-weight-bold" style="background-color: blanchedalmond;">
+				<td><b><?= $rom['rkpd_kegiatan_n']; ?></b></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
-			<tr>
-				<th class="text-center">Keu</th>
-				<th class="text-center">Fisik</th>
-				<th class="text-center">Keu</th>
-				<th class="text-center">Fisik</th>
-				<th class="text-center">Keu</th>
-				<th class="text-center">Fisik</th>
-				<th class="text-center">Keu</th>
-				<th class="text-center">Fisik</th>
-			</tr>
-		</thead>
-		<tbody>
 			<?php
 			$sub_kegiatan = $db->table('tb_ropk_keuangan_rkpd_kegiatan_sub')
-				->distinct('rkpd_kegiatan_n, rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
-				->select('rkpd_kegiatan_n, rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
-				->orderBy('rkpd_kegiatan_n', 'ASC')
+				->distinct('rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
+				->select('rkpd_kegiatan_sub_n, rkpd_indikator_kegiatan_sub, rp_tahun, id_ropk_keuangan_rkpd_kegiatan_sub')
 				->orderBy('rkpd_kegiatan_sub_n', 'ASC')
-				->getWhere(['tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => user()->opd_id, 'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'], 'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']])->getResultArray();
+				->getWhere([
+					'tb_ropk_keuangan_rkpd_kegiatan_sub.rkpd_kegiatan_n' => $rom['rkpd_kegiatan_n'],
+					'tb_ropk_keuangan_rkpd_kegiatan_sub.opd_id' => $_SESSION['opd_set'],
+					'tb_ropk_keuangan_rkpd_kegiatan_sub.perubahan' => $_SESSION['perubahan'],
+					'tb_ropk_keuangan_rkpd_kegiatan_sub.tahun' => $_SESSION['tahun']
+				])->getResultArray();
 
 			foreach ($sub_kegiatan as $rol) : ?>
 
@@ -88,10 +146,10 @@
 				?>
 
 				<?php $keuangan = $db->table('tb_ropk_keuangan')->getWhere([
-					'tb_ropk_keuangan.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
+					'tb_ropk_keuangan.rkpd_kegiatan' => $rom['rkpd_kegiatan_n'],
 					'tb_ropk_keuangan.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 					'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-					'tb_ropk_keuangan.opd_id' => user()->opd_id,
+					'tb_ropk_keuangan.opd_id' => $_SESSION['opd_set'],
 					'tb_ropk_keuangan.tahun' => $_SESSION['tahun'],
 					'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan']
 				])->getResultArray();
@@ -125,10 +183,10 @@
 				?>
 
 				<?php $fisik = $db->table('tb_ropk_fisik')->getWhere([
-					'tb_ropk_fisik.rkpd_kegiatan' => $rol['rkpd_kegiatan_n'],
+					'tb_ropk_fisik.rkpd_kegiatan' => $rom['rkpd_kegiatan_n'],
 					'tb_ropk_fisik.rkpd_kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 					'tb_ropk_fisik.rkpd_indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-					'tb_ropk_fisik.opd_id' => user()->opd_id,
+					'tb_ropk_fisik.opd_id' => $_SESSION['opd_set'],
 					'tb_ropk_fisik.tahun' => $_SESSION['tahun'],
 					'tb_ropk_fisik.perubahan' => $_SESSION['perubahan']
 				])->getResultArray();
@@ -166,51 +224,50 @@
 						->selectsum('realisasi_keu')
 						->selectsum('realisasi_fisik')
 						->getWhere([
-							'kegiatan' => $rol['rkpd_kegiatan_n'],
+							'kegiatan' => $rom['rkpd_kegiatan_n'],
 							'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'],
 							'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'],
-							'opd_id' => user()->opd_id,
+							'opd_id' => $_SESSION['opd_set'],
 							'tahun' => $_SESSION['tahun'],
 							'perubahan' => $_SESSION['perubahan'],
 							'bulan' => $bulan
 						])->getRowArray();
 					//dd($progres1); 
 					?>
-					<td class="align-top text-wrap" style="padding-left: 20px;"><?= $rol['rkpd_kegiatan_sub_n']; ?></td>
-					<td><b><?= $rol['rkpd_kegiatan_n']; ?></b></td>
+					<td valign="top" class="text-wrap" style="padding-left: 20px;"><?= $rol['rkpd_kegiatan_sub_n']; ?></td>
 
-					<td class="align-top text-wrap">
-						<?php $tahap_aktifitas1 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+					<td valign="top" class="text-wrap">
+						<?php $tahap_aktifitas1 = $db->table('tb_simonela_progres')->select('tahap_aktifitas')->getWhere(['kegiatan' => $rom['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($tahap_aktifitas1 as $tahap1) {
 							echo '-' . $tahap1['tahap_aktifitas'] . '<br>';
 						} ?>
 					</td>
-					<td class="align-top text-wrap">
-						<?php $faktor_penghambat1 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+					<td valign="top" class="text-wrap">
+						<?php $faktor_penghambat1 = $db->table('tb_simonela_progres')->select('faktor_penghambat')->getWhere(['kegiatan' => $rom['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($faktor_penghambat1 as $penghambat1) {
 							echo '-' . $penghambat1['faktor_penghambat'] . '<br>';
 						} ?>
 					</td>
-					<td class="align-top text-wrap">
-						<?php $faktor_pendukung1 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+					<td valign="top" class="text-wrap">
+						<?php $faktor_pendukung1 = $db->table('tb_simonela_progres')->select('faktor_pendukung')->getWhere(['kegiatan' => $rom['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($faktor_pendukung1 as $pendukung1) {
 							echo '-' . $pendukung1['faktor_pendukung'] . '<br>';
 						} ?>
 					</td>
-					<td class="align-top text-wrap">
-						<?php $rencana_tindak_lanjut1 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $rol['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => user()->opd_id, 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
+					<td valign="top" class="text-wrap">
+						<?php $rencana_tindak_lanjut1 = $db->table('tb_simonela_progres')->select('rencana_tindak_lanjut')->getWhere(['kegiatan' => $rom['rkpd_kegiatan_n'], 'kegiatan_sub' => $rol['rkpd_kegiatan_sub_n'], 'indikator_kegiatan_sub' => $rol['rkpd_indikator_kegiatan_sub'], 'opd_id' => $_SESSION['opd_set'], 'tahun' => $_SESSION['tahun'], 'perubahan' => $_SESSION['perubahan'], 'bulan' => $bulan])->getResultArray(); ?>
 						<?php foreach ($rencana_tindak_lanjut1 as $tindak_lanjut1) {
 							echo '-' . $tindak_lanjut1['rencana_tindak_lanjut'] . '<br>';
 						} ?>
 					</td>
-					<td class="align-top text-right"><?= number_format($b[$bulan][$id_ropk], 0, ',', '.'); ?></td>
-					<td class="align-top text-right"><?= number_format($fb[$bulan][$id_ropk], 2, ',', '.'); ?></td>
+					<td valign="top" align="center"><?= number_format($b[$bulan][$id_ropk], 0, ',', '.'); ?></td>
+					<td valign="top" align="center"><?= number_format($fb[$bulan][$id_ropk], 2, ',', '.'); ?></td>
 					<!-------------- Realisasi -->
-					<td class="align-top text-right"><?= isset($progres1['realisasi_keu']) ? number_format($progres1['realisasi_keu'], 0, ',', '.') : ''; ?></td>
-					<td class="align-top text-right"><?= isset($progres1['realisasi_fisik']) ? number_format($progres1['realisasi_fisik'], 2, ',', '.') : ''; ?></td>
+					<td valign="top" align="center"><?= isset($progres1['realisasi_keu']) ? number_format($progres1['realisasi_keu'], 0, ',', '.') : ''; ?></td>
+					<td valign="top" align="center"><?= isset($progres1['realisasi_fisik']) ? number_format($progres1['realisasi_fisik'], 2, ',', '.') : ''; ?></td>
 					<!-------------- /Realisasi -->
 					<!-------------- Kosistensi -->
-					<td class="align-top text-right">
+					<td valign="top" align="center">
 						<?php
 						try {
 							echo isset($progres1['realisasi_keu']) ? round(($progres1['realisasi_keu'] / $b[$bulan][$id_ropk]) * 100, 2) : '';
@@ -219,7 +276,7 @@
 						}
 						?>
 					</td>
-					<td class="align-top text-right">
+					<td valign="top" align="center">
 						<?php
 						try {
 							echo isset($progres1['realisasi_fisik']) ? number_format(round(($progres1['realisasi_fisik'] / $fb[$bulan][$id_ropk]) * 100, 2), 2, ',', '.') : '';
@@ -232,13 +289,13 @@
 					<!-------------- Deviasi -->
 					<?php
 					try {
-						$deviasi_keu[$id_ropk] = isset($progres1['realisasi_keu']) ? number_format((((($progres1['realisasi_keu'] / $rol['rp_tahun']) * 100) - (($b[$bulan][$id_ropk] / $rol['rp_tahun']) * 100))), 2, ',', '.') : '';
+						$deviasi_keu[$id_ropk] = isset($progres1['realisasi_keu']) ? number_format(((($progres1['realisasi_keu'] / $rol['rp_tahun']) * 100) - (($b[$bulan][$id_ropk] / $rol['rp_tahun']) * 100)), 2, ',', '.') : '';
 						$deviasi_keu_w[$id_ropk] = isset($progres1['realisasi_keu']) ? ((($progres1['realisasi_keu'] / $rol['rp_tahun']) * 100) - (($b[$bulan][$id_ropk] / $rol['rp_tahun']) * 100)) : '';
 					} catch (DivisionByZeroError $e) {
 						$deviasi_keu[$id_ropk] = "";
 					}
 					?>
-					<td class="align-top text-right" style=" <?= $deviasi_keu_w[$id_ropk] == "" ? "" : ($deviasi_keu_w[$id_ropk] > '-5' ? "background: green" : ($deviasi_keu_w[$id_ropk] <= '-5' && $deviasi_keu_w[$id_ropk] >= '-10' ? "background: yellow" : ($deviasi_keu_w[$id_ropk] < '-10' ? "background: red" : ""))); ?>">
+					<td valign="top" align="center" style=" <?= $deviasi_keu_w[$id_ropk] == "" ? "" : ($deviasi_keu_w[$id_ropk] > '-5' ? "background: green" : ($deviasi_keu_w[$id_ropk] <= '-5' && $deviasi_keu_w[$id_ropk] >= '-10' ? "background: yellow" : ($deviasi_keu_w[$id_ropk] < '-10' ? "background: red" : ""))); ?>">
 						<?= $deviasi_keu[$id_ropk]; ?>
 					</td>
 					<?php
@@ -249,71 +306,14 @@
 						$deviasi_fis[$id_ropk] = "";
 					}
 					?>
-					<td class="align-top text-right" style=" <?= $deviasi_fis_w[$id_ropk] == "" ? "" : ($deviasi_fis_w[$id_ropk] > '-5' ? "background: green" : ($deviasi_fis_w[$id_ropk] <= '-5' && $deviasi_fis_w[$id_ropk] >= '-10' ? "background: yellow" : ($deviasi_fis_w[$id_ropk] < '-10' ? "background: red" : ""))); ?>">
+					<td valign="top" align="center" style=" <?= $deviasi_fis_w[$id_ropk] == "" ? "" : ($deviasi_fis_w[$id_ropk] > '-5' ? "background: green" : ($deviasi_fis_w[$id_ropk] <= '-5' && $deviasi_fis_w[$id_ropk] >= '-10' ? "background: yellow" : ($deviasi_fis_w[$id_ropk] < '-10' ? "background: red" : ""))); ?>">
 						<?= $deviasi_fis[$id_ropk]; ?>
 					</td>
 					<!-------------- //Deviasi-->
 				</tr>
 			<?php endforeach; ?>
-		</tbody>
-	</table>
-</div>
-<?= $this->endSection(); ?>
+		<?php endforeach; ?>
+	</tbody>
+</table>
 
-<?= $this->section('Javascript'); ?>
-<!-- DataTables  & Plugins -->
-<script src="<?= base_url('/toping/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('/toping/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
-<script src="<?= base_url('/toping/plugins/datatables-rowgroup/js/dataTables.rowGroup.min.js') ?>"></script>
-<script>
-	$(function() {
-		bsCustomFileInput.init();
-	});
-	$(function() {
-		$("#example1").DataTable({
-			"scrollX": true,
-			"scrollY": '65vh',
-			"scrollCollapse": true,
-			"paging": false,
-			"responsive": false,
-			"autoWidth": false,
-			"ordering": false,
-			"lengthMenu": [
-				[20, 40, 60, 100, -1],
-				[20, 40, 60, 100, 'All']
-			],
-			columnDefs: [{
-				visible: false,
-				targets: [1]
-			}],
-			order: [
-				[1, 'asc']
-			],
-			rowGroup: {
-				startRender: function(rows, group) {
-
-					if (rows.data().pluck(1)[0] == group) {
-						return $('<tr class="font-weight-bold" style="background-color: blanchedalmond;" />')
-							.append('<td class="align-top text-wrap">' + group + '</td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>')
-							.append('<td></td>');
-					}
-				},
-				dataSrc: [1]
-			},
-		});
-
-	});
-</script>
-
-<?= $this->endSection(); ?>
+</html>

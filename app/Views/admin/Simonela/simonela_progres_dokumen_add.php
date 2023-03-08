@@ -2,6 +2,15 @@
 
 <?= $this->section('content'); ?>
 <div class="card-body">
+	<div class="row">
+		<div class="col-md">
+			<select class="form-control" disabled>
+				<?php foreach ($opd as $row) : ?>
+					<option <?= $_SESSION['opd_set'] == $row['id'] ? 'selected' : ''; ?>><?= $row['description']; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</div>
+	</div><br>
 	<table class="table table-bordered">
 		<tr>
 			<th class="col-md-6">Kegiatan / Sub Kegiatan</th>
@@ -29,48 +38,6 @@
 			</td>
 		</tr>
 	</table><br>
-	<p>&nbsp;</p>
-	<form action="<?= base_url('/user/simonela/simonela/dokumen_create'); ?>" method="POST" enctype="multipart/form-data">
-		<?= csrf_field() ?>
-		<input type="hidden" name="id" value="<?= $DT['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
-		<input type="hidden" name="bulan" value="<?= $b; ?>">
-		<input type="hidden" name="kegiatan" value="<?= $DT['rkpd_kegiatan_n']; ?>">
-		<input type="hidden" name="kegiatan_sub" value="<?= $DT['rkpd_kegiatan_sub_n']; ?>">
-		<input type="hidden" name="indikator_kegiatan_sub" value="<?= $DT['rkpd_indikator_kegiatan_sub']; ?>">
-		<div class="row">
-			<div class="col-12">
-				<label>Keterangan</label>
-				<div class="form-group">
-					<input type="text" name="keterangan" class="form-control" maxlength="255" required>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5">
-				<label>Nama Dokumen</label>
-				<div class="form-group">
-					<input type="text" name="nama" class="form-control" maxlength="100" required>
-				</div>
-			</div>
-			<div class="col-5">
-				<label>Dokumen</label>
-				<div class="form-group" style="overflow: hidden;">
-					<div class="input-group">
-						<div class="custom-file">
-							<input type="file" name="file" class="custom-file-input" id="file" required accept=".Pdf, .pdf, .doc, .docx, .Doc, .Docx, .xls, .xlsx, .Xlsx, .Xls" /></p>
-							<label class="custom-file-label">Pilih dokumen [.pdf, .doc, .docx, .xls, .xlsx]</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2">
-				<label>&nbsp;</label>
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary" style="width: 100%;">Upload Dokumen</button>
-				</div>
-			</div>
-		</div>
-	</form>
 	<p>&nbsp;</p>
 	<div class="row">
 		<table id="example1" class="table table-bordered">

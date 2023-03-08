@@ -218,6 +218,34 @@
 						</li>
 					</ul>
 				</li>
+				<!-- =============================================================== -->
+				<li class="nav-header">=====================</li>
+				<!-- =============================================================== -->
+				<li class="nav-item <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= $gr == 'simonela' || $gr == 'Renstra_capaian' ? 'active' : ''; ?>" title="Sistem Minitoring, Evaluasi dan Pelaporan Kinerja">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Simonela
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/admin/simonela/simonela'); ?>" class="nav-link <?= $mn == 'simonela' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>1. </small> Entri Progres</p>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/admin/simonela/simonela/laporan?bu=b1'); ?>" class="nav-link <?= $mn == 'simonela_laporan' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>2. </small> Laporan</p>
+							</a>
+						</li>
+					</ul>
+				</li>
 				<br><br>
 				<br><br>
 			</ul>
