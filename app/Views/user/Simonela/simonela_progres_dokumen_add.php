@@ -58,7 +58,7 @@
 					<div class="input-group">
 						<div class="custom-file">
 							<input type="file" name="file" class="custom-file-input" id="file" required accept=".Pdf, .pdf, .doc, .docx, .Doc, .Docx, .xls, .xlsx, .Xlsx, .Xls" /></p>
-							<label class="custom-file-label">Pilih dokumen [.pdf, .doc, .docx, .xls, .xlsx]</label>
+							<label class="custom-file-label">Pilih dokumen [.pdf, .doc, .docx, .xls, .xlsx] Max 20Mb</label>
 						</div>
 					</div>
 				</div>

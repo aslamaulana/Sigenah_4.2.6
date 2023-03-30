@@ -221,6 +221,15 @@
 							</a>
 						</li>
 					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/ropk/ropk_laporan'); ?>" class="nav-link <?= $mn == 'ropk_laporan' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>4. </small> Laporan Triwulan</p>
+							</a>
+						</li>
+					</ul>
+
 				</li>
 				<!-- =============================================================== -->
 				<li class="nav-header">=====================</li>

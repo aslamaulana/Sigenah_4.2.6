@@ -12,8 +12,8 @@
 				<th class="text-center" width="30px">No</th>
 				<th> Kegiatan / Sub Kegiatan </th>
 				<th class="text-center">Pagu 2022</th>
-				<th style="width:300px;"> Lokasi </th>
-				<th> Sumber Dana </th>
+				<th class="text-center" style="width:300px;"> Lokasi </th>
+				<th class="text-center"> Sumber Dana </th>
 				<th class="text-center">
 					<div style="width:100px; margin:auto;">Aksi</div>
 				</th>
@@ -24,8 +24,8 @@
 				<th class="text-center">No</th>
 				<th>Kegiatan / Sub Kegiatan</th>
 				<th class="text-center">Pagu 2022</th>
-				<th> Lokasi </th>
-				<th> Sumber Dana </th>
+				<th class="text-center"> Lokasi </th>
+				<th class="text-center"> Sumber Dana </th>
 				<th class="text-center">Aksi</th>
 			</tr>
 		</tfoot>
@@ -58,8 +58,8 @@
 								])->getRowArray(); ?>
 							<?= number_format($pagu['rp_tahun'], 2, ',', '.'); ?>
 						</td>
-						<td class="align-top text-wrap"><?= $ros['lokasi']; ?></td>
-						<td class="align-top"><?= $ros['sumber_dana']; ?></td>
+						<td class="align-top text-wrap text-center"><?= $ros['lokasi']; ?></td>
+						<td class="align-top text-wrap text-center"><?= $ros['sumber_dana']; ?></td>
 						<td style="text-align: center;">
 							<a class="btn btn-info btn-circle btn-xs" href="<?= base_url() . '/user/simonela/simonela/progres/' . $ros['id_ropk_keuangan_rkpd_kegiatan_sub']; ?>">
 								<i class="nav-icon fas fa-chart-bar"> Progres</i>
