@@ -1,4 +1,7 @@
 <table id="example1" class="table table-bordered">
+	<?php
+	$user = user()->opd_id;
+	?>
 	<thead>
 		<tr>
 			<th rowspan="3">Kode</th><!-- A -->
@@ -276,9 +279,15 @@
 						</tr>
 						<?php
 						$kegiatan_sub_indikator = $db->table('tb_renstra_kegiatan_sub')
-							->select('tb_renstra_kegiatan_sub.opd_indikator_kegiatan_sub, tb_renstra_kegiatan_sub.satuan, tb_renstra_kegiatan_sub.t_2026, (rp_2021 + rp_2022 + rp_2023 + rp_2024 + rp_2025 + rp_2026) as total')
+							->select('opd_indikator_kegiatan_sub, satuan, tag, (rp_2021 + rp_2022 + rp_2023 + rp_2024 + rp_2025 + rp_2026) as total')
 							->getWhere(['tb_renstra_kegiatan_sub.opd_id' => user()->opd_id, 'tb_renstra_kegiatan_sub.perubahan' => 'Perubahan', 'tb_renstra_kegiatan_sub.opd_kegiatan_sub_n' => $kegiatan_sub_f['opd_kegiatan_sub_n']])->getResultArray();
 						foreach ($kegiatan_sub_indikator as $kegiatan_sub_indikator_f) {
+
+							if ($kegiatan_sub_indikator_f['tag'] == 'Akumulasi') {
+								$total_target = $db->table('tb_renstra_kegiatan_sub')->select('(t_2021 + t_2022 + t_2023 + t_2024 + t_2025 + t_2026) as total_target')->getWhere(['tb_renstra_kegiatan_sub.opd_id' => user()->opd_id,	'tb_renstra_kegiatan_sub.perubahan' => 'Perubahan',	'tb_renstra_kegiatan_sub.opd_kegiatan_sub_n' => $kegiatan_sub_f['opd_kegiatan_sub_n']])->getRow();
+							} elseif ($kegiatan_sub_indikator_f['tag'] == 'Absolut') {
+								$total_target = $db->table('tb_renstra_kegiatan_sub')->select('t_2026 as total_target')->getWhere(['tb_renstra_kegiatan_sub.opd_id' => user()->opd_id,	'tb_renstra_kegiatan_sub.perubahan' => 'Perubahan',	'tb_renstra_kegiatan_sub.opd_kegiatan_sub_n' => $kegiatan_sub_f['opd_kegiatan_sub_n']])->getRow();
+							}
 
 							$kegiatan_sub_indikator_renja = $db->table('tb_rkpd_kegiatan_sub')
 								->select('tb_rkpd_kegiatan_sub.t_tahun, tb_rkpd_kegiatan_sub.rp_tahun')
@@ -290,38 +299,10 @@
 									// 'tb_rkpd_kegiatan_sub.rkpd_indikator_kegiatan_sub' => $kegiatan_sub_indikator_f['opd_indikator_kegiatan_sub']
 								])->getRow();
 
-							$ropk = $db->table('tb_ropk_fisik')
-								// ->selectsum('(b1 + b2 + b3)')
-								->select('
-									(SELECT SUM(b1 + b2 + b3)) AS t_1,
-								 	(SELECT SUM(b1 + b2 + b3 + b4 + b5 + b6)) AS t_2,
-								 	(SELECT SUM(b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8 + b9)) AS t_3,
-								  	(SELECT SUM(b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8 + b9 + b10 + b11 + b12)) AS t_4')
-								->getWhere([
-									'tb_ropk_fisik.opd_id' => user()->opd_id,
-									'tb_ropk_fisik.perubahan' => $_SESSION['perubahan'],
-									'tb_ropk_fisik.tahun' => $_SESSION['tahun'],
-									// 'tb_ropk_fisik.rkpd_kegiatan' => $kegiatan_sub_f['opd_kegiatan_sub_n'],
-									'tb_ropk_fisik.rkpd_kegiatan_sub' => $kegiatan_sub_f['opd_kegiatan_sub_n'],
-									// 'tb_ropk_fisik.rkpd_indikator_kegiatan_sub' => $kegiatan_sub_indikator_f['opd_indikator_kegiatan_sub']
-								])->getRow();
-
-							$ropk_keuangan = $db->table('tb_ropk_keuangan')
-								// ->selectsum('(b1 + b2 + b3)')
-								->select('
-									(SELECT SUM(b1 + b2 + b3)) AS t_1,
-								 	(SELECT SUM(b1 + b2 + b3 + b4 + b5 + b6)) AS t_2,
-								 	(SELECT SUM(b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8 + b9)) AS t_3,
-								  	(SELECT SUM(b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8 + b9 + b10 + b11 + b12)) AS t_4')
-								->getWhere([
-									'tb_ropk_keuangan.opd_id' => user()->opd_id,
-									'tb_ropk_keuangan.perubahan' => $_SESSION['perubahan'],
-									'tb_ropk_keuangan.tahun' => $_SESSION['tahun'],
-									// 'tb_ropk_keuangan.rkpd_kegiatan' => $kegiatan_sub_f['opd_kegiatan_sub_n'],
-									'tb_ropk_keuangan.rkpd_kegiatan_sub' => $kegiatan_sub_f['opd_kegiatan_sub_n'],
-									// 'tb_ropk_keuangan.rkpd_indikator_kegiatan_sub' => $kegiatan_sub_indikator_f['opd_indikator_kegiatan_sub']
-								])->getRow();
-							// dd($ropk);
+							$simonela_progrest1 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_1,	(SUM(tb_simonela_progres.realisasi_fisik)) AS t_1')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b1' OR tb_simonela_progres.bulan = 'b2' OR tb_simonela_progres.bulan = 'b3')")->get()->getRow();
+							$simonela_progrest2 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_2, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_2')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b1' OR tb_simonela_progres.bulan = 'b2' OR tb_simonela_progres.bulan = 'b3' OR tb_simonela_progres.bulan = 'b4' OR tb_simonela_progres.bulan = 'b5' OR tb_simonela_progres.bulan = 'b6')")->get()->getRow();
+							$simonela_progrest3 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_3, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_3')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b1' OR	tb_simonela_progres.bulan = 'b2' OR	tb_simonela_progres.bulan = 'b3' OR	tb_simonela_progres.bulan = 'b4' OR tb_simonela_progres.bulan = 'b5' OR	tb_simonela_progres.bulan = 'b6' OR	tb_simonela_progres.bulan = 'b7' OR	tb_simonela_progres.bulan = 'b8' OR	tb_simonela_progres.bulan = 'b9')")->get()->getRow();
+							$simonela_progrest4 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_4, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_4')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND (tb_simonela_progres.bulan = 'b1' OR	tb_simonela_progres.bulan = 'b2' OR	tb_simonela_progres.bulan = 'b3' OR	tb_simonela_progres.bulan = 'b4' OR	tb_simonela_progres.bulan = 'b5' OR	tb_simonela_progres.bulan = 'b6' OR	tb_simonela_progres.bulan = 'b7' OR	tb_simonela_progres.bulan = 'b8' OR	tb_simonela_progres.bulan = 'b9' OR	tb_simonela_progres.bulan = 'b10' OR tb_simonela_progres.bulan = 'b11' OR tb_simonela_progres.bulan = 'b12')")->get()->getRow();
 						?>
 
 							<tr>
@@ -332,20 +313,20 @@
 								<th></th><!-- E -->
 								<th><?= $kegiatan_sub_indikator_f['opd_indikator_kegiatan_sub']; ?></th><!-- F -->
 								<th><?= $kegiatan_sub_indikator_f['satuan']; ?></th><!-- G -->
-								<th><?= $kegiatan_sub_indikator_f['t_2026']; ?></th><!-- H T_2021_2026-->
+								<th><?= isset($total_target->total_target) ? $total_target->total_target : ''; ?></th><!-- H T_2021_2026-->
 								<th><?= $kegiatan_sub_indikator_f['total']; ?></th><!-- I T_2021_2026-->
 								<th></th><!-- J C_2021_2026-->
 								<th></th><!-- K C_2021_2026-->
 								<th><?= isset($kegiatan_sub_indikator_renja->t_tahun) ? $kegiatan_sub_indikator_renja->t_tahun : ''; ?></th><!-- L TK_2021_2026-->
 								<th><?= isset($kegiatan_sub_indikator_renja->rp_tahun) ? $kegiatan_sub_indikator_renja->rp_tahun : ''; ?></th><!-- M TK_2021_2026-->
-								<th><?= isset($ropk->t_1) ? $ropk->t_1 : ''; ?></th><!-- N TW_1-->
-								<th><?= isset($ropk_keuangan->t_1) ? $ropk_keuangan->t_1 : ''; ?></th><!-- O TW_1-->
-								<th><?= isset($ropk->t_2) ? $ropk->t_2 : ''; ?></th><!-- P TW_2-->
-								<th><?= isset($ropk_keuangan->t_2) ? $ropk_keuangan->t_2 : ''; ?></th><!-- Q TW_2-->
-								<th><?= isset($ropk->t_3) ? $ropk->t_3 : ''; ?></th><!-- R TW_3-->
-								<th><?= isset($ropk_keuangan->t_3) ? $ropk_keuangan->t_3 : ''; ?></th><!-- S TW_3-->
-								<th><?= isset($ropk->t_4) ? $ropk->t_4 : ''; ?></th><!-- T TW_4-->
-								<th><?= isset($ropk_keuangan->t_4) ? $ropk_keuangan->t_4 : ''; ?></th><!-- U TW_4-->
+								<th><?= isset($simonela_progrest1->t_1) ? $simonela_progrest1->t_1 : ''; ?></th><!-- N TW_1-->
+								<th><?= isset($simonela_progrest1->tr_1) ? $simonela_progrest1->tr_1 : ''; ?></th><!-- O TW_1-->
+								<th><?= isset($simonela_progrest2->t_2) ? $simonela_progrest2->t_2 : ''; ?></th><!-- P TW_2-->
+								<th><?= isset($simonela_progrest2->tr_2) ? $simonela_progrest2->tr_2 : ''; ?></th><!-- Q TW_2-->
+								<th><?= isset($simonela_progrest3->t_3) ? $simonela_progrest3->t_3 : ''; ?></th><!-- R TW_3-->
+								<th><?= isset($simonela_progrest3->tr_3) ? $simonela_progrest3->tr_3 : ''; ?></th><!-- S TW_3-->
+								<th><?= isset($simonela_progrest4->t_4) ? $simonela_progrest4->t_4 : ''; ?></th><!-- T TW_4-->
+								<th><?= isset($simonela_progrest4->tr_4) ? $simonela_progrest4->tr_4 : ''; ?></th><!-- U TW_4-->
 							</tr>
 						<?php } ?> <!-- Kegiatan_sub -->
 					<?php } ?> <!-- Kegiatan_sub -->

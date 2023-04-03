@@ -35,7 +35,7 @@ class Ropk_laporan extends BaseController
 	public function cetak()
 	{
 		// dd("jjjjjjjjjjjjjjjjj");
-		$filename = "Renstra " . " - " . date('Y-m-d') . ".xls";
+		$filename = "Laporan Triwulan " . $_SESSION['tahun'] . " - " . date('Y-m-d') . ".xls";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		header('Content-Disposition: attachment; filename="' . $filename . '";');
 

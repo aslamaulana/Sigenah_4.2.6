@@ -202,6 +202,7 @@ class Opd_kegiatan_sub extends BaseController
 				'rp_2025' => $this->request->getVar('rp_2025'),
 				't_2026' => $this->request->getVar('t_2026'),
 				'rp_2026' => $this->request->getVar('rp_2026'),
+				'tag' => $this->request->getVar('tag'),
 				'opd_id' => user()->opd_id,
 				'perubahan' => $_SESSION['perubahan'],
 				'created_by' => user()->full_name,
@@ -258,6 +259,7 @@ class Opd_kegiatan_sub extends BaseController
 				'rp_2025' => $this->request->getVar('rp_2025'),
 				't_2026' => $this->request->getVar('t_2026'),
 				'rp_2026' => $this->request->getVar('rp_2026'),
+				'tag' => $this->request->getVar('tag'),
 				'updated_by' => user()->full_name,
 			]);
 
@@ -319,7 +321,7 @@ class Opd_kegiatan_sub extends BaseController
 
 		$spreadsheet = new Spreadsheet();
 		// --------------------------------------------------------------
-		$spreadsheet->getActiveSheet()->getStyle('A1:P1')->getFill()
+		$spreadsheet->getActiveSheet()->getStyle('A1:Q1')->getFill()
 			->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('FFFF0000');
 		$spreadsheet->setActiveSheetIndex(0)
@@ -338,7 +340,8 @@ class Opd_kegiatan_sub extends BaseController
 			->setCellValue('M1', 't_2025')
 			->setCellValue('N1', 'rp_2025')
 			->setCellValue('O1', 't_2026')
-			->setCellValue('P1', 'rp_2026');
+			->setCellValue('P1', 'rp_2026')
+			->setCellValue('Q1', 'tag (Absolut / Akumulasi)');
 		$column = 2;
 		foreach ($data as $row) {
 			$spreadsheet->setActiveSheetIndex(0)
@@ -391,6 +394,7 @@ class Opd_kegiatan_sub extends BaseController
 				'rp_2025' => $row[13],
 				't_2026' => $row[14],
 				'rp_2026' => $row[15],
+				'tag' => $row[16],
 				'opd_id' => user()->opd_id,
 				'perubahan' => $_SESSION['perubahan'],
 				'created_by' => user()->full_name,
@@ -409,7 +413,7 @@ class Opd_kegiatan_sub extends BaseController
 		$sisw = $this->opd_kegiatan_sub->where(['perubahan' => $_SESSION['perubahan'], 'opd_id' => user()->opd_id])->findAll();
 
 		$spreadsheet = new Spreadsheet();
-		$spreadsheet->getActiveSheet()->getStyle('A1:Q1')->getFill()
+		$spreadsheet->getActiveSheet()->getStyle('A1:R1')->getFill()
 			->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('FFFF0000');
 		$spreadsheet->setActiveSheetIndex(0)
@@ -429,7 +433,8 @@ class Opd_kegiatan_sub extends BaseController
 			->setCellValue('N1', 't_2025')
 			->setCellValue('O1', 'rp_2025')
 			->setCellValue('P1', 't_2026')
-			->setCellValue('Q1', 'rp_2026');
+			->setCellValue('Q1', 'rp_2026')
+			->setCellValue('R1', 'tag (Absolut / Akumulasi)');
 
 		$column = 2;
 
@@ -451,7 +456,8 @@ class Opd_kegiatan_sub extends BaseController
 				->setCellValue('N' . $column, $sisdata['t_2025'])
 				->setCellValue('O' . $column, $sisdata['rp_2025'])
 				->setCellValue('P' . $column, $sisdata['t_2026'])
-				->setCellValue('Q' . $column, $sisdata['rp_2026']);
+				->setCellValue('Q' . $column, $sisdata['rp_2026'])
+				->setCellValue('R' . $column, $sisdata['tag']);
 
 
 			$spreadsheet->getActiveSheet()->getStyle('A' . $column)->getFill()
@@ -504,6 +510,7 @@ class Opd_kegiatan_sub extends BaseController
 				'rp_2025' => $row[14],
 				't_2026' => $row[15],
 				'rp_2026' => $row[16],
+				'tag' => $row[17],
 				'updated_by' => user()->full_name,
 			];
 

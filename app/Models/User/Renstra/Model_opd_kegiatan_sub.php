@@ -26,6 +26,7 @@ class Model_opd_kegiatan_sub extends Model
 		'rp_2025',
 		't_2026',
 		'rp_2026',
+		'tag',
 		'opd_id',
 		'tahun',
 		'perubahan',

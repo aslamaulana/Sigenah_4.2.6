@@ -33,6 +33,14 @@
 					</select>
 					<span class="text-danger"><?= $validation->getError('satuan'); ?></span>
 				</div>
+				<div class="form-group">
+					<label>Tag <medium class="text-danger">*</medium></label>
+					<select name="tag" class="form-control" required>
+						<option value="<?= $indik['tag']; ?>"><?= $indik['tag']; ?></option>
+						<option value="Absolut">Absolut</option>
+						<option value="Akumulasi">Akumulasi</option>
+					</select>
+				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">

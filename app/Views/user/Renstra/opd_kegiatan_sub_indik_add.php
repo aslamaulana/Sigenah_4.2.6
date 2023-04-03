@@ -34,6 +34,15 @@
 					</select>
 					<span class="text-danger"><?= $validation->getError('satuan'); ?></span>
 				</div>
+				<div class="form-group">
+					<label>Tag <medium class="text-danger">*</medium></label>
+					<select name="tag" class="form-control" required>
+						<option value="">Tidak Dipilih...</option>
+						<option value="Absolut">Absolut</option>
+						<option value="Akumulasi">Akumulasi</option>
+					</select>
+					<span class="text-danger"><?= $validation->getError('satuan'); ?></span>
+				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
