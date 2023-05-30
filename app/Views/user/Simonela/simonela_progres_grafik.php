@@ -200,18 +200,18 @@
 			var data = new google.visualization.arrayToDataTable(
 				[
 					["BULAN", "Realisasi (Keuangan)", "Realisasi (Fisik)"],
-					['Januari', <?= $s1 . ',' . $progres1['realisasi_fisik']; ?>],
-					['Februari', <?= $s2 . ',' . $realisasi2['realisasi_fisik']; ?>],
-					['Maret', <?= $s3 . ',' . $realisasi3['realisasi_fisik']; ?>],
-					['April', <?= $s4 . ',' . $realisasi4['realisasi_fisik']; ?>],
-					['Mei', <?= $s5 . ',' . $realisasi5['realisasi_fisik']; ?>],
-					['Juni', <?= $s6 . ',' . $realisasi6['realisasi_fisik']; ?>],
-					['Juli', <?= $s7 . ',' . $realisasi7['realisasi_fisik']; ?>],
-					['Agustus', <?= $s8 . ',' . $realisasi8['realisasi_fisik']; ?>],
-					['September', <?= $s9 . ',' . $realisasi9['realisasi_fisik']; ?>],
-					['Oktober', <?= $s10 . ',' . $realisasi10['realisasi_fisik']; ?>],
-					['November', <?= $s11 . ',' . $realisasi11['realisasi_fisik']; ?>],
-					['Desember', <?= $s12 . ',' . $realisasi12['realisasi_fisik']; ?>]
+					['Januari', <?= isset($s1) ? $s1 : '0'; ?>, <?= isset($progres1['realisasi_fisik']) ? $progres1['realisasi_fisik'] : '0'; ?>],
+					['Februari', <?= isset($s2) ? $s2 : '0'; ?>, <?= isset($realisasi2['realisasi_fisik']) ? $realisasi2['realisasi_fisik'] : '0'; ?>],
+					['Maret', <?= isset($s3) ? $s3 : '0'; ?>, <?= isset($realisasi3['realisasi_fisik']) ? $realisasi3['realisasi_fisik'] : '0'; ?>],
+					['April', <?= isset($s4) ? $s4 : '0'; ?>, <?= isset($realisasi4['realisasi_fisik']) ? $realisasi4['realisasi_fisik'] : '0'; ?>],
+					['Mei', <?= isset($s5) ? $s5 : '0'; ?>, <?= isset($realisasi5['realisasi_fisik']) ? $realisasi5['realisasi_fisik'] : '0'; ?>],
+					['Juni', <?= isset($s6) ? $s6 : '0'; ?>, <?= isset($realisasi6['realisasi_fisik']) ? $realisasi6['realisasi_fisik'] : '0'; ?>],
+					['Juli', <?= isset($s7) ? $s7 : '0'; ?>, <?= isset($realisasi7['realisasi_fisik']) ? $realisasi7['realisasi_fisik'] : '0'; ?>],
+					['Agustus', <?= isset($s8) ? $s8 : '0'; ?>, <?= isset($realisasi8['realisasi_fisik']) ? $realisasi8['realisasi_fisik'] : '0'; ?>],
+					['September', <?= isset($s9) ? $s9 : '0'; ?>, <?= isset($realisasi9['realisasi_fisik']) ? $realisasi9['realisasi_fisik'] : '0'; ?>],
+					['Oktober', <?= isset($s10) ? $s10 : '0'; ?>, <?= isset($realisasi10['realisasi_fisik']) ? $realisasi10['realisasi_fisik'] : '0'; ?>],
+					['November', <?= isset($s11) ? $s11 : '0'; ?>, <?= isset($realisasi11['realisasi_fisik']) ? $realisasi11['realisasi_fisik'] : '0'; ?>],
+					['Desember', <?= isset($s12) ? $s12 : '0'; ?>, <?= isset($realisasi12['realisasi_fisik']) ? $realisasi12['realisasi_fisik'] : '0'; ?>]
 				]);
 			var view = new google.visualization.DataView(data);
 			view.setColumns(

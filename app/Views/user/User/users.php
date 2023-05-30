@@ -133,7 +133,7 @@
 								<?php } ?>
 							</td>
 						</tr>
-						<?php $level_4 = $db->table('users')->getWhere(['opd_id' => user()->opd_id, 'level' => '4', 'nama_singkat_bidang' => $rol['nama_singkat_bidang']])->getResultArray();
+						<?php $level_4 = $db->table('users')->getWhere(['opd_id' => user()->opd_id, 'level' => '4', 'nama_singkat_bidang' => $rol['nama_singkat_bidang'], 'sub_bidang' => $ros['sub_bidang']])->getResultArray();
 						foreach ($level_4 as $rop) : ?>
 							<tr>
 								<td><?= $rop['username']; ?></td>

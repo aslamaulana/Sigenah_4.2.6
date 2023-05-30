@@ -54,4 +54,13 @@ function buka($name)
 	$encrypter = \Config\Services::encrypter();
 	return $encrypter->decrypt(hex2bin($name));
 }
+
+function kunci_b($name)
+{
+	return base64_encode($name);
+}
+function buka_b($name)
+{
+	return base64_decode($name);
+}
 // -----------------/Enkripsi--------------------

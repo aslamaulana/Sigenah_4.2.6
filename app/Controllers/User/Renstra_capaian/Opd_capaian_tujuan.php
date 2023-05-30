@@ -9,7 +9,7 @@ use App\Models\User\Renstra_capaian\Model_opd_capaian_tujuan;
 
 class Opd_capaian_tujuan extends BaseController
 {
-	protected $visi, $misi, $tujuan, $satuan, $tahun, $tujuan_indik_target;
+	protected $opd_capaian_tujuan, $opd_tujuan, $satuan;
 
 	public function __construct()
 	{

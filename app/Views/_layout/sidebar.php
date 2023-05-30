@@ -302,6 +302,36 @@
 						</li>
 					</ul>
 				</li>
+				<!-- =============================================================== -->
+				<li class="nav-header">=====================</li>
+				<!-- =============================================================== -->
+				<li class="nav-item <?= $gr == 'proposal' ? 'menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= $gr == 'proposal' ? 'active' : ''; ?>" title="">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Proposal
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('/user/proposal/pengajuan'); ?>" class="nav-link <?= $mn == 'pengajuan' ? 'active' : ''; ?>">
+								<i class="far nav-icon"></i>
+								<p><small>1. </small> Pengajuan</p>
+							</a>
+						</li>
+					</ul>
+					<?php if (has_permission('Verifikator')) { ?>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="<?= base_url('/user/proposal/verifikator'); ?>" class="nav-link <?= $mn == 'verifikator' ? 'active' : ''; ?>">
+									<i class="far nav-icon"></i>
+									<p><small>2. </small> Verifikator</p>
+								</a>
+							</li>
+						</ul>
+					<?php } ?>
+				</li>
 				<br><br>
 				<br><br>
 			</ul>

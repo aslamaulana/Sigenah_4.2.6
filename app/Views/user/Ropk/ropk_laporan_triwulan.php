@@ -14,6 +14,12 @@
 			<th rowspan="2" colspan="2">Realisasi capaian Kinerja Renstra Tahun 2021 (n-2)</th><!-- J C_2021_2026-->
 			<th rowspan="2" colspan="2">Target Kinerja dan Anggaran Renja PD Tahun 2022 (Tahun berjalan) yang dievaluasi </th><!-- L TK_2021_2026-->
 			<th colspan="8">Realisasi Kinerja Pada Triwulan</th><!-- N TW_1-->
+			<th rowspan="2" colspan="2">Realisasi Capaian Kinerja dan Anggaran Renja yang dievaluasi tahun 2022</th><!-- N TW_1-->
+			<th rowspan="2" colspan="2">Tingkat Capaian Kinerja dan Realisasi Anggaran Renja (%)</th><!-- N TW_1-->
+			<th rowspan="2" colspan="2">Realisasi Kinerja dan Anggaran Renstra s/d Tahun 2022 (Akhir Tahun Pelaksanaan Renja)</th><!-- N TW_1-->
+			<th rowspan="2" colspan="2">Tingkat Capaian Kinerja dan Realisasi Anggaran Renstra s/d tahun 2022 (%)</th><!-- N TW_1-->
+			<th rowspan="3">SKPD Penanggungjawab</th><!-- N TW_1-->
+			<th rowspan="3">Ket.</th><!-- N TW_1-->
 		</tr>
 		<tr>
 			<th colspan="2">I</th><!-- N TW_1-->
@@ -38,6 +44,15 @@
 			<th>rp</th><!-- S TW_3-->
 			<th>Kinerja</th><!-- T TW_4-->
 			<th>rp</th><!-- U TW_4-->
+
+			<th>Kinerja</th><!-- V TW_4-->
+			<th>rp</th><!-- W TW_4-->
+			<th>Kinerja</th><!-- X TW_4-->
+			<th>%</th><!-- Y TW_4-->
+			<th>Kinerja</th><!-- Z TW_4-->
+			<th>rp</th><!-- AA TW_4-->
+			<th>Kinerja</th><!-- AB TW_4-->
+			<th>%</th><!-- AC TW_4-->
 		</tr>
 		<tr>
 			<th>2</th><!-- A -->
@@ -61,6 +76,15 @@
 			<!-- <th></th> --><!-- S TW_3-->
 			<th colspan="2">11</th><!-- T TW_4-->
 			<!-- <th></th> --><!-- U TW_4-->
+			<th colspan="2">12 = 8+9+10+11 </th><!-- V TW_4-->
+			<!-- <th>rp</th> --><!-- W TW_4-->
+			<th colspan="2">13 = 12/7*100</th><!-- X TW_4-->
+			<!-- <th>%</th> --><!-- Y TW_4-->
+			<th colspan="2">14 = 6+12</th><!-- Z TW_4-->
+			<!-- <th>rp</th> --><!-- AA TW_4-->
+			<th colspan="2">15 = 14/5*100</th><!-- AB TW_4-->
+			<th>16</th><!-- AC TW_4-->
+			<th>17</th><!-- AC TW_4-->
 		</tr>
 	</thead>
 	<tbody>
@@ -95,6 +119,14 @@
 				<th></th><!-- S TW_3-->
 				<th></th><!-- T TW_4-->
 				<th></th><!-- U TW_4-->
+				<th></th><!-- V TW_4-->
+				<th></th><!-- W TW_4-->
+				<th></th><!-- X TW_4-->
+				<th></th><!-- Y TW_4-->
+				<th></th><!-- Z TW_4-->
+				<th></th><!-- AA TW_4-->
+				<th></th><!-- AB TW_4-->
+				<th></th><!-- AC TW_4-->
 			</tr>
 			<?php
 			$program = $db->table('tb_renstra_program')
@@ -128,6 +160,14 @@
 					<th></th><!-- S TW_3-->
 					<th></th><!-- T TW_4-->
 					<th></th><!-- U TW_4-->
+					<th></th><!-- V TW_4-->
+					<th></th><!-- W TW_4-->
+					<th></th><!-- X TW_4-->
+					<th></th><!-- Y TW_4-->
+					<th></th><!-- Z TW_4-->
+					<th></th><!-- AA TW_4-->
+					<th></th><!-- AB TW_4-->
+					<th></th><!-- AC TW_4-->
 				</tr>
 				<?php
 				$program_indikator = $db->table('tb_renstra_program')
@@ -167,6 +207,14 @@
 						<th></th><!-- S TW_3-->
 						<th></th><!-- T TW_4-->
 						<th></th><!-- U TW_4-->
+						<th></th><!-- V TW_4-->
+						<th></th><!-- W TW_4-->
+						<th></th><!-- X TW_4-->
+						<th></th><!-- Y TW_4-->
+						<th></th><!-- Z TW_4-->
+						<th></th><!-- AA TW_4-->
+						<th></th><!-- AB TW_4-->
+						<th></th><!-- AC TW_4-->
 					</tr>
 				<?php } ?> <!-- Program_indikator -->
 				<?php
@@ -200,6 +248,14 @@
 						<th></th><!-- S TW_3-->
 						<th></th><!-- T TW_4-->
 						<th></th><!-- U TW_4-->
+						<th></th><!-- V TW_4-->
+						<th></th><!-- W TW_4-->
+						<th></th><!-- X TW_4-->
+						<th></th><!-- Y TW_4-->
+						<th></th><!-- Z TW_4-->
+						<th></th><!-- AA TW_4-->
+						<th></th><!-- AB TW_4-->
+						<th></th><!-- AC TW_4-->
 					</tr>
 					<?php
 					$kegiatan_indikator = $db->table('tb_renstra_kegiatan')
@@ -241,6 +297,14 @@
 							<th></th><!-- S TW_3-->
 							<th></th><!-- T TW_4-->
 							<th></th><!-- U TW_4-->
+							<th></th><!-- V TW_4-->
+							<th></th><!-- W TW_4-->
+							<th></th><!-- X TW_4-->
+							<th></th><!-- Y TW_4-->
+							<th></th><!-- Z TW_4-->
+							<th></th><!-- AA TW_4-->
+							<th></th><!-- AB TW_4-->
+							<th></th><!-- AC TW_4-->
 						</tr>
 					<?php } ?> <!-- Kegiatan_indikator -->
 					<?php
@@ -276,6 +340,14 @@
 							<th></th><!-- S TW_3-->
 							<th></th><!-- T TW_4-->
 							<th></th><!-- U TW_4-->
+							<th></th><!-- V TW_4-->
+							<th></th><!-- W TW_4-->
+							<th></th><!-- X TW_4-->
+							<th></th><!-- Y TW_4-->
+							<th></th><!-- Z TW_4-->
+							<th></th><!-- AA TW_4-->
+							<th></th><!-- AB TW_4-->
+							<th></th><!-- AC TW_4-->
 						</tr>
 						<?php
 						$kegiatan_sub_indikator = $db->table('tb_renstra_kegiatan_sub')
@@ -300,9 +372,9 @@
 								])->getRow();
 
 							$simonela_progrest1 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_1,	(SUM(tb_simonela_progres.realisasi_fisik)) AS t_1')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b1' OR tb_simonela_progres.bulan = 'b2' OR tb_simonela_progres.bulan = 'b3')")->get()->getRow();
-							$simonela_progrest2 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_2, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_2')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b1' OR tb_simonela_progres.bulan = 'b2' OR tb_simonela_progres.bulan = 'b3' OR tb_simonela_progres.bulan = 'b4' OR tb_simonela_progres.bulan = 'b5' OR tb_simonela_progres.bulan = 'b6')")->get()->getRow();
-							$simonela_progrest3 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_3, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_3')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b1' OR	tb_simonela_progres.bulan = 'b2' OR	tb_simonela_progres.bulan = 'b3' OR	tb_simonela_progres.bulan = 'b4' OR tb_simonela_progres.bulan = 'b5' OR	tb_simonela_progres.bulan = 'b6' OR	tb_simonela_progres.bulan = 'b7' OR	tb_simonela_progres.bulan = 'b8' OR	tb_simonela_progres.bulan = 'b9')")->get()->getRow();
-							$simonela_progrest4 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_4, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_4')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND (tb_simonela_progres.bulan = 'b1' OR	tb_simonela_progres.bulan = 'b2' OR	tb_simonela_progres.bulan = 'b3' OR	tb_simonela_progres.bulan = 'b4' OR	tb_simonela_progres.bulan = 'b5' OR	tb_simonela_progres.bulan = 'b6' OR	tb_simonela_progres.bulan = 'b7' OR	tb_simonela_progres.bulan = 'b8' OR	tb_simonela_progres.bulan = 'b9' OR	tb_simonela_progres.bulan = 'b10' OR tb_simonela_progres.bulan = 'b11' OR tb_simonela_progres.bulan = 'b12')")->get()->getRow();
+							$simonela_progrest2 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_2, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_2')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b4' OR tb_simonela_progres.bulan = 'b5' OR tb_simonela_progres.bulan = 'b6')")->get()->getRow();
+							$simonela_progrest3 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_3, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_3')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND	(tb_simonela_progres.bulan = 'b7' OR tb_simonela_progres.bulan = 'b8' OR tb_simonela_progres.bulan = 'b9')")->get()->getRow();
+							$simonela_progrest4 = $db->table('tb_simonela_progres')->select('(SUM(tb_simonela_progres.realisasi_keu)) AS tr_4, (SUM(tb_simonela_progres.realisasi_fisik)) AS t_4')->where("tb_simonela_progres.opd_id = '{$user}' AND	tb_simonela_progres.tahun = '{$_SESSION['tahun']}' AND tb_simonela_progres.perubahan = '{$_SESSION['perubahan']}' AND tb_simonela_progres.kegiatan = '{$kegiatan_f['opd_kegiatan_n']}' AND tb_simonela_progres.kegiatan_sub = '{$kegiatan_sub_f['opd_kegiatan_sub_n']}' AND (tb_simonela_progres.bulan = 'b10' OR tb_simonela_progres.bulan = 'b11' OR tb_simonela_progres.bulan = 'b12')")->get()->getRow();
 						?>
 
 							<tr>
@@ -314,7 +386,7 @@
 								<th><?= $kegiatan_sub_indikator_f['opd_indikator_kegiatan_sub']; ?></th><!-- F -->
 								<th><?= $kegiatan_sub_indikator_f['satuan']; ?></th><!-- G -->
 								<th><?= isset($total_target->total_target) ? $total_target->total_target : ''; ?></th><!-- H T_2021_2026-->
-								<th><?= $kegiatan_sub_indikator_f['total']; ?></th><!-- I T_2021_2026-->
+								<th><?= round($kegiatan_sub_indikator_f['total'], 0); ?></th><!-- I T_2021_2026-->
 								<th></th><!-- J C_2021_2026-->
 								<th></th><!-- K C_2021_2026-->
 								<th><?= isset($kegiatan_sub_indikator_renja->t_tahun) ? $kegiatan_sub_indikator_renja->t_tahun : ''; ?></th><!-- L TK_2021_2026-->
@@ -327,6 +399,30 @@
 								<th><?= isset($simonela_progrest3->tr_3) ? $simonela_progrest3->tr_3 : ''; ?></th><!-- S TW_3-->
 								<th><?= isset($simonela_progrest4->t_4) ? $simonela_progrest4->t_4 : ''; ?></th><!-- T TW_4-->
 								<th><?= isset($simonela_progrest4->tr_4) ? $simonela_progrest4->tr_4 : ''; ?></th><!-- U TW_4-->
+								<th><?= $simonela_progrest1->t_1 + $simonela_progrest2->t_2 + $simonela_progrest3->t_3 + $simonela_progrest4->t_4; ?></th><!-- V TW_4  =N24+P24+R24+T24-->
+								<th><?= $simonela_progrest1->tr_1 + $simonela_progrest2->tr_2 + $simonela_progrest3->tr_3 + $simonela_progrest4->tr_4; ?></th><!-- W TW_4 =SUM(O30+Q30+S30+U30)-->
+								<th>
+									<?php
+									try {
+										echo isset($kegiatan_sub_indikator_renja->t_tahun) && ($simonela_progrest1->t_1 + $simonela_progrest2->t_2 + $simonela_progrest3->t_3 + $simonela_progrest4->t_4) > 0 ? (($simonela_progrest1->t_1 + $simonela_progrest2->t_2 + $simonela_progrest3->t_3 + $simonela_progrest4->t_4) / $kegiatan_sub_indikator_renja->t_tahun) * 100 : '';
+									} catch (DivisionByZeroError $e) {
+										echo "";
+									}
+									?>
+								</th><!-- X TW_4 =V30/L30*100-->
+								<th>
+									<?php
+									try {
+										echo isset($kegiatan_sub_indikator_renja->rp_tahun) && ($simonela_progrest1->tr_1 + $simonela_progrest2->tr_2 + $simonela_progrest3->tr_3 + $simonela_progrest4->tr_4) > 0 ? (($simonela_progrest1->tr_1 + $simonela_progrest2->tr_2 + $simonela_progrest3->tr_3 + $simonela_progrest4->tr_4) / $kegiatan_sub_indikator_renja->rp_tahun) * 100 : '';
+									} catch (DivisionByZeroError $e) {
+										echo "";
+									}
+									?>
+								</th><!-- Y TW_4 =W30/M30*100-->
+								<th></th><!-- Z TW_4 =(J36+V36)/2-->
+								<th></th><!-- AA TW_4 =K36+W36-->
+								<th></th><!-- AB TW_4 =Z36/H36*100-->
+								<th></th><!-- AC TW_4 =AA36/I36*100-->
 							</tr>
 						<?php } ?> <!-- Kegiatan_sub -->
 					<?php } ?> <!-- Kegiatan_sub -->

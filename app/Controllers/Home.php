@@ -34,6 +34,7 @@ class Home extends BaseController
 			return redirect()->to(base_url('/'))->with('tahun2', Date("Y"));
 		}
 		return view('dashboard', $data);
+		// return view('user/Proposal/proposal_add', $data);
 	}
 	/*
 	 * ---------------------------------------------------
